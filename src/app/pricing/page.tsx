@@ -60,7 +60,7 @@ aria-hidden="true"
 
       <div className="container mx-auto px-4 max-w-5xl relative">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Simple, transparent pricing</h1>
+          <h1 className="text-4xl font-bold mb-4">100% Transparent pricing</h1> {/* Simple, */}
           <p className="text-xl text-gray-600">
             One-time payment, lifetime updates, no subscription needed.
           </p>

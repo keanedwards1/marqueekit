@@ -101,7 +101,7 @@ export default function Home() {
           />
           <div className="container mx-auto max-w-5xl text-center relative z-10">
             <h2 className="text-3xl font-bold mb-6">
-              Ready to add smooth scrolling to your site?
+              Need to add smooth scrolling to your site?
             </h2>
             <Link 
               href="/pricing"
