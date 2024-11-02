@@ -1,0 +1,89 @@
+import React, { useEffect, useRef, useState } from 'react';
+
+const InfiniteScroll = () => {
+  const [images, setImages] = useState([]);
+  const containerRef = useRef(null);
+  const [scrollSpeed] = useState(6); // Adjust scroll speed here
+
+  useEffect(() => {
+    // Load images into state
+    const imageUrls = Array.from({ length: 10 }, (_, index) =>
+      `https://picsum.photos/seed/${index}/300/200`
+    );
+    setImages(imageUrls);
+  }, []);
+
+  useEffect(() => {
+    if (!containerRef.current || images.length === 0) return;
+
+    const container = containerRef.current;
+    let animationFrameId;
+    let scrollPos = 0;
+
+    const items = Array.from(container.children);
+
+    // Get widths of all images
+    const itemWidths = items.map((item) => item.getBoundingClientRect().width);
+
+    // Calculate total width of all images
+    const totalWidth = itemWidths.reduce((acc, width) => acc + width, 0);
+
+    const scroll = () => {
+      scrollPos -= scrollSpeed;
+
+      // Move images from left to right as they exit the viewport
+      let firstItem = container.firstElementChild;
+      const firstItemRect = firstItem.getBoundingClientRect();
+      const containerRect = container.parentElement.getBoundingClientRect();
+
+      if (firstItemRect.right <= containerRect.left) {
+        // Remove the first item and append it to the end
+        container.appendChild(firstItem);
+        // Adjust scrollPos to account for the moved item
+        scrollPos += firstItemRect.width;
+        firstItem = container.firstElementChild; // Update the first item reference
+      }
+
+      container.style.transform = `translateX(${scrollPos}px)`;
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [images, scrollSpeed]);
+
+  return (
+    <div style={{ overflow: 'hidden', width: '100%' }}>
+      <div
+        ref={containerRef}
+        style={{
+          display: 'flex',
+          willChange: 'transform',
+        }}
+      >
+        {images.map((src, index) => (
+          <img
+            key={`img-${index}`}
+            src={src}
+            alt={`Slide ${index}`}
+            style={{ flexShrink: 0, width: 'auto', height: '200px' }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export function App(props) {
+  return (
+    <div className="App">
+      <h1>Infinite Scrolling Images</h1>
+      <InfiniteScroll />
+    </div>
+  );
+}
+
+console.log('Hello console');

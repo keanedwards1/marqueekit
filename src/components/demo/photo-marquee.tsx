@@ -1,3 +1,5 @@
+/* /src/components/demo/photo-marquee.tsx */
+
 'use client';
 
 import { useState } from 'react';

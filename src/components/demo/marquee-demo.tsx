@@ -1,6 +1,8 @@
+/* /src/components/demo/marquee-demo.tsx */
+
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const DEMO_IMAGES = [
   '/api/placeholder/300/200',

@@ -100,7 +100,7 @@ aria-hidden="true"
   <h2 className="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
   <div className="grid md:grid-cols-2 gap-8">
     <div className="rounded-lg p-6 group">
-      <h3 className="font-semibold mb-2">What's included in the price?</h3>
+      <h3 className="font-semibold mb-2">What&apos;s included in the price?</h3>
       <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">One-time payment includes the component, lifetime updates, and support based on your license type. No hidden fees or subscriptions.</p>
     </div>
     <div className="rounded-lg p-6 group">
@@ -113,7 +113,7 @@ aria-hidden="true"
     </div>
     <div className="rounded-lg p-6 group">
       <h3 className="font-semibold mb-2">Do you offer refunds?</h3>
-      <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">Yes, if you're not satisfied, we offer a 14-day money-back guarantee. No questions asked.</p>
+      <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">Yes, if you&apos;re not satisfied, we offer a 14-day money-back guarantee. No questions asked.</p>
     </div>
   </div>
 </div>
