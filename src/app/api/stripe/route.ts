@@ -1,11 +1,25 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+// Add error checking for environment variables
+if (!process.env.STRIPE_SECRET_KEY) {
+  throw new Error('STRIPE_SECRET_KEY is not defined');
+}
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
     apiVersion: '2024-10-28.acacia',
+    typescript: true,
 });
 
 export async function POST(req: Request) {
+  // Add error boundary
+  if (!stripe) {
+    return NextResponse.json(
+      { error: 'Stripe configuration error' },
+      { status: 500 }
+    );
+  }
+
   try {
     const { priceId } = await req.json();
 
@@ -29,7 +43,6 @@ export async function POST(req: Request) {
       ],
       success_url: `${req.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.get('origin')}/pricing`,
-      customer_email: 'pre@example.com', // Or remove this line to let customer enter email
       metadata: {
         licenseType: priceId,
       },
@@ -39,7 +52,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ sessionId: session.id });
   } catch (err) {
-    console.error('Error:', err);
+    console.error('Stripe Error:', err);
     return NextResponse.json(
       { error: 'Error creating checkout session' },
       { status: 500 }
