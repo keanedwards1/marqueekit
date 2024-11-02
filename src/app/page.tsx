@@ -1,109 +1,118 @@
+'use client';
+
 import Link from 'next/link'
 import { ArrowRight, Zap, Box, Smartphone, Code } from 'lucide-react'
+import { ProductMarquee } from '@/components/demo/product-marquee';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <section className="px-4 pt-20 pb-16">
-        <div className="container mx-auto max-w-5xl text-center">
-          <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">
-            Silky smooth image{' '}
-            <span className="text-blue-600">marquees</span>
-          </h1>
-          <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
-            A beautifully minimal marquee that maintains pixel-perfect smoothness. 
-            No stutters, no jank, just pure flowing motion.
-          </p>
-          <div className="mt-10 flex items-center justify-center gap-4">
+    <div className="flex flex-col min-h-screen relative">
+      {/* Background pattern */}
+      <div 
+        className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:24px_48px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000,transparent)]"
+        aria-hidden="true"
+      />
+      
+      {/* Content */}
+      <div className="relative">
+        {/* Hero Section */}
+        <section className="px-4 pt-20 pb-16">
+          <div className="container mx-auto max-w-5xl text-center">
+            <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">
+              Silky smooth image{' '}
+              <span className="text-blue-600">marquees</span>
+            </h1>
+            <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
+              A beautifully minimal marquee that maintains pixel-perfect smoothness. 
+              No stutters, no jank, just pure flowing motion.
+            </p>
+            <div className="mt-10 flex items-center justify-center gap-4">
+              <Link 
+                href="/pricing"
+                className="rounded-lg px-6 py-3 bg-black text-white hover:bg-gray-800 transition-colors"
+              >
+                Get Started
+                <ArrowRight className="ml-2 h-4 w-4 inline-block" />
+              </Link>
+              <Link 
+                href="/docs"
+                className="rounded-lg px-6 py-3 border border-gray-200 hover:border-gray-300 transition-colors"
+              >
+                Documentation
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Demo Section */}
+        <section className="px-4 py-16 bg-white/5 backdrop-blur-sm">
+          <div className="container mx-auto max-w-6xl">
+            <ProductMarquee />
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="px-4 py-16">
+          <div className="container mx-auto max-w-5xl">
+            <h2 className="text-3xl font-bold text-center mb-12">
+              Why choose MarqueeKit?
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              {[
+                {
+                  icon: Zap,
+                  title: "Lightning Fast Performance",
+                  description: "4kb minified with zero dependencies. Runs at 60fps even with dozens of images."
+                },
+                {
+                  icon: Box,
+                  title: "Smart Preloading",
+                  description: "Images load intelligently to prevent rhythm-breaking load delays."
+                },
+                {
+                  icon: Smartphone,
+                  title: "Touch Optimized",
+                  description: "Smooth touch interactions that feel natural on any device."
+                },
+                {
+                  icon: Code,
+                  title: "Developer Friendly",
+                  description: "Thoughtful defaults with easy overrides when you need them."
+                }
+              ].map((feature, i) => (
+                <div key={i} className="p-6 rounded-lg border group hover:border-gray-300 transition-all duration-300">
+                  <feature.icon className="h-8 w-8 text-blue-600 mb-4" />
+                  <h3 className="text-xl font-semibold mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">
+                    {feature.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="px-4 py-16 bg-black text-white relative overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff11_1px,transparent_1px),linear-gradient(to_bottom,#ffffff11_1px,transparent_1px)] bg-[size:14px_24px]"
+          />
+          <div className="container mx-auto max-w-5xl text-center relative z-10">
+            <h2 className="text-3xl font-bold mb-6">
+              Ready to add smooth scrolling to your site?
+            </h2>
             <Link 
               href="/pricing"
-              className="rounded-lg px-6 py-3 bg-black text-white hover:bg-gray-800 transition-colors"
+              className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
             >
               Get Started
               <ArrowRight className="ml-2 h-4 w-4 inline-block" />
             </Link>
-            <Link 
-              href="/docs"
-              className="rounded-lg px-6 py-3 border border-gray-200 hover:border-gray-300 transition-colors"
-            >
-              Documentation
-            </Link>
           </div>
-        </div>
-      </section>
-
-      {/* Demo Section */}
-      <section className="px-4 py-16 bg-gray-50">
-        <div className="container mx-auto max-w-6xl">
-          <div className="h-64 rounded-xl bg-white shadow-sm border flex items-center justify-center text-gray-400">
-            Demo Marquee Will Go Here
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="px-4 py-16">
-        <div className="container mx-auto max-w-5xl">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Why choose MarqueeKit?
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-lg border">
-              <Zap className="h-8 w-8 text-blue-600 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">
-                Lightning Fast Performance
-              </h3>
-              <p className="text-gray-600">
-                4kb minified with zero dependencies. Runs at 60fps even with dozens of images.
-              </p>
-            </div>
-            <div className="p-6 rounded-lg border">
-              <Box className="h-8 w-8 text-blue-600 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">
-                Smart Preloading
-              </h3>
-              <p className="text-gray-600">
-                Images load intelligently to prevent rhythm-breaking load delays.
-              </p>
-            </div>
-            <div className="p-6 rounded-lg border">
-              <Smartphone className="h-8 w-8 text-blue-600 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">
-                Touch Optimized
-              </h3>
-              <p className="text-gray-600">
-                Smooth touch interactions that feel natural on any device.
-              </p>
-            </div>
-            <div className="p-6 rounded-lg border">
-              <Code className="h-8 w-8 text-blue-600 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">
-                Developer Friendly
-              </h3>
-              <p className="text-gray-600">
-                Thoughtful defaults with easy overrides when you need them.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="px-4 py-16 bg-black text-white">
-        <div className="container mx-auto max-w-5xl text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Ready to add smooth scrolling to your site?
-          </h2>
-          <Link 
-            href="/pricing"
-            className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
-          >
-            Get Started
-            <ArrowRight className="ml-2 h-4 w-4 inline-block" />
-          </Link>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   )
 }

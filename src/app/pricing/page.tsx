@@ -1,6 +1,49 @@
+// src/app/pricing/page.tsx
+
+'use client';
+
 import { Check } from 'lucide-react';
+import { useState } from 'react';
+import { getStripe } from '@/lib/stripe';
 
 export default function PricingPage() {
+
+  const [loading, setLoading] = useState<string | null>(null);
+
+  const handleCheckout = async (priceId: 'standard' | 'pro') => {
+    try {
+      setLoading(priceId);
+      
+      const response = await fetch('/api/stripe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          priceId,
+        }),
+      });
+
+      const { sessionId, error } = await response.json();
+
+      if (error) throw new Error(error);
+
+      const stripe = await getStripe();
+      const { error: stripeError } = await stripe!.redirectToCheckout({
+        sessionId,
+      });
+
+      if (stripeError) throw stripeError;
+
+    } catch (err) {
+      console.error('Error:', err);
+      alert('Something went wrong. Please try again.');
+    } finally {
+      setLoading(null);
+    }
+  };
+
+
   return (
     <div className="min-h-screen py-20 relative overflow-hidden">
       {/* Decorative grid background */}
@@ -50,9 +93,13 @@ aria-hidden="true"
                   <span>Email support</span>
                 </li>
               </ul>
-              <button className="w-full py-3 px-4 rounded-lg bg-black text-white hover:bg-gray-800 transition-colors">
-                Purchase Standard
-              </button>
+    <button 
+      onClick={() => handleCheckout('standard')}
+      disabled={loading === 'standard'}
+      className="w-full py-3 px-4 rounded-lg bg-black text-white hover:bg-gray-800 transition-colors disabled:opacity-75"
+    >
+      {loading === 'standard' ? 'Loading...' : 'Purchase Standard'}
+    </button>
             </div>
             <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent" aria-hidden="true" />
           </div>
@@ -88,9 +135,13 @@ aria-hidden="true"
                   <span>Commercial use</span>
                 </li>
               </ul>
-              <button className="w-full py-3 px-4 rounded-lg bg-white text-black hover:bg-gray-100 transition-colors">
-                Purchase Pro
-              </button>
+              <button 
+      onClick={() => handleCheckout('pro')}
+      disabled={loading === 'pro'}
+      className="w-full py-3 px-4 rounded-lg bg-white text-black hover:bg-gray-100 transition-colors disabled:opacity-75"
+    >
+      {loading === 'pro' ? 'Loading...' : 'Purchase Pro'}
+    </button>
             </div>
           </div>
         </div>
