@@ -1,10 +1,55 @@
 'use client';
 
-import Link from 'next/link'
-import { ArrowRight, Zap, Box, Smartphone, Code } from 'lucide-react'
-import { ProductMarquee } from '@/components/demo/product-marquee';
+import React, { useEffect, useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowRight, Zap, Box, Smartphone, Code } from 'lucide-react';
+
+const images = [
+  '/home-marquee/image1.jpg',
+  '/home-marquee/image2.jpg',
+  '/home-marquee/image3.jpg',
+  '/home-marquee/image4.jpg',
+  '/home-marquee/image5.jpg',
+  // Add more images as needed
+];
 
 export default function Home() {
+  const marqueeRef = useRef<HTMLDivElement>(null);
+
+  // Variables for image dimensions, gap, and border radius
+  const imageWidth = 300; // Width of each image container
+  const imageHeight = 200; // Height of each image container
+  const imageGap = 20; // Gap between images
+  const imageBorderRadius = 8; // Border radius for each image
+
+  useEffect(() => {
+    if (!marqueeRef.current) return;
+
+    const marquee = marqueeRef.current;
+    let animationFrameId: number;
+    let scrollPosition = 0;
+
+    const scrollSpeed = 0.2; // Adjust scroll speed as needed
+
+    const scroll = () => {
+      scrollPosition -= scrollSpeed;
+
+      // Reset scroll position to create a seamless loop
+      if (marquee.scrollWidth / 2 - Math.abs(scrollPosition) <= 0) {
+        scrollPosition = 0;
+      }
+
+      marquee.style.transform = `translateX(${scrollPosition}px)`;
+
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen relative">
       {/* Background pattern */}
@@ -19,7 +64,7 @@ export default function Home() {
         <section className="px-4 pt-20 pb-16">
           <div className="container mx-auto max-w-5xl text-center">
             <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">
-              Silky smooth image{' '}
+              Pretty good image{' '}
               <span className="text-blue-600">marquees</span>
             </h1>
             <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
@@ -46,8 +91,35 @@ export default function Home() {
 
         {/* Demo Section */}
         <section className="px-4 py-16 bg-white/5 backdrop-blur-sm">
-          <div className="container mx-auto max-w-6xl">
-            <ProductMarquee />
+          <div className="container mx-auto max-w-6xl overflow-hidden">
+            <div
+              className="flex"
+              ref={marqueeRef}
+              style={{
+                willChange: 'transform',
+                gap: `${imageGap}px` // Set the gap between images
+              }}
+            >
+              {images.concat(images).map((src, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 overflow-hidden relative"
+                  style={{
+                    width: `${imageWidth}px`,
+                    height: `${imageHeight}px`,
+                    borderRadius: `${imageBorderRadius}px`, // Border radius for each image
+                  }}
+                >
+                  <Image
+                    src={src}
+                    alt={`Image ${index}`}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -114,5 +186,5 @@ export default function Home() {
         </section>
       </div>
     </div>
-  )
+  );
 }

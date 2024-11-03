@@ -5,6 +5,10 @@ import { LogoMarquee } from "@/components/demo/logo-marquee";
 import { ProductMarquee } from "@/components/demo/product-marquee";
 import { PhotoMarquee } from "@/components/demo/photo-marquee";
 import { CodePreview } from "@/components/ui/code-preview";
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react'
+
+
 
 export default function ExamplesPage() {
   const [showLogoCode, setShowLogoCode] = useState(false);
@@ -224,7 +228,29 @@ export default function ExamplesPage() {
             </p>
           </div>
         </div>
+
+        <section className="px-4 py-16 text-white relative overflow-hidden">
+{/*           <div 
+            className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff11_1px,transparent_1px),linear-gradient(to_bottom,#ffffff11_1px,transparent_1px)] bg-[size:14px_24px]"
+          /> */}
+          <div className="container mx-auto max-w-5xl text-center relative z-10">
+            <h2 className="text-3xl font-bold mb-6">
+              Want to add one to your site?
+            </h2>
+            <Link 
+              href="/pricing"
+              className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
+            >
+              Purchase
+              <ArrowRight className="ml-2 h-4 w-4 inline-block" />
+            </Link>
+          </div>
+        </section>
+
       </div>
     </div>
   );
 }
+
+
+

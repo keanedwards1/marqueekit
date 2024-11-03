@@ -24,6 +24,16 @@
 │   │   │       │   └── route.ts
 │   │   │       └── webhook
 │   │   │           └── route.ts
+│   │   ├── docs
+│   │   │   ├── api
+│   │   │   │   └── page.tsx
+│   │   │   ├── configuration
+│   │   │   │   └── page.tsx
+│   │   │   ├── installation
+│   │   │   │   └── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── page.txt
 │   │   ├── examples
 │   │   │   └── page.tsx
 │   │   ├── favicon.ico
@@ -35,6 +45,7 @@
 │   │   ├── layout.txt
 │   │   ├── page.tsx
 │   │   ├── page.txt
+│   │   ├── page2.txt
 │   │   ├── pricing
 │   │   │   └── page.tsx
 │   │   └── success
@@ -55,4 +66,4 @@
 ├── tree.txt
 └── tsconfig.json
 
-18 directories, 38 files
+22 directories, 45 files
