@@ -110,13 +110,15 @@ export default function Home() {
                     borderRadius: `${imageBorderRadius}px`, // Border radius for each image
                   }}
                 >
-                  <Image
-                    src={src}
-                    alt={`Image ${index}`}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
+                <Image
+                  src={src}
+                  alt={`Image ${index}`}
+                  fill
+                  className="object-cover"
+                  priority={index < 5} // Preload the first 5 images to prevent jank
+                  loading={index >= 5 ? "lazy" : "eager"} // Use lazy loading for images beyond the first 5
+                  sizes={`${imageWidth}px`} 
+                />
                 </div>
               ))}
             </div>
