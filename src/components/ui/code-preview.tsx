@@ -1,3 +1,5 @@
+// src/components/ui/code-preview.tsx
+
 'use client';
 
 import { useState } from 'react';
@@ -13,7 +15,7 @@ export function CodePreview({ code }: CodePreviewProps) {
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(code);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 2500);
   };
 
   return (

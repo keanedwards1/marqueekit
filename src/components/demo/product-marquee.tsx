@@ -1,96 +1,122 @@
+// src/components/demo/product-marquee.tsx
+
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef } from 'react';
+
+interface MarqueeSettings {
+  speed: number;
+  gap: number;
+  borderRadius: number;
+  width: number;
+  height: number;
+}
+
+interface ProductMarqueeProps {
+  settings: MarqueeSettings;
+}
 
 const PRODUCTS = [
   {
     id: 1,
     name: 'Modern Chair',
     price: '$299',
-    image: '/api/placeholder/240/320'
+    image: '/home-marquee/image1.jpg'
   },
   {
     id: 2,
     name: 'Wooden Table',
     price: '$599',
-    image: '/api/placeholder/240/320'
+    image: '/home-marquee/image2.jpg'
   },
   {
     id: 3,
     name: 'Pendant Light',
     price: '$199',
-    image: '/api/placeholder/240/320'
+    image: '/home-marquee/image3.jpg'
   },
   {
     id: 4,
     name: 'Ceramic Vase',
     price: '$89',
-    image: '/api/placeholder/240/320'
+    image: '/home-marquee/image4.jpg'
   },
   {
     id: 5,
     name: 'Wall Art',
     price: '$159',
-    image: '/api/placeholder/240/320'
+    image: '/home-marquee/image5.jpg'
   }
 ];
 
-export function ProductMarquee() {
-  const [pause, setPause] = useState(false);
-  const [speed, setSpeed] = useState(1);
+export function ProductMarquee({ settings }: ProductMarqueeProps) {
+  const marqueeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!marqueeRef.current) return;
+
+    const marquee = marqueeRef.current;
+    let animationFrameId: number;
+    let scrollPosition = 0;
+
+    const scroll = () => {
+      const effectiveSpeed = Math.max(settings.speed, 0.1); // Set a lower bound for speed
+      scrollPosition -= effectiveSpeed;
+
+      if (marquee.scrollWidth / 2 - Math.abs(scrollPosition) <= 0) {
+        scrollPosition = 0;
+      }
+
+      marquee.style.transform = `translateX(${scrollPosition}px)`;
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [settings.speed]);
 
   return (
-    <div className="w-full space-y-6">
-      <div className="flex gap-4 justify-center">
-        <button
-          onClick={() => setPause(!pause)}
-          className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors text-sm"
-        >
-          {pause ? 'Resume' : 'Pause'}
-        </button>
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-400">Speed:</span>
-          <input
-            type="range"
-            min="0.5"
-            max="2"
-            step="0.1"
-            value={speed}
-            onChange={(e) => setSpeed(Number(e.target.value))}
-            className="w-32"
-          />
-        </div>
-      </div>
-
-      <div className="relative overflow-hidden rounded-lg bg-black/20">
-        <div 
-          className={`flex gap-6 p-8 whitespace-nowrap ${
-            !pause ? 'animate-[slide_20s_linear_infinite]' : ''
-          }`}
-          style={{ animationDuration: `${20 / speed}s` }}
-        >
-          {[...PRODUCTS, ...PRODUCTS].map((product, i) => (
+    <div className="overflow-hidden rounded-lg">
+      <div
+        ref={marqueeRef}
+        className="flex"
+        style={{
+          willChange: 'transform',
+          gap: `${settings.gap}px`
+        }}
+      >
+        {[...PRODUCTS, ...PRODUCTS].map((product, index) => (
+          <div
+            key={`${product.id}-${index}`}
+            className="flex-none group"
+            style={{
+              width: `${settings.width}px`
+            }}
+          >
             <div 
-              key={i} 
-              className="flex-none w-60 group"
+              className="relative overflow-hidden mb-3"
+              style={{
+                height: `${settings.height}px`,
+                borderRadius: `${settings.borderRadius}px`
+              }}
             >
-              <div className="relative rounded-lg overflow-hidden mb-3">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="text-white font-medium px-4 py-2 rounded-full bg-black/50 backdrop-blur-sm">
-                    View Details
-                  </span>
-                </div>
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                style={{ willChange: 'transform' }}
+              />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <span className="text-white font-medium px-4 py-2 rounded-full bg-black/50 backdrop-blur-sm">
+                  View Details
+                </span>
               </div>
-              <h3 className="font-medium text-white">{product.name}</h3>
-              <p className="text-blue-400">{product.price}</p>
             </div>
-          ))}
-        </div>
+            <h3 className="font-medium text-white">{product.name}</h3>
+            <p className="text-blue-400">{product.price}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
