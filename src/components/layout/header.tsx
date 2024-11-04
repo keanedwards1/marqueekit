@@ -1,37 +1,38 @@
 'use client';
 
 import Link from 'next/link';
-import { Github } from 'lucide-react';
+// import { Github } from 'lucide-react';
 
 export function Header() {
   return (
-    <header className="border-b">
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="font-bold text-xl">
+    <header className="border-b border-gray-800 bg-black/80 backdrop-blur-md shadow-md">
+      <div className="container mx-auto flex items-center justify-between px-6 py-4">
+        <Link href="/" className="font-bold text-2xl text-white tracking-tight">
           MarqueeKit
         </Link>
-        
-        <nav className="flex items-center gap-6">
-          <Link href="/docs" className="text-sm hover:text-gray-600">
+
+        <nav className="flex items-center gap-8">
+          <Link href="/docs" className="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
             Docs
           </Link>
-          <Link href="/examples" className="text-sm hover:text-gray-600">
+          <Link href="/examples" className="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
             Examples
           </Link>
           <Link 
             href="/pricing" 
-            className="text-sm text-white bg-black px-4 py-2 rounded-lg hover:bg-gray-800"
+            className="rounded-lg px-6 py-3 border text-sm border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors"
           >
             Purchase
           </Link>
-          <Link
+          {/* Uncomment the following section to re-enable the GitHub link */}
+          {/* <Link
             href="https://github.com/yourusername/marqueekit"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-700 hover:text-gray-900"
+            className="text-gray-400 hover:text-gray-200 transition-colors duration-200"
           >
             <Github size={20} />
-          </Link>
+          </Link> */}
         </nav>
       </div>
     </header>

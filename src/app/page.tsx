@@ -74,14 +74,14 @@ export default function Home() {
             <div className="mt-10 flex items-center justify-center gap-4">
               <Link 
                 href="/pricing"
-                className="rounded-lg px-6 py-3 bg-black text-white hover:bg-gray-800 transition-colors"
+                className="rounded-lg px-6 py-3 border border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors"
               >
                 Get Started
                 <ArrowRight className="ml-2 h-4 w-4 inline-block" />
               </Link>
               <Link 
                 href="/docs"
-                className="rounded-lg px-6 py-3 border border-gray-200 hover:border-gray-300 transition-colors"
+                className="rounded-lg px-6 py-3 bg-black text-white hover:bg-gray-800 transition-colors"
               >
                 Documentation
               </Link>
