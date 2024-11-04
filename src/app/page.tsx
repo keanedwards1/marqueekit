@@ -194,13 +194,13 @@ export default function Home() {
           />
           <div className="container mx-auto max-w-5xl text-center relative z-10">
             <h2 className="text-3xl font-bold mb-6">
-              It&apos; as easy as copy + paste
+              Easy as copy + paste
             </h2>
             <Link 
               href="/examples"
               className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
             >
-              Let&apos; see it
+              Let&apos;s see it
               <ArrowRight className="ml-2 h-4 w-4 inline-block" />
             </Link>
           </div>
