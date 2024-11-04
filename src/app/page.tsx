@@ -115,8 +115,8 @@ export default function Home() {
                   alt={`Image ${index}`}
                   fill
                   className="object-cover"
-                  priority={index < 5} // Preload the first 5 images to prevent jank
-                  loading={index >= 5 ? "lazy" : "eager"} // Use lazy loading for images beyond the first 5
+                  priority={index < 5}
+                  loading={index >= 5 ? "lazy" : "eager" }
                   sizes={`${imageWidth}px`} 
                 />
                 </div>
