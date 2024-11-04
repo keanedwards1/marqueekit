@@ -348,7 +348,7 @@ export default function ExamplesPage() {
           <div className="container mx-auto max-w-5xl text-center relative z-10">
             <h2 className="text-3xl font-bold mb-6">Want to add one to your site?</h2>
             <Link
-              href="https://www.google.com/search?q=how+to+create+an+image+marquee&sca_esv=bc4b89e7ded45035&ei=UmAoZ4jBEJi5kPIPudjKgAw&ved=0ahUKEwiIsv29_cGJAxWYHEQIHTmsEsAQ4dUDCBA&uact=5&oq=how+to+create+an+image+marquee&gs_lp=Egxnd3Mtd2l6LXNlcnAiHmhvdyB0byBjcmVhdGUgYW4gaW1hZ2UgbWFycXVlZTIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiiBBiJBTIIEAAYgAQYogQyCBAAGIAEGKIESNOKAVChHljQhwFwFHgBkAEBmAGnAaABpyqqAQUzOS4xObgBA8gBAPgBAZgCSKACkyfCAgoQABiwAxjWBBhHwgINEAAYgAQYsAMYQxiKBcICChAAGIAEGEMYigXCAhEQLhiABBixAxjRAxiDARjHAcICBRAAGIAEwgIQEAAYgAQYsQMYgwEYRhj7AcICCxAAGIAEGLEDGIMBwgIOEAAYgAQYsQMYgwEYigXCAggQABiABBixA8ICHBAAGIAEGLEDGIMBGEYY-wEYlwUYjAUY3QTYAQHCAgsQABiABBiRAhiKBcICDhAAGIAEGJECGLEDGIoFwgIGEAAYFhgewgILEAAYgAQYhgMYigXCAgUQIRigAcICBRAhGJ8FwgIIEAAYFhgKGB7CAgUQIRirAsICBhAAGAgYHpgDAIgGAZAGCroGBggBEAEYE5IHBTUyLjIwoAfU3AI&sclient=gws-wiz-serp"
+              href="https://www.google.com"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors mr-4"
