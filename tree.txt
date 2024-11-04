@@ -1,6 +1,12 @@
 .
 ├── Icon\015
 ├── README.md
+├── img-storage
+│   ├── image1.jpg
+│   ├── image2.jpg
+│   ├── image3.jpg
+│   ├── image4.jpg
+│   └── image5.jpg
 ├── marquee.txt
 ├── next-env.d.ts
 ├── next.config.ts
@@ -10,6 +16,12 @@
 ├── public
 │   ├── file.svg
 │   ├── globe.svg
+│   ├── home-marquee
+│   │   ├── image1.jpg
+│   │   ├── image2.jpg
+│   │   ├── image3.jpg
+│   │   ├── image4.jpg
+│   │   └── image5.jpg
 │   ├── next.svg
 │   ├── vercel.svg
 │   └── window.svg
@@ -59,11 +71,12 @@
 │   │   ├── layout
 │   │   │   └── header.tsx
 │   │   └── ui
-│   │       └── code-preview.tsx
+│   │       ├── code-preview.tsx
+│   │       └── custom-slider.tsx
 │   └── lib
 │       └── stripe.ts
 ├── tailwind.config.ts
 ├── tree.txt
 └── tsconfig.json
 
-22 directories, 45 files
+24 directories, 56 files

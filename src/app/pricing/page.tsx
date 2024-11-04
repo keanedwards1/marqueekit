@@ -68,41 +68,44 @@
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Standard License */}
-            <div className="rounded-xl border bg-white p-8 shadow-lg relative overflow-hidden">
-              <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-black mb-4">Standard</h3>
-                <div className="mb-6">
-                  <span className="text-4xl text-black font-bold">$49</span>
-                  <span className="text-gray-900 ml-2">one-time</span>
-                </div>
-                <ul className="space-y-4 mb-8 text-gray-900">
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                    <span>Single project use</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                    <span>Core marquee functionality</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                    <span>Basic documentation</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                    <span>Email support</span>
-                  </li>
-                </ul>
-      <button 
-        onClick={() => handleCheckout('standard')}
-        disabled={loading === 'standard'}
-        className="w-full py-3 px-4 rounded-lg bg-black text-white hover:bg-gray-800 transition-colors disabled:opacity-75"
-      >
-        {loading === 'standard' ? 'Loading...' : 'Purchase Standard'}
-      </button>
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent" aria-hidden="true" />
-            </div>
+            <div className="rounded-xl border bg-white p-8 shadow-lg relative overflow-hidden flex flex-col">
+  <div className="relative z-10 flex-grow">
+    <h3 className="text-2xl font-bold text-black mb-4">Standard</h3>
+    <div className="mb-6">
+      <span className="text-4xl text-black font-bold">$49</span>
+      <span className="text-gray-900 ml-2">one-time</span>
+    </div>
+    <ul className="space-y-4 mb-8 text-gray-900">
+      <li className="flex items-start gap-2">
+        <Check className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
+        <span>Single project use</span>
+      </li>
+      <li className="flex items-start gap-2">
+        <Check className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
+        <span>Core marquee functionality</span>
+      </li>
+      <li className="flex items-start gap-2">
+        <Check className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
+        <span>Basic documentation</span>
+      </li>
+      <li className="flex items-start gap-2">
+        <Check className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
+        <span>Email support</span>
+      </li>
+      <li className="flex items-start gap-2">
+        <Check className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
+        <span>Full Refund</span>
+      </li>
+    </ul>
+  </div>
+  <button 
+    onClick={() => handleCheckout('standard')}
+    disabled={loading === 'standard'}
+    className="w-full py-3 px-4 rounded-lg bg-black text-white hover:bg-gray-800 transition-colors disabled:opacity-75 mt-auto"
+  >
+    {loading === 'standard' ? 'Loading...' : 'Purchase Standard'}
+  </button>
+</div>
 
             {/* Pro License */}
             <div className="rounded-xl border p-8 bg-black text-white shadow-lg relative overflow-hidden">
@@ -214,7 +217,7 @@
       </div>
       <div className="rounded-lg p-6 group">
         <h3 className="font-semibold mb-2">Do you offer refunds?</h3>
-        <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">Yes, if you&apos;re not satisfied, we offer a 14-day money-back guarantee. No questions asked.</p>
+        <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">*Yes, if you&apos;re not satisfied, we offer a 14-day money-back guarantee. No questions asked.</p>
       </div>
     </div>
   </div>

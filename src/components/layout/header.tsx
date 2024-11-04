@@ -20,9 +20,9 @@ export function Header() {
           </Link>
           <Link 
             href="/pricing" 
-            className="rounded-lg px-6 py-3 border text-sm border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors"
+            className="rounded-lg px-5 py-2.5 border text-sm border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors"
           >
-            Purchase
+            Pricing
           </Link>
           {/* Uncomment the following section to re-enable the GitHub link */}
           {/* <Link

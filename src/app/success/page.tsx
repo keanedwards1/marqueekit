@@ -145,11 +145,11 @@ function SuccessContent() {
 
         <div className="space-y-6 text-center">
           <p className="text-gray-600">
-            We&apos;ve sent a confirmation email to {purchaseDetails?.customerEmail} with your purchase details and download link.
+            We&apos;ve sent a confirmation email to {purchaseDetails?.customerEmail}.
           </p>
-          <p className="text-sm text-gray-500">
-            Having issues? Contact support at support@marqueekit.dev
-          </p>
+<p className="text-sm text-gray-500">
+  Having issues? Contact support at <a href="mailto:marqueekit1@gmail.com" className="text-blue-600 hover:text-blue-800">marqueekit1@gmail.com</a>
+</p>
         </div>
       </div>
     </div>

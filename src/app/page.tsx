@@ -3,25 +3,21 @@
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Zap, Box, Smartphone, Code } from 'lucide-react';
+import { ArrowRight, Compass, XCircle, Lightbulb } from 'lucide-react'; /*  Zap, Box, Smartphone, Code */
 
 const images = [
   '/home-marquee/image1.jpg',
   '/home-marquee/image2.jpg',
   '/home-marquee/image3.jpg',
   '/home-marquee/image4.jpg',
-  '/home-marquee/image5.jpg',
-  // Add more images as needed
 ];
 
 export default function Home() {
   const marqueeRef = useRef<HTMLDivElement>(null);
-
-  // Variables for image dimensions, gap, and border radius
-  const imageWidth = 300; // Width of each image container
-  const imageHeight = 200; // Height of each image container
-  const imageGap = 20; // Gap between images
-  const imageBorderRadius = 8; // Border radius for each image
+  const imageWidth = 300;
+  const imageHeight = 200;
+  const imageGap = 20;
+  const imageBorderRadius = 8;
 
   useEffect(() => {
     if (!marqueeRef.current) return;
@@ -29,51 +25,42 @@ export default function Home() {
     const marquee = marqueeRef.current;
     let animationFrameId: number;
     let scrollPosition = 0;
-
-    const scrollSpeed = 0.2; // Adjust scroll speed as needed
+    const scrollSpeed = 0.2;
 
     const scroll = () => {
       scrollPosition -= scrollSpeed;
-
-      // Reset scroll position to create a seamless loop
       if (marquee.scrollWidth / 2 - Math.abs(scrollPosition) <= 0) {
         scrollPosition = 0;
       }
-
       marquee.style.transform = `translateX(${scrollPosition}px)`;
-
       animationFrameId = requestAnimationFrame(scroll);
     };
 
     animationFrameId = requestAnimationFrame(scroll);
-
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
   return (
     <div className="flex flex-col min-h-screen relative">
-      {/* Background pattern */}
       <div 
         className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:24px_48px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000,transparent)]"
         aria-hidden="true"
       />
       
-      {/* Content */}
       <div className="relative">
         {/* Hero Section */}
         <section className="px-4 pt-20 pb-16">
           <div className="container mx-auto max-w-5xl text-center">
-            <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">
-              Pretty good image{' '}
-              <span className="text-blue-600">marquees</span>
-            </h1>
+          <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">
+            Seamless <span className="text-blue-600">Beautiful</span> Marquees
+          </h1>
             <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
-              A beautifully minimal marquee that maintains pixel-perfect smoothness. 
+              A minimal marquee that maintains pixel-perfect smoothness. 
               No stutters, no jank, just pure flowing motion.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <Link 
-                href="/pricing"
+                href="/examples"
                 className="rounded-lg px-6 py-3 border border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors"
               >
                 Get Started
@@ -90,14 +77,14 @@ export default function Home() {
         </section>
 
         {/* Demo Section */}
-        <section className="px-4 py-16 bg-white/5 backdrop-blur-sm">
+        <section className="px-4 py-16">
           <div className="container mx-auto max-w-6xl overflow-hidden">
             <div
               className="flex"
               ref={marqueeRef}
               style={{
                 willChange: 'transform',
-                gap: `${imageGap}px` // Set the gap between images
+                gap: `${imageGap}px`
               }}
             >
               {images.concat(images).map((src, index) => (
@@ -107,26 +94,58 @@ export default function Home() {
                   style={{
                     width: `${imageWidth}px`,
                     height: `${imageHeight}px`,
-                    borderRadius: `${imageBorderRadius}px`, // Border radius for each image
+                    borderRadius: `${imageBorderRadius}px`,
                   }}
                 >
-                <Image
-                  src={src}
-                  alt={`Image ${index}`}
-                  fill
-                  className="object-cover"
-                  priority={index < 5}
-                  loading={index >= 5 ? "lazy" : "eager" }
-                  sizes={`${imageWidth}px`} 
-                />
+                  <Image
+                    src={src}
+                    alt={`Image ${index}`}
+                    fill
+                    className="object-cover"
+                    priority={index < 5}
+                    loading={index >= 5 ? "lazy" : "eager"}
+                    sizes={`${imageWidth}px`}
+                  />
                 </div>
               ))}
             </div>
           </div>
         </section>
 
+                {/* Story Section */}
+                <section className="px-4 py-16 text-white">
+          <div className="container mx-auto max-w-5xl">
+            <h2 className="text-3xl font-bold text-center mb-12">
+              The Journey Behind <span className="text-blue-600">MarqueeKit</span>
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="flex flex-col items-center text-center">
+                <Compass className="h-12 w-12 text-blue-600 mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Exploration</h3>
+                <p className="text-gray-300">
+                  I explored numerous solutions to create the perfect image marquee, but none met my expectations.
+                </p>
+              </div>
+              <div className="flex flex-col items-center text-center">
+                <XCircle className="h-12 w-12 text-blue-600 mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Frustration</h3>
+                <p className="text-gray-300">
+                  Each attempt led to roadblocks—performance issues, clunky animations, and lack of resources.
+                </p>
+              </div>
+              <div className="flex flex-col items-center text-center">
+                <Lightbulb className="h-12 w-12 text-blue-600 mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Creation</h3>
+                <p className="text-gray-300">
+                  Determined, I built my own solution. That&apos;s how MarqueeKit was born—a tool for seamless marquees.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Features Section */}
-        <section className="px-4 py-16">
+{/*         <section className="px-4 py-16">
           <div className="container mx-auto max-w-5xl">
             <h2 className="text-3xl font-bold text-center mb-12">
               Why choose MarqueeKit?
@@ -166,7 +185,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* CTA Section */}
         <section className="px-4 py-16 bg-black text-white relative overflow-hidden">
@@ -175,13 +194,13 @@ export default function Home() {
           />
           <div className="container mx-auto max-w-5xl text-center relative z-10">
             <h2 className="text-3xl font-bold mb-6">
-              Need to add smooth scrolling to your site?
+              It&apos; as easy as copy + paste
             </h2>
             <Link 
-              href="/pricing"
+              href="/examples"
               className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
             >
-              Get Started
+              Let&apos; see it
               <ArrowRight className="ml-2 h-4 w-4 inline-block" />
             </Link>
           </div>
