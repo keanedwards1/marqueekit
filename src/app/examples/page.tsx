@@ -360,7 +360,7 @@ export default function ExamplesPage() {
               href="/pricing"
               className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
             >
-              Yes
+              Maybe
               <ArrowRight className="ml-2 h-4 w-4 inline-block" />
             </Link>
           </div>

@@ -116,10 +116,10 @@ export default function Home() {
                 <section className="px-4 py-16 text-white">
           <div className="container mx-auto max-w-5xl">
             <h2 className="text-3xl font-bold text-center mb-4">
-               Why MarqueeKit<span className="text-blue-600"> Exists</span> {/* The Journey Behind */}
+               The Story Behind <span className="text-blue-600">MarqueeKit </span> {/* The Journey Behind */}
             </h2>
             <h3 className="text-lg font-normal text-center mb-12">A few years ago, I decided to learn how to make websites. 
-              <br/> I found a lot of it fun, but one thing, everytime I ran into it, was so frustrating.
+              <br/> It was a lot of fun, but one thing, everytime I ran into it, was so frustrating.
               <br/> <span className="text-xl font-bold">Image Marquees.</span>
             </h3>
             <div className="grid md:grid-cols-3 gap-8">
@@ -127,7 +127,7 @@ export default function Home() {
                 <Compass className="h-12 w-12 text-blue-600 mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Exploration</h3>
                 <p className="text-gray-300">
-                  I tried a lot of ways to creat a functional image marquee, but it was a struggle to make even one work.
+                  I tried a lot of ways to create a functional image marquee, but I struggled to make even one work.
                 </p>
               </div>
               <div className="flex flex-col items-center text-center">
@@ -141,7 +141,7 @@ export default function Home() {
                 <Lightbulb className="h-12 w-12 text-blue-600 mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Creation</h3>
                 <p className="text-gray-300">
-                  Determined, I perservered, and built my own. That&apos;s the origin story of MarqueeKit—a tool forged of necessity.
+                  Determined, I perservered, and built my own. That&apos;s how MarqueeKit came to be— it&apos;s a tool forged of necessity.
                 </p>
               </div>
             </div>
