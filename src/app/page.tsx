@@ -52,7 +52,7 @@ export default function Home() {
         <section className="px-4 pt-20 pb-16">
           <div className="container mx-auto max-w-5xl text-center">
           <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">
-            Seamless <span className="text-blue-600">Beautiful</span> Marquees
+            Seamless <span className="text-blue-600">Marquees</span>  {/* Beautiful */}
           </h1>
             <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
               A minimal marquee that maintains pixel-perfect smoothness. 
@@ -115,15 +115,19 @@ export default function Home() {
                 {/* Story Section */}
                 <section className="px-4 py-16 text-white">
           <div className="container mx-auto max-w-5xl">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              The Journey Behind <span className="text-blue-600">MarqueeKit</span>
+            <h2 className="text-3xl font-bold text-center mb-4">
+               Why MarqueeKit<span className="text-blue-600"> Exists</span> {/* The Journey Behind */}
             </h2>
+            <h3 className="text-lg font-normal text-center mb-12">A few years ago, I decided to learn how to make websites. 
+              <br/> I found a lot of it fun, but one thing, everytime I ran into it, was so frustrating.
+              <br/> <span className="text-xl font-bold">Image Marquees.</span>
+            </h3>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="flex flex-col items-center text-center">
                 <Compass className="h-12 w-12 text-blue-600 mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Exploration</h3>
                 <p className="text-gray-300">
-                  I explored numerous solutions to create the perfect image marquee, but none met my expectations.
+                  I tried a lot of ways to creat a functional image marquee, but it was a struggle to make even one work.
                 </p>
               </div>
               <div className="flex flex-col items-center text-center">
@@ -137,7 +141,7 @@ export default function Home() {
                 <Lightbulb className="h-12 w-12 text-blue-600 mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Creation</h3>
                 <p className="text-gray-300">
-                  Determined, I built my own solution. That&apos;s how MarqueeKit was born—a tool for seamless marquees.
+                  Determined, I perservered, and built my own. That&apos;s the origin story of MarqueeKit—a tool forged of necessity.
                 </p>
               </div>
             </div>
@@ -189,22 +193,23 @@ export default function Home() {
 
         {/* CTA Section */}
         <section className="px-4 py-16 bg-black text-white relative overflow-hidden">
-          <div 
-            className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff11_1px,transparent_1px),linear-gradient(to_bottom,#ffffff11_1px,transparent_1px)] bg-[size:14px_24px]"
-          />
-          <div className="container mx-auto max-w-5xl text-center relative z-10">
-            <h2 className="text-3xl font-bold mb-6">
-              Easy as copy + paste
-            </h2>
-            <Link 
-              href="/examples"
-              className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
-            >
-              Let&apos;s see it
-              <ArrowRight className="ml-2 h-4 w-4 inline-block" />
-            </Link>
-          </div>
-        </section>
+  <div 
+    className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff11_1px,transparent_1px),linear-gradient(to_bottom,#ffffff11_1px,transparent_1px)] bg-[size:14px_24px]"
+  />
+  <div className="container mx-auto max-w-5xl text-center relative z-10">
+    <h2 className="text-3xl font-bold mb-6">
+      Copy, paste, and you’re all set
+    </h2>
+    <Link 
+      href="/examples"
+      className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
+    >
+      See it in action
+      <ArrowRight className="ml-2 h-4 w-4 inline-block" />
+    </Link>
+  </div>
+</section>
+
       </div>
     </div>
   );
