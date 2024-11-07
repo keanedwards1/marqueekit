@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Check, Terminal, Package, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-export default function GettingStartedPage() {
+function GettingStartedContent() {
   const searchParams = useSearchParams();
   const [hasPurchased, setHasPurchased] = useState(false);
   const [verificationStatus, setVerificationStatus] = useState<'loading' | 'success' | 'error'>('loading');
@@ -23,7 +23,6 @@ export default function GettingStartedPage() {
         if (data.valid) {
           setHasPurchased(true);
           setVerificationStatus('success');
-          // Store both the session ID and timestamp
           localStorage.setItem('marqueekit_session', JSON.stringify({
             id: sid,
             timestamp: Date.now()
@@ -37,19 +36,16 @@ export default function GettingStartedPage() {
         setVerificationStatus('error');
       }
     };
-  
-    // First check URL parameter
+
     if (sessionId) {
       verifyPurchase(sessionId);
       return;
     }
-  
-    // Then check localStorage
+
     try {
       const storedData = localStorage.getItem('marqueekit_session');
       if (storedData) {
         const { id, timestamp } = JSON.parse(storedData);
-        // Only use stored session if it's less than 24 hours old
         if (Date.now() - timestamp < 24 * 60 * 60 * 1000) {
           verifyPurchase(id);
           return;
@@ -60,8 +56,7 @@ export default function GettingStartedPage() {
     } catch (error) {
       console.error('Error checking stored session:', error);
     }
-  
-    // If no valid session found
+
     setVerificationStatus('error');
   }, [sessionId]);
 
@@ -197,5 +192,26 @@ export default function App() {
         )}
       </div>
     </div>
+  );
+}
+
+// Main component wrapped with Suspense
+export default function GettingStartedPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="py-20 px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl font-bold mb-8">Loading...</h1>
+            <div className="animate-pulse space-y-4">
+              <div className="h-4 bg-gray-200/20 rounded w-3/4 mx-auto"></div>
+              <div className="h-4 bg-gray-200/20 rounded w-1/2 mx-auto"></div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <GettingStartedContent />
+    </Suspense>
   );
 }
