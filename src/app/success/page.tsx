@@ -1,3 +1,5 @@
+// src/app/success/page.tsx
+
 'use client';
 
 import { useEffect, useState, Suspense } from 'react';
@@ -134,7 +136,7 @@ function SuccessContent() {
             </button>
             
             <Link 
-              href="/docs/getting-started"
+              href={`/docs/getting-started?session_id=${sessionId}`}
               className="w-full flex items-center justify-center gap-2 py-3 px-4 border rounded-lg hover:bg-white/5 transition-colors"
             >
               View Documentation

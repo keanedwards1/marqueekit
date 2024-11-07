@@ -1,3 +1,5 @@
+// src/app/docs/layout.tsx
+
 'use client';
 
 import { useState } from 'react';
@@ -92,7 +94,7 @@ export default function DocsLayout({
                       className={`block py-1 px-2 rounded text-sm ${
                         pathname === link.href
                           ? "bg-blue-500/10 text-blue-500"
-                          : "text-gray-600 hover:text-gray-900"
+                          : "text-gray-600 hover:text-gray-300 transition duration-200"
                       }`}
                     >
                       {link.label}

@@ -1,3 +1,5 @@
+// src/app/docs/installation/page.tsx
+
 'use client';
 
 import { Check } from 'lucide-react';

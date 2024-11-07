@@ -1,3 +1,5 @@
+// src/app/docs/configuration/page.tsx
+
 'use client';
 
 /* import { Settings } from 'lucide-react';

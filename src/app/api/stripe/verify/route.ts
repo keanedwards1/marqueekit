@@ -1,3 +1,5 @@
+// src/app/api/stripe/verify/route.ts
+
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
@@ -10,6 +12,7 @@ export async function GET(req: Request) {
   const sessionId = searchParams.get('session_id');
 
   if (!sessionId) {
+    console.log('Missing session ID');
     return NextResponse.json(
       { error: 'Missing session ID' },
       { status: 400 }
@@ -19,7 +22,31 @@ export async function GET(req: Request) {
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     
-    if (session.payment_status !== 'paid') {
+    console.log('Session details:', {
+      id: session.id,
+      payment_status: session.payment_status,
+      mode: session.mode,
+      status: session.status
+    });
+
+    // More detailed validation logging
+    const isValidPaymentStatus = session.payment_status === 'paid';
+    const isValidStatus = session.status === 'complete';
+    const isDevelopment = process.env.NODE_ENV === 'development';
+
+    console.log('Validation checks:', {
+      isValidPaymentStatus,
+      isValidStatus,
+      isDevelopment,
+      NODE_ENV: process.env.NODE_ENV
+    });
+
+    const isValidSession = isValidPaymentStatus || (isDevelopment && isValidStatus);
+
+    console.log('Final validation result:', { isValidSession });
+
+    if (!isValidSession) {
+      console.log('Session invalid - returning error response');
       return NextResponse.json(
         { valid: false },
         { status: 400 }
@@ -29,14 +56,18 @@ export async function GET(req: Request) {
     // Generate a temporary download URL
     const downloadUrl = `/api/download?token=${generateDownloadToken(session)}`;
 
-    return NextResponse.json({
+    const response = {
       valid: true,
       details: {
         licenseType: session.metadata?.licenseType || 'standard',
         customerEmail: session.customer_details?.email,
         downloadUrl
       }
-    });
+    };
+
+    console.log('Returning success response:', response);
+
+    return NextResponse.json(response);
 
   } catch (error) {
     console.error('Error verifying session:', error);
@@ -47,9 +78,7 @@ export async function GET(req: Request) {
   }
 }
 
-// Utility to generate a secure download token
 function generateDownloadToken(session: Stripe.Checkout.Session) {
-  // In production, use a proper JWT or similar
   return Buffer.from(JSON.stringify({
     sessionId: session.id,
     timestamp: Date.now()
