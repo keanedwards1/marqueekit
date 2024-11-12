@@ -1,3 +1,7 @@
+/* SAVE */ 
+
+/* The original implementation of the the homepage */
+
 import Link from 'next/link'
 import { ArrowRight, Zap, Box, Smartphone, Code } from 'lucide-react'
 

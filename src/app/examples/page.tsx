@@ -36,9 +36,9 @@ const MarqueeControls: React.FC<MarqueeControlsProps> = React.memo(({ settings, 
         <label className="text-sm text-gray-400">Speed</label>
         <input
           type="range"
-          min="0.1"
-          max="2"
-          step="0.1"
+          min="0.01"
+          max="8"
+          step="0.01"
           value={settings.speed}
           onChange={(e) => onChange({ ...settings, speed: Number(e.target.value) })}
           className="w-full cursor-pointer accent-blue-500 rounded-lg appearance-none h-2 bg-gray-200"
@@ -51,8 +51,8 @@ const MarqueeControls: React.FC<MarqueeControlsProps> = React.memo(({ settings, 
         <label className="text-sm text-gray-400">Gap</label>
         <input
           type="range"
-          min="0"
-          max="40"
+          min="4"
+          max="60"
           step="1"
           value={settings.gap}
           onChange={(e) => onChange({ ...settings, gap: Number(e.target.value) })}
@@ -67,7 +67,7 @@ const MarqueeControls: React.FC<MarqueeControlsProps> = React.memo(({ settings, 
         <input
           type="range"
           min="0"
-          max="20"
+          max="60"
           step="1"
           value={settings.borderRadius}
           onChange={(e) => onChange({ ...settings, borderRadius: Number(e.target.value) })}
@@ -81,8 +81,8 @@ const MarqueeControls: React.FC<MarqueeControlsProps> = React.memo(({ settings, 
         <label className="text-sm text-gray-400">Width</label>
         <input
           type="range"
-          min="200"
-          max="400"
+          min="50"
+          max="600"
           step="1"
           value={settings.width}
           onChange={(e) => onChange({ ...settings, width: Number(e.target.value) })}
@@ -96,7 +96,7 @@ const MarqueeControls: React.FC<MarqueeControlsProps> = React.memo(({ settings, 
         <label className="text-sm text-gray-400">Height</label>
         <input
           type="range"
-          min="150"
+          min="50"
           max="300"
           step="1"
           value={settings.height}
@@ -120,8 +120,8 @@ export default function ExamplesPage() {
     speed: 0.2,
     gap: 20,
     borderRadius: 8,
-    width: 300,
-    height: 200,
+    width: 200,
+    height: 120,
   });
 
   const [productSettings, setProductSettings] = useState<MarqueeSettings>({

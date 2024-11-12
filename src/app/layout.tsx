@@ -5,7 +5,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'MarqueeKit - Smooth Image Marquees for Modern Web',
+  title: 'MarqueeKit | Smooth Image Marquees for Modern Web',
   description: 'A beautifully minimal marquee that maintains pixel-perfect smoothness.',
 };
 

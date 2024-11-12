@@ -17,7 +17,7 @@ import { Search } from 'lucide-react';
           content: "Get started with MarqueeKit. Learn about installation, basic usage, and core concepts."
         },
         { 
-          href: "/docs/installation", 
+          href: "/docs/getting-started", 
           label: "Installation",
           content: "Learn how to install and set up MarqueeKit in your project after purchase. Includes requirements and basic setup instructions."
         },
@@ -32,7 +32,7 @@ import { Search } from 'lucide-react';
       title: "Guides",
       links: [
         { 
-          href: "/docs/examples", 
+          href: "/examples", 
           label: "Examples",
           content: "Real-world examples including logo walls, product galleries, and photo streams."
         },
@@ -93,8 +93,8 @@ export default function DocsLayout({
                       href={link.href}
                       className={`block py-1 px-2 rounded text-sm ${
                         pathname === link.href
-                          ? "bg-blue-500/10 text-blue-500"
-                          : "text-gray-600 hover:text-gray-300 transition duration-200"
+                          ? "bg-blue-500/10 text-blue-400"
+                          : "text-gray-400 hover:text-gray-200 transition duration-200"
                       }`}
                     >
                       {link.label}

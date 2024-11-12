@@ -1,24 +1,6 @@
 .
 ├── Icon\015
 ├── README.md
-├── img-storage
-│   ├── 11.png
-│   ├── 121.png
-│   ├── 2f1c2a95-5f4d-4611-bb43-a56daec60213.jpg
-│   ├── Spectral%20Dark%20-%2050.jpg
-│   ├── ballerina-4444679_1280.png
-│   ├── image-11 copy.png
-│   ├── image1.jpg
-│   ├── image2.jpg
-│   ├── image3.jpg
-│   ├── image4.jpg
-│   ├── image5.jpg
-│   ├── logo.jpg
-│   ├── logo.png
-│   ├── logo1.png
-│   ├── q.png
-│   ├── ramadan-4139857_1280.png
-│   └── si.png
 ├── marquee.txt
 ├── next-env.d.ts
 ├── next.config.ts
@@ -100,4 +82,4 @@
 ├── tree.txt
 └── tsconfig.json
 
-25 directories, 76 files
+24 directories, 59 files
