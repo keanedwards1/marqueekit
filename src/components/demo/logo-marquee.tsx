@@ -38,7 +38,7 @@ export function LogoMarquee({ settings }: LogoMarqueeProps) {
     itemWidth: settings.width + settings.gap,
     setWidth: LOGOS.length * (settings.width + settings.gap),
     // Increased base speed for more noticeable speed changes
-    baseSpeed: 500 // Base speed in pixels per second
+    baseSpeed: 50 // Base speed in pixels per second
   }), [settings.width, settings.gap]);
 
   useEffect(() => {

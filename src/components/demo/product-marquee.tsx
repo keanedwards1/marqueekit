@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
@@ -53,13 +53,16 @@ export function ProductMarquee({ settings }: ProductMarqueeProps) {
   const marqueeRef = useRef<HTMLDivElement>(null);
   const speedRef = useRef(settings.speed);
   const scrollPositionRef = useRef(0);
-  const lastTimeRef = useRef(0);
   const animationFrameRef = useRef<number>();
+  const [isHovered, setIsHovered] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const currentSpeedRef = useRef(settings.speed);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const calculations = useMemo(() => ({
     itemWidth: settings.width + settings.gap,
     setWidth: PRODUCTS.length * (settings.width + settings.gap),
-    baseSpeed: 500
+    baseSpeed: 50
   }), [settings.width, settings.gap]);
 
   useEffect(() => {
@@ -72,15 +75,23 @@ export function ProductMarquee({ settings }: ProductMarqueeProps) {
     const marquee = marqueeRef.current;
     const { setWidth, baseSpeed } = calculations;
 
+    let lastFrameTime = 0;
+
     const scroll = (timestamp: number) => {
-      if (!lastTimeRef.current) {
-        lastTimeRef.current = timestamp;
+      if (!lastFrameTime) {
+        lastFrameTime = timestamp;
       }
 
-      const deltaTime = timestamp - lastTimeRef.current;
-      lastTimeRef.current = timestamp;
+      const deltaTime = timestamp - lastFrameTime;
+      lastFrameTime = timestamp;
 
-      const effectiveSpeed = Math.max(speedRef.current, 0.1);
+      const targetSpeed = isHovered ? 0 : speedRef.current;
+      const speedDiff = targetSpeed - currentSpeedRef.current;
+      const smoothingFactor = 0.02;
+
+      currentSpeedRef.current += speedDiff * smoothingFactor;
+
+      const effectiveSpeed = Math.max(currentSpeedRef.current, 0);
       const pixelsToMove = (deltaTime / 1000) * baseSpeed * effectiveSpeed;
 
       scrollPositionRef.current -= pixelsToMove;
@@ -100,9 +111,8 @@ export function ProductMarquee({ settings }: ProductMarqueeProps) {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
-      lastTimeRef.current = 0;
     };
-  }, [calculations]);
+  }, [calculations, isHovered]);
 
   const productSets = useMemo(() => (
     [...PRODUCTS, ...PRODUCTS, ...PRODUCTS, ...PRODUCTS].map((product, index) => ({
@@ -111,66 +121,99 @@ export function ProductMarquee({ settings }: ProductMarqueeProps) {
     }))
   ), []);
 
+  const handleLinkClick = () => {
+    setShowPopup(true);
+    setTimeout(() => setShowPopup(false), 3000);
+  };
+
+  // Handle mouse events for the entire container
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent) => {
+    // Check if we're still within the container
+    if (containerRef.current && !containerRef.current.contains(e.relatedTarget as Node)) {
+      setIsHovered(false);
+    }
+  };
+
   return (
     <div 
-      className="overflow-hidden rounded-lg"
-      style={{
-        perspective: '1000px'
-      }}
+      ref={containerRef}
+      className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <div
-        ref={marqueeRef}
-        className="flex"
+      {showPopup && (
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-black/80 text-white px-6 py-4 rounded-lg backdrop-blur-sm shadow-lg max-w-xs text-center">
+          <p className="mb-2">Demo Feature</p>
+          <p className="text-sm text-gray-300">When implemented, these buttons<br/>will link to the pages of your choice.</p>
+        </div>
+      )}
+      <div 
+        className="overflow-hidden rounded-lg"
         style={{
-          willChange: 'transform',
-          gap: `${settings.gap}px`,
-          paddingRight: `${settings.gap}px`,
-          transformStyle: 'preserve-3d',
-          backfaceVisibility: 'hidden'
+          perspective: '1000px'
         }}
       >
-        {productSets.map((product) => (
-          <div
-            key={product.key}
-            className="flex-none group relative"
-            style={{
-              width: `${settings.width}px`,
-              willChange: 'transform',
-              transform: 'translate3d(0, 0, 0)',
-            }}
-          >
-            <div 
-              className="relative overflow-hidden mb-3"
+        <div
+          ref={marqueeRef}
+          className="flex"
+          style={{
+            willChange: 'transform',
+            gap: `${settings.gap}px`,
+            paddingRight: `${settings.gap}px`,
+            transformStyle: 'preserve-3d',
+            backfaceVisibility: 'hidden'
+          }}
+        >
+          {productSets.map((product) => (
+            <div
+              key={product.key}
+              className="flex-none group relative"
               style={{
-                height: `${settings.height}px`,
-                borderRadius: `${settings.borderRadius}px`
+                width: `${settings.width}px`,
+                willChange: 'transform',
+                transform: 'translate3d(0, 0, 0)',
               }}
             >
-              <Image
-                src={product.image}
-                alt={product.name}
-                width={settings.width}
-                height={settings.height}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                priority
-                style={{ 
-                  willChange: 'transform',
-                  transform: 'translate3d(0, 0, 0)',
+              <div 
+                className="relative overflow-hidden mb-3"
+                style={{
+                  height: `${settings.height}px`,
+                  borderRadius: `${settings.borderRadius}px`
                 }}
-              />
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <div className="text-center">
-                  <span className="inline-flex items-center gap-2 text-white hover:text-blue-200 cursor-pointer font-medium px-6 py-3 rounded-full bg-black/50 hover:bg-black/60 transition duration-200 backdrop-blur-sm">
-                    Your Link
-                    <ArrowRight size={16} className="text-blue-300" />
-                  </span>
+              >
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  width={settings.width}
+                  height={settings.height}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  priority
+                  style={{ 
+                    willChange: 'transform',
+                    transform: 'translate3d(0, 0, 0)',
+                  }}
+                />
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="text-center">
+                    <button
+                      onClick={handleLinkClick}
+                      className="inline-flex items-center gap-2 text-white hover:text-blue-200 cursor-pointer font-medium px-6 py-3 rounded-full bg-black/50 hover:bg-black/60 transition duration-200 backdrop-blur-sm"
+                    >
+                      Your Link
+                      <ArrowRight size={16} className="text-blue-300" />
+                    </button>
+                  </div>
                 </div>
               </div>
+              <h3 className="font-medium text-white">{product.name}</h3>
+              <p className="text-blue-400">{product.price}</p>
             </div>
-            <h3 className="font-medium text-white">{product.name}</h3>
-            <p className="text-blue-400">{product.price}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

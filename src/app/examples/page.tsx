@@ -1,5 +1,3 @@
-// src/app/examples/page.tsx
-
 'use client';
 
 import React, { useState, useCallback } from "react";
@@ -8,7 +6,7 @@ import { ProductMarquee } from "@/components/demo/product-marquee";
 import { PhotoMarquee } from "@/components/demo/photo-marquee";
 import { CodePreview } from "@/components/ui/code-preview";
 import Link from 'next/link';
-import { ArrowRight, Sliders, ArrowUpRight } from 'lucide-react'; /* ArrowLeft */
+import { ArrowRight, Sliders, ArrowUpRight } from 'lucide-react';
 
 interface MarqueeSettings {
   speed: number;
@@ -16,14 +14,16 @@ interface MarqueeSettings {
   borderRadius: number;
   width: number;
   height: number;
+  uniformSize?: boolean;
 }
 
 interface MarqueeControlsProps {
   settings: MarqueeSettings;
   onChange: (settings: MarqueeSettings) => void;
+  showSizeMode?: boolean;
 }
 
-const MarqueeControls: React.FC<MarqueeControlsProps> = React.memo(({ settings, onChange }) => (
+const MarqueeControls: React.FC<MarqueeControlsProps> = React.memo(({ settings, onChange, showSizeMode }) => (
   <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border mb-6">
     <div className="flex items-center gap-2 mb-4">
       <Sliders className="w-4 h-4" />
@@ -36,9 +36,9 @@ const MarqueeControls: React.FC<MarqueeControlsProps> = React.memo(({ settings, 
         <label className="text-sm text-gray-400">Speed</label>
         <input
           type="range"
-          min="0.01"
-          max="8"
-          step="0.01"
+          min="0.1"
+          max="100"
+          step="0.1"
           value={settings.speed}
           onChange={(e) => onChange({ ...settings, speed: Number(e.target.value) })}
           className="w-full cursor-pointer accent-blue-500 rounded-lg appearance-none h-2 bg-gray-200"
@@ -105,6 +105,35 @@ const MarqueeControls: React.FC<MarqueeControlsProps> = React.memo(({ settings, 
         />
         <div className="text-xs text-gray-500">{settings.height}px</div>
       </div>
+
+      {/* Size Mode - Only shown for photo marquee */}
+      {showSizeMode && (
+      <div className="space-y-2 col-span-2 md:col-span-3 lg:col-span-5">
+        <div className="flex items-center gap-3">
+{/*           <label className="text-sm text-gray-400 flex-grow">Size Mode</label>
+ */}          <div className="relative">
+            <div 
+              className={`w-10 h-5 rounded-full transition-colors duration-200 ease-in-out ${
+                settings.uniformSize ? 'bg-blue-500' : 'bg-gray-200'
+              }`}
+              onClick={() => onChange({ ...settings, uniformSize: !settings.uniformSize })}
+              role="switch"
+              aria-checked={settings.uniformSize}
+              tabIndex={0}
+            >
+              <div
+                className={`absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow transform transition-transform duration-200 ease-in-out ${
+                  settings.uniformSize ? 'translate-x-5' : 'translate-x-0'
+                }`}
+              />
+            </div>
+          </div>
+          <span className="text-sm text-gray-600">
+            {settings.uniformSize ? 'Uniform Sizes' : 'Mixed Sizes'}
+          </span>
+        </div>
+      </div>
+    )}
     </div>
   </div>
 ));
@@ -117,27 +146,30 @@ export default function ExamplesPage() {
   const [showPhotoCode, setShowPhotoCode] = useState(false);
 
   const [logoSettings, setLogoSettings] = useState<MarqueeSettings>({
-    speed: 0.2,
+    speed: 1,
     gap: 20,
     borderRadius: 8,
     width: 200,
     height: 120,
+    uniformSize: false,
   });
 
   const [productSettings, setProductSettings] = useState<MarqueeSettings>({
-    speed: 0.2,
+    speed: 1,
     gap: 20,
     borderRadius: 8,
     width: 300,
     height: 200,
+    uniformSize: false,
   });
 
   const [photoSettings, setPhotoSettings] = useState<MarqueeSettings>({
-    speed: 0.2,
+    speed: 1,
     gap: 20,
     borderRadius: 8,
     width: 300,
     height: 200,
+    uniformSize: false,
   });
 
   const handleLogoSettingsChange = useCallback(
@@ -188,10 +220,13 @@ export default function ExamplesPage() {
             </button>
           </div>
 
-          <MarqueeControls settings={logoSettings} onChange={handleLogoSettingsChange} />
+          <MarqueeControls 
+            settings={logoSettings} 
+            onChange={handleLogoSettingsChange}
+          />
 
           <div className="space-y-6">
-            <div className="bg-transarent rounded-xl p-8 backdrop-blur-sm">
+            <div className="bg-transparent rounded-xl p-8 backdrop-blur-sm">
               <LogoMarquee settings={logoSettings} />
             </div>
             {showLogoCode && (
@@ -233,7 +268,10 @@ export default function ExamplesPage() {
             </button>
           </div>
 
-          <MarqueeControls settings={productSettings} onChange={handleProductSettingsChange} />
+          <MarqueeControls 
+            settings={productSettings} 
+            onChange={handleProductSettingsChange}
+          />
 
           <div className="space-y-6">
             <div className="bg-white/5 rounded-xl p-8 backdrop-blur-sm">
@@ -281,7 +319,11 @@ export default function ExamplesPage() {
             </button>
           </div>
 
-          <MarqueeControls settings={photoSettings} onChange={handlePhotoSettingsChange} />
+          <MarqueeControls 
+            settings={photoSettings} 
+            onChange={handlePhotoSettingsChange}
+            showSizeMode={true}
+          />
 
           <div className="space-y-6">
             <div className="bg-white/5 rounded-xl p-8 backdrop-blur-sm">
@@ -295,6 +337,7 @@ export default function ExamplesPage() {
   imageWidth={${photoSettings.width}}
   imageHeight={${photoSettings.height}}
   borderRadius={${photoSettings.borderRadius}}
+  uniformSize={${photoSettings.uniformSize}}
 >
   {photos.map((photo) => (
     <div key={photo.id}>
@@ -352,22 +395,20 @@ export default function ExamplesPage() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors mr-4"
-            >
-              No
-              <ArrowUpRight className="ml-2 h-4 w-4 inline-block" />
-            </Link>
-            <Link
-              href="/pricing"
-              className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
-            >
-              Maybe
-              <ArrowRight className="ml-2 h-4 w-4 inline-block" />
-            </Link>
-          </div>
-        </section>
-
-
+              >
+                No
+                <ArrowUpRight className="ml-2 h-4 w-4 inline-block" />
+              </Link>
+              <Link
+                href="/pricing"
+                className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
+              >
+                Maybe
+                <ArrowRight className="ml-2 h-4 w-4 inline-block" />
+              </Link>
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
