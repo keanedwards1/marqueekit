@@ -1,51 +1,61 @@
-import { NextResponse } from 'next/server';
-/* import { headers } from 'next/headers'; */
+// src/app/api/download/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+import { list } from '@vercel/blob';
 
-export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url);
-  const token = searchParams.get('token');
-
-  if (!token) {
-    return NextResponse.json(
-      { error: 'Invalid download token' },
-      { status: 400 }
-    );
-  }
-
+export async function GET(request: NextRequest) {
   try {
-    // Verify token (in production, verify JWT or similar)
-    const tokenData = JSON.parse(Buffer.from(token, 'base64').toString());
-    
-    // Check if token is expired (e.g., 1 hour)
-    if (Date.now() - tokenData.timestamp > 3600000) {
+    const { searchParams } = new URL(request.url);
+    const sessionId = searchParams.get('session_id');
+
+    if (!sessionId) {
+      return NextResponse.json({ error: 'Missing session ID' }, { status: 400 });
+    }
+
+    // Verify environment variables are set
+    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+      console.error('Missing required environment variable: BLOB_READ_WRITE_TOKEN');
       return NextResponse.json(
-        { error: 'Download link expired' },
-        { status: 400 }
+        { error: 'Server configuration error' },
+        { status: 500 }
       );
     }
 
-    // In production, you'd probably use S3 or similar
-    // For now, we'll create a simple JSON file
-    const fileContent = JSON.stringify({
-      name: 'MarqueeKit',
-      version: '1.0.0',
-      // Add your actual component code here
-    }, null, 2);
+    // Verify the session is valid using your existing Stripe verification
+    const verifyResponse = await fetch(`${request.url.split('/api/')[0]}/api/stripe/verify?session_id=${sessionId}`);
+    const verifyData = await verifyResponse.json();
 
-    // Set headers for file download
-    const headers = new Headers();
-    headers.set('Content-Type', 'application/json');
-    headers.set('Content-Disposition', 'attachment; filename="marqueekit.json"');
+    if (!verifyData.valid) {
+      return NextResponse.json({ error: 'Invalid session' }, { status: 401 });
+    }
 
-    return new NextResponse(fileContent, {
-      headers,
+    // List all blobs with the token
+    const { blobs } = await list({
+      token: process.env.BLOB_READ_WRITE_TOKEN
     });
 
+    const zipFile = blobs.find(blob => blob.pathname === 'marqueeKit.zip');
+
+    if (!zipFile) {
+      return NextResponse.json(
+        { error: 'Download not available' },
+        { status: 404 }
+      );
+    }
+
+    if (!zipFile.url) {
+      console.error('Missing URL for blob:', zipFile.pathname);
+      return NextResponse.json(
+        { error: 'Download not available' },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ downloadUrl: zipFile.url });
   } catch (error) {
     console.error('Download error:', error);
     return NextResponse.json(
-      { error: 'Invalid download token' },
-      { status: 400 }
+      { error: 'Unable to process download request' }, 
+      { status: 500 }
     );
   }
 }

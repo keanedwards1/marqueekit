@@ -69,8 +69,8 @@ export default function PricingPage() {
         </div>
 
         {/* Pricing Cards Container */}
-        <div className={`grid md:grid-cols-2 gap-8 max-w-4xl mx-auto transition-all duration-1000 delay-300 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        <div className={`grid md:grid-cols-2 gap-8 max-w-4xl mx-auto transition-all duration-1000 ease-int-out delay-500 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
         }`}>
           {/* Standard License */}
           <div className="rounded-xl border bg-white backdrop-blur-sm p-8 shadow-sm relative overflow-hidden flex flex-col transition-all duration-500 hover:shadow-md group">
@@ -149,7 +149,7 @@ export default function PricingPage() {
                   <span>Commercial use</span>
                 </li>
               </ul>
-              <button
+{/*               <button
                 onClick={() => handleCheckout("pro")}
                 disabled={loading === "pro"} 
                 className="w-full py-3 px-4 rounded-lg bg-white text-white group-hover:text-black transition-all duration-500 ease-out disabled:opacity-75 relative overflow-hidden group/button"
@@ -157,7 +157,15 @@ export default function PricingPage() {
                 <span className="relative z-10">
                   {loading === "pro" ? "Loading..." : "Purchase Pro"}
                 </span>
-                <div className="absolute inset-0 bg-black group-hover:bg-white duration-300 border rounded-lg border-gray-200" />              </button>
+                <div className="absolute inset-0 bg-black group-hover:bg-white duration-300 border rounded-lg border-gray-200" />              
+              </button> */}
+              <button
+                disabled
+                className="w-full py-3 px-4 rounded-lg bg-white text-white group-hover:text-black transition-all duration-500 ease-out disabled:opacity-75 relative overflow-hidden group/button cursor-pointer"
+              >
+                <span className="relative z-10">Coming Soon</span>
+                <div className="absolute inset-0 bg-black group-hover:bg-white duration-300 border rounded-lg border-gray-200" />              
+              </button>
             </div>
           </div>
         </div>

@@ -1,5 +1,4 @@
 // src/app/success/page.tsx
-
 'use client';
 
 import { useEffect, useState, Suspense } from 'react';
@@ -10,7 +9,6 @@ import { Check, ArrowRight, Download } from 'lucide-react';
 interface PurchaseDetails {
   licenseType: 'standard' | 'pro';
   customerEmail: string;
-  downloadUrl: string;
 }
 
 function SuccessContent() {
@@ -19,6 +17,8 @@ function SuccessContent() {
   const [loading, setLoading] = useState(true);
   const [purchaseDetails, setPurchaseDetails] = useState<PurchaseDetails | null>(null);
   const [downloading, setDownloading] = useState(false);
+  const [showWarningModal, setShowWarningModal] = useState(false);
+  const [hasDownloaded, setHasDownloaded] = useState(false);
 
   useEffect(() => {
     const verifyPurchase = async () => {
@@ -44,27 +44,34 @@ function SuccessContent() {
   }, [sessionId]);
 
   const handleDownload = async () => {
-    if (!purchaseDetails?.downloadUrl) return;
+    if (!sessionId) return;
     
     setDownloading(true);
     try {
-      const response = await fetch(purchaseDetails.downloadUrl);
-      const blob = await response.blob();
+      // Get secure download URL from our API
+      const response = await fetch(`/api/download?session_id=${sessionId}`);
+      const data = await response.json();
       
-      // Create download link
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'marqueekit.zip';
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
+      if (!data.downloadUrl) {
+        throw new Error('No download URL provided');
+      }
+
+      // Trigger the download
+      window.location.href = data.downloadUrl;
+      setHasDownloaded(true);
     } catch (error) {
       console.error('Download error:', error);
       alert('Error downloading file. Please try again or contact support.');
     } finally {
       setDownloading(false);
+    }
+  };
+
+  // Rest of your component remains the same
+  const handleDocsClick = (e: React.MouseEvent) => {
+    if (!hasDownloaded) {
+      e.preventDefault();
+      setShowWarningModal(true);
     }
   };
 
@@ -100,17 +107,41 @@ function SuccessContent() {
 
   return (
     <div className="min-h-screen py-20 relative overflow-hidden">
-      {/* Background pattern */}
       <div 
         className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:24px_48px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000,transparent)]"
         aria-hidden="true"
       />
       
-      {/* Glow effect */}
       <div 
         className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-48 bg-blue-500/10 blur-3xl"
         aria-hidden="true"
       />
+
+      {showWarningModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-black border border-gray-600 rounded-lg p-8 max-w-md mx-4">
+            <h3 className="text-xl font-bold mb-4">Are you sure?</h3>
+            <p className="text-gray-600 mb-6">
+              If you navigate away without downloading, you&apos;ll need to contact support to regain access to your download.
+            </p>
+            <div className="flex justify-end gap-4">
+              <Link
+                href="/docs"
+                className="px-4 py-2 bg-black border border-gray-500 text-white hover:bg-blue-600 transition-all rounded-lg duration-200"
+                onClick={() => setShowWarningModal(false)}
+              >
+                Continue Anyway
+              </Link>
+              <button
+                onClick={() => setShowWarningModal(false)}
+                className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-gray-100 hover:text-gray-100 rounded-lg transition-all duration-200"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="container mx-auto px-4 max-w-2xl relative">
         <div className="text-center mb-12">
@@ -136,8 +167,9 @@ function SuccessContent() {
             </button>
             
             <Link 
-              href={`/docs/getting-started?session_id=${sessionId}`}
+              href="/docs"
               className="w-full flex items-center justify-center gap-2 py-3 px-4 border rounded-lg hover:bg-white/5 transition-colors"
+              onClick={handleDocsClick}
             >
               View Documentation
               <ArrowRight className="w-5 h-5" />
@@ -149,9 +181,9 @@ function SuccessContent() {
           <p className="text-gray-600">
             We&apos;ve sent a confirmation email to {purchaseDetails?.customerEmail}.
           </p>
-<p className="text-sm text-gray-500">
-  Having issues? Contact support at <a href="mailto:marqueekit1@gmail.com" className="text-blue-600 hover:text-blue-800">marqueekit1@gmail.com</a>
-</p>
+          <p className="text-sm text-gray-500">
+            Having issues? Contact support at <a href="mailto:marqueekit1@gmail.com" className="text-blue-600 hover:text-blue-800">marqueekit1@gmail.com</a>
+          </p>
         </div>
       </div>
     </div>
@@ -177,3 +209,8 @@ export default function SuccessPage() {
     </Suspense>
   );
 }
+
+{/*             <Link 
+              href={`/docs/getting-started?session_id=${sessionId}`}
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 border rounded-lg hover:bg-white/5 transition-colors"
+            > */}
