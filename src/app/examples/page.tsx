@@ -230,21 +230,28 @@ export default function ExamplesPage() {
             </div>
             {showLogoCode && (
               <CodePreview
-                code={`<MarqueeKit
-  speed={${logoSettings.speed}}
-  gap={${logoSettings.gap}}
-  imageWidth={${logoSettings.width}}
-  imageHeight={${logoSettings.height}}
-  borderRadius={${logoSettings.borderRadius}}
->
-  {logos.map((logo) => (
-    <img
-      key={logo.id}
-      src={logo.src}
-      alt={logo.alt}
-    />
-  ))}
-</MarqueeKit>`}
+                code={`<script>
+
+    const images1 = [
+        "images/image1.webp",
+        "images/image2.webp", 
+        "images/image3.webp",
+        "images/image4.webp",
+    ];
+
+    new MarqueeKit("#logo-wall", {
+                images: images1,
+                height: ${logoSettings.height},   
+                imageWidth: ${logoSettings.width},     
+                speed: ${logoSettings.speed},        
+                gap: ${logoSettings.gap}, 
+                reverse: false,
+                imageScale: 1,
+                pauseOnHover: false,
+                borderRadius: ${logoSettings.borderRadius}        
+    });
+
+</script>`}
               />
             )}
           </div>
@@ -278,24 +285,30 @@ export default function ExamplesPage() {
             </div>
             {showProductCode && (
               <CodePreview
-                code={`<MarqueeKit
-  speed={${productSettings.speed}}
-  gap={${productSettings.gap}}
-  imageWidth={${productSettings.width}}
-  imageHeight={${productSettings.height}}
-  borderRadius={${productSettings.borderRadius}}
->
-  {products.map((product) => (
-    <div key={product.id}>
-      <img
-        src={product.image}
-        alt={product.name}
-      />
-      <h3>{product.name}</h3>
-      <p>{product.price}</p>
-    </div>
-  ))}
-</MarqueeKit>`}
+                code={`        
+<script>
+
+    const images1 = [
+        "images/image1.webp",
+        "images/image2.webp", 
+        "images/image3.webp",
+        "images/image4.webp",
+    ];
+
+    new MarqueeKit("#product-showcase", {
+                images: images1,
+                height: ${productSettings.height},   
+                imageWidth: ${productSettings.width},     
+                speed: ${productSettings.speed},        
+                gap: ${productSettings.gap}, 
+                reverse: false,
+                imageScale: 1,
+                pauseOnHover: false,
+                borderRadius: ${productSettings.borderRadius}        
+    });
+
+</script>
+`}
               />
             )}
           </div>
@@ -330,24 +343,28 @@ export default function ExamplesPage() {
             </div>
             {showPhotoCode && (
               <CodePreview
-                code={`<MarqueeKit
-  speed={${photoSettings.speed}}
-  gap={${photoSettings.gap}}
-  imageWidth={${photoSettings.width}}
-  imageHeight={${photoSettings.height}}
-  borderRadius={${photoSettings.borderRadius}}
-  uniformSize={${photoSettings.uniformSize}}
->
-  {photos.map((photo) => (
-    <div key={photo.id}>
-      <img
-        src={photo.image}
-        alt={photo.caption}
-      />
-      <p>{photo.caption}</p>
-    </div>
-  ))}
-</MarqueeKit>`}
+                code={`<script>
+
+    const images1 = [
+        "images/image1.webp",
+        "images/image2.webp", 
+        "images/image3.webp",
+        "images/image4.webp",
+    ];
+
+    new MarqueeKit("#photo-gallery", {
+                images: images1,
+                height: ${photoSettings.height},   
+                imageWidth: ${photoSettings.width},     
+                speed: ${photoSettings.speed},        
+                gap: ${photoSettings.gap}, 
+                reverse: false,
+                imageScale: 1,
+                pauseOnHover: false,
+                borderRadius: ${photoSettings.borderRadius}        
+    });
+
+</script>`}
               />
             )}
           </div>
@@ -401,7 +418,7 @@ export default function ExamplesPage() {
                 href="/pricing"
                 className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
               >
-                Let&apos;s see
+                Yes
                 <ArrowRight className="ml-2 h-4 w-4 inline-block" />
               </Link>
             </div>

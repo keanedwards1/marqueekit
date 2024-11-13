@@ -1,7 +1,6 @@
 .
 ├── Icon\015
 ├── README.md
-├── marquee.txt
 ├── next-env.d.ts
 ├── next.config.ts
 ├── package-lock.json
@@ -10,7 +9,6 @@
 ├── public
 │   ├── apple-touch-icon.png
 │   ├── favicon-96x96.png
-│   ├── favicon.ico
 │   ├── favicon.svg
 │   ├── file.svg
 │   ├── globe.svg
@@ -20,7 +18,20 @@
 │   │   ├── image3.jpg
 │   │   ├── image4.jpg
 │   │   └── image5.jpg
+│   ├── logo-marquee
+│   │   ├── coco.png
+│   │   ├── dg.png
+│   │   ├── eco.png
+│   │   ├── enerleaf.png
+│   │   ├── flyt.png
+│   │   └── la.png
 │   ├── next.svg
+│   ├── product-marquee
+│   │   ├── light.jpg
+│   │   ├── modern-chair.jpg
+│   │   ├── table.jpg
+│   │   ├── vase.jpg
+│   │   └── wall-art.jpg
 │   ├── site.webmanifest
 │   ├── vercel.svg
 │   ├── web-app-manifest-192x192.png
@@ -37,18 +48,27 @@
 │   │   │       │   └── route.ts
 │   │   │       └── webhook
 │   │   │           └── route.ts
+│   │   ├── archive
+│   │   │   └── page.txt
 │   │   ├── docs
-│   │   │   ├── api
-│   │   │   │   └── page.tsx
+│   │   │   ├── archive
+│   │   │   │   └── api
+│   │   │   │       └── page.tsx
 │   │   │   ├── configuration
+│   │   │   │   └── page.tsx
+│   │   │   ├── examples
 │   │   │   │   └── page.tsx
 │   │   │   ├── getting-started
 │   │   │   │   └── page.tsx
 │   │   │   ├── installation
 │   │   │   │   └── page.tsx
 │   │   │   ├── layout.tsx
+│   │   │   ├── methods
+│   │   │   │   └── page.tsx
 │   │   │   ├── page.tsx
-│   │   │   └── page.txt
+│   │   │   ├── page.txt
+│   │   │   └── troubleshooting
+│   │   │       └── page.tsx
 │   │   ├── examples
 │   │   │   └── page.tsx
 │   │   ├── favicon.ico
@@ -57,11 +77,10 @@
 │   │   │   └── GeistVF.woff
 │   │   ├── globals.css
 │   │   ├── layout.tsx
-│   │   ├── layout.txt
 │   │   ├── page.tsx
-│   │   ├── page.txt
-│   │   ├── page2.txt
 │   │   ├── pricing
+│   │   │   ├── archive
+│   │   │   │   └── what-happens-next.txt
 │   │   │   └── page.tsx
 │   │   └── success
 │   │       └── page.tsx
@@ -75,6 +94,7 @@
 │   │   │   └── header.tsx
 │   │   └── ui
 │   │       ├── code-preview.tsx
+│   │       ├── copyable-code.tsx
 │   │       └── custom-slider.tsx
 │   └── lib
 │       └── stripe.ts
@@ -82,4 +102,4 @@
 ├── tree.txt
 └── tsconfig.json
 
-24 directories, 59 files
+32 directories, 71 files

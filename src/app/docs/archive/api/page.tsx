@@ -1,3 +1,5 @@
+// src/app/docs/api/page.tsx
+
 'use client';
 
 export default function ApiReferencePage() {

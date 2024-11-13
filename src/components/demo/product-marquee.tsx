@@ -125,7 +125,7 @@ export function ProductMarquee({ settings }: ProductMarqueeProps) {
 
   const handleLinkClick = () => {
     setShowPopup(true);
-    setTimeout(() => setShowPopup(false), 3000);
+    setTimeout(() => setShowPopup(false), 2000);
   };
 
   const handleMouseEnter = () => {
@@ -154,7 +154,7 @@ export function ProductMarquee({ settings }: ProductMarqueeProps) {
       {showPopup && (
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-black/80 text-white px-6 py-4 rounded-lg backdrop-blur-sm shadow-lg max-w-xs text-center">
           <p className="mb-2">Demo Feature</p>
-          <p className="text-sm text-gray-300">When implemented, these buttons<br/>will link to the pages of your choice.</p>
+          <p className="text-sm text-gray-300">You can use these links to go<br/>wherever you need on your site.</p>
         </div>
       )}
       <div 
@@ -196,18 +196,18 @@ export function ProductMarquee({ settings }: ProductMarqueeProps) {
                   alt={product.name}
                   width={settings.width}
                   height={settings.height}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform !duration-200"
                   priority
                   style={{ 
                     willChange: 'transform',
                     transform: 'translate3d(0, 0, 0)',
                   }}
                 />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-all duration-1000 flex items-center justify-center">
                   <div className="text-center">
                     <button
                       onClick={handleLinkClick}
-                      className="inline-flex items-center gap-2 text-white hover:text-blue-200 cursor-pointer font-medium px-6 py-3 rounded-full bg-black/50 hover:bg-black/60 transition duration-200 backdrop-blur-sm"
+                      className="inline-flex items-center gap-2 text-white hover:text-blue-100 cursor-pointer font-medium px-6 py-3 rounded-full bg-black/50 hover:bg-black/60 transition-all duration-500 backdrop-blur-sm"
                     >
                       Your Link
                       <ArrowRight size={16} className="text-blue-300" />

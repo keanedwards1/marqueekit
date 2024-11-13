@@ -1,56 +1,76 @@
-// src/app/docs/layout.tsx
-
 'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Search } from 'lucide-react';
+import { Search, Book, Settings, Code, FileText, HelpCircle } from 'lucide-react';
 
-  const navItems = [
-    {
-      title: "Getting Started",
-      links: [
-        { 
-          href: "/docs", 
-          label: "Introduction",
-          content: "Get started with MarqueeKit. Learn about installation, basic usage, and core concepts."
-        },
-        { 
-          href: "/docs/getting-started", 
-          label: "Installation",
-          content: "Learn how to install and set up MarqueeKit in your project after purchase. Includes requirements and basic setup instructions."
-        },
-        { 
-          href: "/docs/configuration", 
-          label: "Configuration",
-          content: "Explore all configuration options including speed, direction, pause behavior, and styling options."
-        },
-      ]
-    },
-    {
-      title: "Guides",
-      links: [
-        { 
-          href: "/examples", 
-          label: "Examples",
-          content: "Real-world examples including logo walls, product galleries, and photo streams."
-        },
-        { 
-          href: "/docs/api", 
-          label: "API Reference",
-          content: "Complete API documentation including all props, events, and TypeScript definitions."
-        },
-      ]
-    }
-  ];
-  
+interface NavLink {
+  href: string;
+  label: string;
+  content: string;
+  icon?: React.ReactNode;
+}
 
-export default function DocsLayout({
-  children,
-}: {
+interface NavSection {
+  title: string;
+  links: NavLink[];
+}
+
+const navItems: NavSection[] = [
+  {
+    title: "Getting Started",
+    links: [
+      { 
+        href: "/docs", 
+        label: "Introduction",
+        content: "Get started with MarqueeKit. Learn about installation, basic usage, and core concepts.",
+        icon: <Book className="h-4 w-4" />
+      },
+      { 
+        href: "/docs/installation", 
+        label: "Installation",
+        content: "Learn how to install and set up MarqueeKit in your project after purchase. Includes requirements and basic setup instructions.",
+        icon: <Code className="h-4 w-4" />
+      },
+      { 
+        href: "/docs/configuration", 
+        label: "Configuration",
+        content: "Explore all configuration options including speed, direction, pause behavior, and styling options.",
+        icon: <Settings className="h-4 w-4" />
+      },
+    ]
+  },
+  {
+    title: "Guides",
+    links: [
+      { 
+        href: "/docs/examples", 
+        label: "Examples",
+        content: "Real-world examples including logo walls, product galleries, and photo streams.",
+        icon: <FileText className="h-4 w-4" />
+      },
+      { 
+        href: "/docs/methods", 
+        label: "Methods",
+        content: "Control your marquee programmatically with built-in methods.",
+        icon: <Code className="h-4 w-4" />
+      },
+      { 
+        href: "/docs/troubleshooting", 
+        label: "Troubleshooting",
+        content: "Common issues, solutions, and frequently asked questions.",
+        icon: <HelpCircle className="h-4 w-4" />
+      },
+    ]
+  }
+];
+
+interface DocsLayoutProps {
   children: React.ReactNode;
-}) {
+}
+
+export default function DocsLayout({ children }: DocsLayoutProps) {
   const pathname = usePathname();
   const [search, setSearch] = useState("");
 
@@ -66,7 +86,7 @@ export default function DocsLayout({
   return (
     <div className="min-h-screen flex">
       {/* Sidebar */}
-      <div className="w-64 border-r min-h-screen p-6 hidden md:block">
+      <div className="w-72 border-r min-h-screen p-6 hidden md:block bg-black/50 backdrop-blur-sm">
         <div className="mb-6">
           <div className="relative">
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
@@ -86,18 +106,19 @@ export default function DocsLayout({
               <h4 className="font-semibold mb-2 text-sm text-gray-400">
                 {section.title}
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-1">
                 {section.links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className={`block py-1 px-2 rounded text-sm ${
+                      className={`flex items-center gap-2 py-1 px-2 rounded text-sm ${
                         pathname === link.href
                           ? "bg-blue-500/10 text-blue-400"
                           : "text-gray-400 hover:text-gray-200 transition duration-200"
                       }`}
                     >
-                      {link.label}
+                      {link.icon}
+                      <span>{link.label}</span>
                     </Link>
                   </li>
                 ))}
@@ -108,9 +129,14 @@ export default function DocsLayout({
       </div>
 
       {/* Content */}
-      <div className="flex-1 min-w-0">
+      <div className="flex-1 min-w-0 bg-black/50">
         {children}
       </div>
+
+      {/* Mobile Menu Button */}
+      <button className="md:hidden fixed bottom-4 right-4 bg-blue-500 text-white p-3 rounded-full shadow-lg">
+        <Search className="h-6 w-6" />
+      </button>
     </div>
   );
 }
