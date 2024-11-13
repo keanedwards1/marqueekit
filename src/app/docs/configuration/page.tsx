@@ -18,7 +18,7 @@ export default function ConfigurationPage() {
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4">Configuration</h1>
           <p className="text-xl text-gray-400">
-            Customize your MarqueeKit instance with these configuration options
+          Tailor MarqueeKit to your needs. Configure your instance with<br/> precision and ease, unlocking a customized experience that&apos;s uniquely yours.
           </p>
         </div>
 

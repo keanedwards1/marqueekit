@@ -63,10 +63,8 @@ export default function DocsPage() {
           {/* File Structure Setup */}
           <section className="space-y-6">
             <div className="group p-6 rounded-xl border hover:border-gray-300 transition-colors bg-black backdrop-blur-sm">
-              <h2 className="text-2xl font-bold mb-6">1. File Structure</h2>
-              <p className="text-gray-300 mb-4">
-                First, organize your project files as follows:
-              </p>
+              <p className="text-gray-100 mb-4 text-sm">Unleash the power of Marquee with a seamless setup process. Download, deploy, and start achieving your goals in minutes, not hours.</p>                
+              <p className="text-gray-300 mb-4">First, organize your project files as follows: </p>    
               <CopyableCode
                 code={`📂 your-project
  ┣ 📂 css
