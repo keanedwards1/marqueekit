@@ -30,31 +30,72 @@ export default function TroubleshootingPage() {
               </h2>
               
               <div className="space-y-6">
-                <div className="bg-gray-900/50 rounded-lg p-4">
+                <div className="bg-blue-500/20 rounded-lg p-4">
                   <h3 className="font-semibold mb-2">Images not loading or displaying correctly</h3>
                   <div className="space-y-3 text-gray-300">
                     <p>Check the following:</p>
                     <ul className="list-disc list-inside space-y-2 ml-4">
-                      <li>Verify image paths are correct and images exist</li>
+                      <li>Verify image and file paths are correct and that they exist</li>
+                      <li>Ensure id in HTML matches id in JS</li>
                       <li>Ensure images are fully downloaded before initialization</li>
                       <li>Check browser console for any 404 errors</li>
                     </ul>
                     <div className="mt-4">
-                      <p className="text-sm text-gray-400 mb-2">Solution:</p>
+                      <p className="text-md text-gray-400 mb-2">Solutions:</p>
+                      <p className="text-sm text-gray-400 mb-2 mt-4">1. Making sure these paths are correct</p>
                       <CopyableCode 
-                        code={`// Wait for images to load before initializing
-window.addEventListener('load', () => {
-  new MarqueeKit("#my-marquee", {
-    images: images,
-    // ... other options
-  });
-});`}
+                        code={`
+<link rel="stylesheet" href="/styles/marquee.css"> // check this path
+<script src="/scripts/marquee.js"></script> // and this one
+
+`}
+                      />
+
+<p className="text-sm text-gray-400 mb-2 mt-4">2. Making sure images exist and paths to them are correct</p>
+                      <CopyableCode 
+                        code={`
+
+const images1 = [
+  "images/image1.webp", // check each image path
+  "images/image2.webp",
+  "images/image3.webp",
+  "images/image4.webp",
+];
+`
+                        }
+                      />
+
+<p className="text-sm text-gray-400 mb-2 mt-4">3. Ensuring the id&apos;s match up from the HTML to the JS</p>
+                      <CopyableCode 
+                        code={`
+
+new MarqueeKit("#image-marquee", { // the id here
+    images: images1,
+    height: 300,   
+    imageWidth: 250,     
+    speed: 50,        
+    gap: 20, 
+    reverse: false,
+    imageScale: 1,
+    pauseOnHover: false,
+    borderRadius: 8        
+});
+
+<div class="marquee-wrapper">
+  <h1>MarqueeKit Examples</h1>  
+  <section class="image-marquee">
+    <h2>Basic Marquee</h2>
+    <div id="image-marquee"></div> // matches the id here
+  </section>
+</div>
+`
+                        }
                       />
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gray-900/50 rounded-lg p-4">
+                <div className="bg-blue-500/20 rounded-lg p-4">
                   <h3 className="font-semibold mb-2">Marquee not animating</h3>
                   <div className="space-y-3 text-gray-300">
                     <p>Common causes:</p>
@@ -80,7 +121,7 @@ new MarqueeKit("#my-marquee", {
                   </div>
                 </div>
 
-                <div className="bg-gray-900/50 rounded-lg p-4">
+                <div className="bg-blue-500/20 rounded-lg p-4">
                   <h3 className="font-semibold mb-2">Performance issues</h3>
                   <div className="space-y-3 text-gray-300">
                     <p>If experiencing lag or stuttering:</p>
@@ -120,7 +161,7 @@ new MarqueeKit("#my-marquee", {
               </h2>
               
               <div className="grid gap-4">
-                <div className="bg-gray-900/50 rounded-lg p-4">
+                <div className="bg-gray-900/60 rounded-lg p-4">
                   <h3 className="font-semibold mb-2">Image Optimization</h3>
                   <ul className="space-y-2 text-gray-300">
                     <li>• Use WebP format when possible</li>
@@ -130,7 +171,7 @@ new MarqueeKit("#my-marquee", {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 rounded-lg p-4">
+                <div className="bg-gray-900/60 rounded-lg p-4">
                   <h3 className="font-semibold mb-2">Performance Tips</h3>
                   <ul className="space-y-2 text-gray-300">
                     <li>• Lazy load images for marquees below the fold</li>
@@ -140,7 +181,7 @@ new MarqueeKit("#my-marquee", {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 rounded-lg p-4">
+                <div className="bg-gray-900/60 rounded-lg p-4">
                   <h3 className="font-semibold mb-2">Responsive Design</h3>
                   <ul className="space-y-2 text-gray-300">
                     <li>• Use percentage-based widths for containers</li>
@@ -163,7 +204,7 @@ new MarqueeKit("#my-marquee", {
               <div className="space-y-4">
                 <p className="text-gray-300">MarqueeKit is compatible with:</p>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-gray-900/50 rounded-lg p-4">
+                  <div className="bg-gray-900/60 rounded-lg p-4">
                     <h3 className="font-semibold mb-2">Supported Browsers</h3>
                     <ul className="space-y-2 text-gray-300">
                       <li>✓ Chrome 60+</li>
@@ -173,7 +214,7 @@ new MarqueeKit("#my-marquee", {
                     </ul>
                   </div>
 
-                  <div className="bg-gray-900/50 rounded-lg p-4">
+                  <div className="bg-gray-900/60 rounded-lg p-4">
                     <h3 className="font-semibold mb-2">Required Features</h3>
                     <ul className="space-y-2 text-gray-300">
                       <li>• requestAnimationFrame</li>
@@ -196,12 +237,12 @@ new MarqueeKit("#my-marquee", {
               </h2>
               
               <div className="space-y-6">
-                <div className="bg-gray-900/50 rounded-lg p-4">
+{/*                 <div className="bg-blue-500/20 rounded-lg p-4">
                   <h3 className="font-semibold mb-2">Can I use custom HTML instead of images?</h3>
                   <p className="text-gray-300">Currently, MarqueeKit is designed specifically for image marquees. For custom HTML content, consider using a different solution.</p>
-                </div>
+                </div> */}
 
-                <div className="bg-gray-900/50 rounded-lg p-4">
+                <div className="bg-blue-500/20 rounded-lg p-4">
                   <h3 className="font-semibold mb-2">How can I pause/resume the marquee programmatically?</h3>
                   <p className="text-gray-300 mb-3">Use the built-in pause and play methods:</p>
                   <CopyableCode 
@@ -215,7 +256,7 @@ marquee.play();`}
                   />
                 </div>
 
-                <div className="bg-gray-900/50 rounded-lg p-4">
+                <div className="bg-blue-500/20 rounded-lg p-4">
                   <h3 className="font-semibold mb-2">Can I change settings after initialization?</h3>
                   <p className="text-gray-300 mb-3">Yes, use the appropriate setter methods:</p>
                   <CopyableCode 

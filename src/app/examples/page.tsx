@@ -245,7 +245,7 @@ export default function ExamplesPage() {
                 imageWidth: ${logoSettings.width},     
                 speed: ${logoSettings.speed},        
                 gap: ${logoSettings.gap}, 
-                reverse: false,
+                reverse: false, // or true
                 imageScale: 1,
                 pauseOnHover: false,
                 borderRadius: ${logoSettings.borderRadius}        
@@ -303,7 +303,7 @@ export default function ExamplesPage() {
                 gap: ${productSettings.gap}, 
                 reverse: false,
                 imageScale: 1,
-                pauseOnHover: false,
+                pauseOnHover: true,
                 borderRadius: ${productSettings.borderRadius}        
     });
 
