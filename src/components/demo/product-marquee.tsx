@@ -126,14 +126,18 @@ export function ProductMarquee({ settings }: ProductMarqueeProps) {
     setTimeout(() => setShowPopup(false), 3000);
   };
 
-  // Handle mouse events for the entire container
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
 
   const handleMouseLeave = (e: React.MouseEvent) => {
+    const relatedTarget = e.relatedTarget as Element | null;
+    
     // Check if we're still within the container
-    if (containerRef.current && !containerRef.current.contains(e.relatedTarget as Node)) {
+    if (containerRef.current && relatedTarget instanceof Node && !containerRef.current.contains(relatedTarget)) {
+      setIsHovered(false);
+    } else if (!relatedTarget) {
+      // If there's no related target, we've left the container entirely
       setIsHovered(false);
     }
   };

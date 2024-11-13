@@ -6,7 +6,7 @@ import { ProductMarquee } from "@/components/demo/product-marquee";
 import { PhotoMarquee } from "@/components/demo/photo-marquee";
 import { CodePreview } from "@/components/ui/code-preview";
 import Link from 'next/link';
-import { ArrowRight, Sliders, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, Sliders, XCircle } from 'lucide-react';
 
 interface MarqueeSettings {
   speed: number;
@@ -110,11 +110,10 @@ const MarqueeControls: React.FC<MarqueeControlsProps> = React.memo(({ settings, 
       {showSizeMode && (
       <div className="space-y-2 col-span-2 md:col-span-3 lg:col-span-5">
         <div className="flex items-center gap-3">
-{/*           <label className="text-sm text-gray-400 flex-grow">Size Mode</label>
- */}          <div className="relative">
+         <div className="relative cursor-pointer ">
             <div 
-              className={`w-10 h-5 rounded-full transition-colors duration-200 ease-in-out ${
-                settings.uniformSize ? 'bg-blue-500' : 'bg-gray-200'
+              className={` w-10 h-5 rounded-full transition-colors duration-200 ease-in-out ${
+                settings.uniformSize ? 'bg-blue-500' : 'bg-white'
               }`}
               onClick={() => onChange({ ...settings, uniformSize: !settings.uniformSize })}
               role="switch"
@@ -122,8 +121,8 @@ const MarqueeControls: React.FC<MarqueeControlsProps> = React.memo(({ settings, 
               tabIndex={0}
             >
               <div
-                className={`absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow transform transition-transform duration-200 ease-in-out ${
-                  settings.uniformSize ? 'translate-x-5' : 'translate-x-0'
+                className={`absolute left-0.5 top-0.5 w-4 h-4  rounded-full  shadow transform transition-transform duration-200 ease-in-out ${
+                  settings.uniformSize ? 'translate-x-5 bg-white' : 'translate-x-0 bg-gray-300'
                 }`}
               />
             </div>
@@ -392,18 +391,17 @@ export default function ExamplesPage() {
             <h2 className="text-3xl font-bold mb-6">Want to add one to your site?</h2>
             <Link
               href="https://www.google.com"
-              target="_blank"
               rel="noopener noreferrer"
               className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors mr-4"
               >
+               <XCircle className="-ml-2 mr-2 h-4 w-4 inline-block" />
                 No
-                <ArrowUpRight className="ml-2 h-4 w-4 inline-block" />
               </Link>
               <Link
                 href="/pricing"
                 className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
               >
-                Maybe
+                Let&apos;s see
                 <ArrowRight className="ml-2 h-4 w-4 inline-block" />
               </Link>
             </div>
