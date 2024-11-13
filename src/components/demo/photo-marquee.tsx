@@ -1,3 +1,5 @@
+// components/demo/photo-marquee.tsx
+
 'use client';
 
 import { useEffect, useRef, useMemo } from 'react';

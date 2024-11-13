@@ -1,3 +1,5 @@
+// src/components/demo/product-marquee.tsx
+
 'use client';
 
 import { useEffect, useRef, useMemo, useState } from 'react';

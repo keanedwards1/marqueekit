@@ -35,6 +35,7 @@ export function LogoMarquee({ settings }: LogoMarqueeProps) {
   const [showPopup, setShowPopup] = useState(false);
   const transitionStartTimeRef = useRef(0);
   const previousDirectionRef = useRef(direction);
+  const [totalSets, setTotalSets] = useState(4); // Default value
 
   // Memoize the calculations that depend on settings
   const calculations = useMemo(() => ({
@@ -42,9 +43,24 @@ export function LogoMarquee({ settings }: LogoMarqueeProps) {
     setWidth: LOGOS.length * (settings.width + settings.gap),
     baseSpeed: 50,
     transitionDuration: 1000, // 1 second transition
-    // Calculate number of sets needed to fill viewport plus overflow
-    totalSets: Math.ceil((window?.innerWidth || 1200) / (LOGOS.length * (settings.width + settings.gap))) + 2
-  }), [settings.width, settings.gap]);
+    totalSets
+  }), [settings.width, settings.gap, totalSets]);
+
+  // Calculate totalSets based on window width
+  useEffect(() => {
+    const calculateTotalSets = () => {
+      return Math.ceil((window.innerWidth || 1200) / (LOGOS.length * (settings.width + settings.gap))) + 2;
+    };
+    
+    setTotalSets(calculateTotalSets());
+
+    const handleResize = () => {
+      setTotalSets(calculateTotalSets());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [settings.width, settings.gap]);
 
   useEffect(() => {
     speedRef.current = settings.speed;
