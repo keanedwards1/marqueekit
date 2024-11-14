@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Compass, XCircle, Lightbulb } from 'lucide-react'; /*  Zap, Box, Smartphone, Code */
+import { ArrowRight, Compass, XCircle, Lightbulb, Code } from 'lucide-react'; /*  Zap, Box, Smartphone, Code */
 
 const images = [
   '/home-marquee/image1.jpg',
@@ -58,7 +58,8 @@ export default function Home() {
               A minimal marquee that maintains pixel-perfect smoothness. 
               No stutters, no jank, just pure flowing motion.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-4">
+
+            <div className="mt-4 flex items-center justify-center gap-4">
               <Link 
                 href="/examples"
                 className="rounded-lg px-6 py-3 border border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors"
@@ -74,10 +75,11 @@ export default function Home() {
               </Link>
             </div>
           </div>
+
         </section>
 
         {/* Demo Section */}
-        <section className="px-4 py-16">
+        <section className="px-4 pb-16 pt-10">
           <div className="container mx-auto max-w-6xl overflow-hidden">
             <div
               className="flex"
@@ -111,6 +113,15 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <div className="text-center mb-6 mt-6">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm bg-blue-500/10 border border-blue-500/20">
+            <Code className="h-4 w-4 text-blue-500" />
+            <span className="font-medium">Supports HTML/CSS/JS</span>
+            <span className="text-gray-600">•</span>
+            <span className="text-gray-600">React Version Coming Very Soon</span>
+          </span>
+        </div>
 
                 {/* Story Section */}
                 <section className="px-4 py-16 text-white">

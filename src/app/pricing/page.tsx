@@ -2,7 +2,7 @@
 
 "use client";
 
-import { Check } from "lucide-react";
+import { Check, Code } from "lucide-react";
 import { useState, useEffect } from "react";
 import { getStripe } from "@/lib/stripe";
 
@@ -54,35 +54,41 @@ export default function PricingPage() {
     <div className="min-h-screen py-20 relative overflow-hidden">
       {/* Decorative grid background */}
       <div
-        className={`absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:24px_48px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000,transparent)] transition-opacity duration-1000 ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
+        className={`absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:24px_48px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000,transparent)] transition-opacity duration-1000 ${isVisible ? "opacity-100" : "opacity-0"
+          }`}
         aria-hidden="true"
       />
 
       {/* Glow effect */}
       <div
-        className={`absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-48 bg-blue-500/10 blur-3xl transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"
-        }`}
+        className={`absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-48 bg-blue-500/10 blur-3xl transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"
+          }`}
         aria-hidden="true"
       />
 
       <div className="container mx-auto px-4 max-w-5xl relative">
         {/* Header Section */}
-        <div className={`text-center mb-12 transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
-        }`}>
+        <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
+          }`}>
           <h1 className="text-4xl font-bold mb-4">Simple Pricing</h1>
           <p className="text-xl text-gray-600">
             One-time payment, lifetime updates, no subscription needed.
           </p>
         </div>
 
+        <div className={`text-center mb-8 transition-all duration-1000 ease-in-out delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}>
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm bg-blue-500/10 border border-blue-500/20 hover:bg-blue-500/20 hover:border-blue-500/30 transition-colors duration-300">
+            <Code className="h-4 w-4 text-blue-500" />
+            <span className="font-medium">HTML/CSS/JS Only</span>
+            <span className="text-gray-600">•</span>
+            <span className="text-gray-600">React Version Coming Soon</span>
+          </span>
+        </div>
+
         {/* Pricing Cards Container */}
-        <div className={`grid md:grid-cols-2 gap-8 max-w-4xl mx-auto transition-all duration-1000 ease-int-out delay-500 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-        }`}>
+        <div className={`grid md:grid-cols-2 gap-8 max-w-4xl mx-auto transition-all duration-1000 ease-int-out delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+          }`}>
           {/* Standard License */}
           <div className="rounded-xl border bg-white backdrop-blur-sm p-8 shadow-sm relative overflow-hidden flex flex-col transition-all duration-500 hover:shadow-md group">
             <div className="absolute inset-0 bg-white" />
@@ -124,8 +130,8 @@ export default function PricingPage() {
               <span className="relative z-10">
                 {loading === "standard" ? "Loading..." : "Purchase Standard"}
               </span>
-              <div className="absolute inset-0 bg-black group-hover:bg-white duration-300 border-2 rounded-lg border-gray-900" /> 
-              </button>
+              <div className="absolute inset-0 bg-black group-hover:bg-white duration-300 border-2 rounded-lg border-gray-900" />
+            </button>
           </div>
 
           {/* Pro License */}
@@ -160,7 +166,7 @@ export default function PricingPage() {
                   <span>Commercial use</span>
                 </li>
               </ul>
-{/*               <button
+              {/*               <button
                 onClick={() => handleCheckout("pro")}
                 disabled={loading === "pro"} 
                 className="w-full py-3 px-4 rounded-lg bg-white text-white group-hover:text-black transition-all duration-500 ease-out disabled:opacity-75 relative overflow-hidden group/button"
@@ -175,16 +181,15 @@ export default function PricingPage() {
                 className="w-full py-3 px-4 rounded-lg bg-white text-white group-hover:text-black transition-all duration-500 ease-out disabled:opacity-75 relative overflow-hidden group/button cursor-pointer"
               >
                 <span className="relative z-10">Coming Soon</span>
-                <div className="absolute inset-0 bg-black group-hover:bg-white duration-300 border rounded-lg border-gray-200" />              
+                <div className="absolute inset-0 bg-black group-hover:bg-white duration-300 border rounded-lg border-gray-200" />
               </button>
             </div>
           </div>
         </div>
 
         {/* FAQ Section */}
-        <div className={`mt-20 relative z-10 transition-all duration-1000 delay-500 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}>
+        <div className={`mt-20 relative z-10 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}>
           <h2 className="text-2xl font-bold text-center mb-8">
             Frequently Asked Questions
           </h2>
