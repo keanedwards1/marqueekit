@@ -411,18 +411,18 @@ export default function ExamplesPage() {
             <Link
               href="https://www.google.com"
               rel="noopener noreferrer"
-              className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors mr-4"
+              className="inline-block rounded-lg px-8 py-4 bg-white text-black hover:bg-gray-200 transition-colors mr-4 font-medium text-lg"
               >
-               <XCircle className="-ml-2 mr-2 h-4 w-4 inline-block" />
-                No
+               <XCircle className="-ml-2 mr-2 h-5 w-5 inline-block" />
+                No Thanks
               </Link>
               <Link
-                href="/pricing"
-                className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
-              >
-                Yes
-                <ArrowRight className="ml-2 h-4 w-4 inline-block" />
-              </Link>
+              href="/pricing"
+              className="inline-block rounded-lg px-8 py-4 bg-blue-600 text-white hover:bg-blue-500 transition-colors font-medium text-lg"
+            >
+              Start Building Now
+              <ArrowRight className="ml-2 h-5 w-5 inline-block" />
+            </Link>
             </div>
           </section>
         </div>

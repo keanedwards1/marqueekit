@@ -234,16 +234,24 @@ export default function Home() {
               Your visitors deserve better than janky marquees
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Join a wave of developers upgrading their sites.<br/>
-              Installation takes less than 5 minutes.
+              Stop messing around with complex animations.<br/>
+              It&apos;s less than 5 minutes to install.
             </p>
-            <Link
-              href="/examples"
-              className="inline-block rounded-lg px-8 py-4 bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium text-lg"
-            >
-              Start Building Now
-              <ArrowRight className="ml-2 h-5 w-5 inline-block" />
-            </Link>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+              <Link
+                href="/examples"
+                className="w-full sm:w-auto rounded-lg px-8 py-4 bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium text-lg"
+              >
+                Start Building Now
+                <ArrowRight className="ml-2 h-5 w-5 inline-block" />
+              </Link>
+              <Link
+                href="/examples"
+                className="w-full sm:w-auto rounded-lg px-8 py-4 border border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors font-medium text-lg"
+              >
+                See It In Action
+              </Link>
+            </div>
           </div>
         </section>
       </div>
