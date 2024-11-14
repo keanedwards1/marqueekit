@@ -185,7 +185,7 @@ function SuccessContent() {
             <ol className="list-decimal ml-6 space-y-1">
               <li>Unzip the downloaded MarqueeKit file.</li>
               <li>Open the unzipped folder in your preferred code editor.</li>
-              <li>Open <code className="text-white">START_HERE.md</code> and follow the 5 min guide to install.</li>
+              <li>Open <code className="text-white">START_HERE.md</code> and follow the 5 min guide to create your first marqueeKit marquee.</li>
             </ol>
           </div>
           <p className="text-gray-600">
