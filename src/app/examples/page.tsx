@@ -6,6 +6,7 @@ import { ProductMarquee } from "@/components/demo/product-marquee";
 import { PhotoMarquee } from "@/components/demo/photo-marquee";
 import { CodePreview } from "@/components/ui/code-preview";
 import Link from 'next/link';
+import Head from '../../components/Head';
 import { ArrowRight, Sliders, XCircle } from 'lucide-react';
 
 interface MarqueeSettings {
@@ -185,50 +186,65 @@ export default function ExamplesPage() {
   );
 
   return (
-    <div className="min-h-screen py-20 relative overflow-hidden">
-      {/* Background pattern */}
-      <div
-        className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:24px_48px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000,transparent)]"
-        aria-hidden="true"
+    <>
+      <Head
+        title="MarqueeKit - Live Examples of Seamless Image Marquees"
+        description="Explore live examples of MarqueeKit's image marquees in action. See how MarqueeKit delivers smooth, customizable scrolling for developers and designers to enhance websites."
+        url="https://marqueekit.com/examples"
+        image="https://marqueekit.com/favicon-96x96.png"
+        type="website"
+        locale="en_US"
+        author="Kean"
+        keywords="MarqueeKit examples, image marquee demo, seamless scrolling, web design tools, developer showcase, customizable marquee, website animation"
+        themeColor="#ffffff"
+        dateCreated="2024-01-01"
+        dateModified="2024-01-15"
+        siteName="MarqueeKit"
       />
-      <div className="container mx-auto px-4 max-w-6xl relative">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-4">Examples</h1>
-          <p className="text-xl text-gray-600">
-            See MarqueeKit in action across different use cases
-          </p>
-        </div>
-
-        {/* Logo Wall Example */}
-        <div className="mb-20">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-2xl font-bold mb-2">Logo Wall</h2>
-              <p className="text-gray-600">
-                Perfect for showcasing partners, clients, or brand associations.
-              </p>
-            </div>
-            <button
-              onClick={() => setShowLogoCode(!showLogoCode)}
-              className="text-sm px-4 py-2 rounded-lg border hover:bg-white/5 transition-colors"
-            >
-              {showLogoCode ? "Hide Code" : "View Code"}
-            </button>
+      <div className="min-h-screen py-20 relative overflow-hidden">
+        {/* Background pattern */}
+        <div
+          className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:24px_48px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000,transparent)]"
+          aria-hidden="true"
+        />
+        <div className="container mx-auto px-4 max-w-6xl relative">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h1 className="text-4xl font-bold mb-4">Examples</h1>
+            <p className="text-xl text-gray-600">
+              See MarqueeKit in action across different use cases
+            </p>
           </div>
 
-          <MarqueeControls
-            settings={logoSettings}
-            onChange={handleLogoSettingsChange}
-          />
-
-          <div className="space-y-6">
-            <div className="bg-transparent rounded-xl p-8 backdrop-blur-sm">
-              <LogoMarquee settings={logoSettings} />
+          {/* Logo Wall Example */}
+          <div className="mb-20">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h2 className="text-2xl font-bold mb-2">Logo Wall</h2>
+                <p className="text-gray-600">
+                  Perfect for showcasing partners, clients, or brand associations.
+                </p>
+              </div>
+              <button
+                onClick={() => setShowLogoCode(!showLogoCode)}
+                className="text-sm px-4 py-2 rounded-lg border hover:bg-white/5 transition-colors"
+              >
+                {showLogoCode ? "Hide Code" : "View Code"}
+              </button>
             </div>
-            {showLogoCode && (
-              <CodePreview
-                code={`<script>
+
+            <MarqueeControls
+              settings={logoSettings}
+              onChange={handleLogoSettingsChange}
+            />
+
+            <div className="space-y-6">
+              <div className="bg-transparent rounded-xl p-8 backdrop-blur-sm">
+                <LogoMarquee settings={logoSettings} />
+              </div>
+              {showLogoCode && (
+                <CodePreview
+                  code={`<script>
 
     const images1 = [
         "images/image1.webp",
@@ -250,40 +266,40 @@ export default function ExamplesPage() {
     });
 
 </script>`}
-              />
-            )}
-          </div>
-        </div>
-
-        {/* Product Showcase */}
-        <div className="mb-20">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-2xl font-bold mb-2">Product Showcase</h2>
-              <p className="text-gray-600">
-                Ideal for featuring products in a dynamic, engaging way.
-              </p>
+                />
+              )}
             </div>
-            <button
-              onClick={() => setShowProductCode(!showProductCode)}
-              className="text-sm px-4 py-2 rounded-lg border hover:bg-white/5 transition-colors"
-            >
-              {showProductCode ? "Hide Code" : "View Code"}
-            </button>
           </div>
 
-          <MarqueeControls
-            settings={productSettings}
-            onChange={handleProductSettingsChange}
-          />
-
-          <div className="space-y-6">
-            <div className="bg-white/5 rounded-xl p-8 backdrop-blur-sm">
-              <ProductMarquee settings={productSettings} />
+          {/* Product Showcase */}
+          <div className="mb-20">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h2 className="text-2xl font-bold mb-2">Product Showcase</h2>
+                <p className="text-gray-600">
+                  Ideal for featuring products in a dynamic, engaging way.
+                </p>
+              </div>
+              <button
+                onClick={() => setShowProductCode(!showProductCode)}
+                className="text-sm px-4 py-2 rounded-lg border hover:bg-white/5 transition-colors"
+              >
+                {showProductCode ? "Hide Code" : "View Code"}
+              </button>
             </div>
-            {showProductCode && (
-              <CodePreview
-                code={`        
+
+            <MarqueeControls
+              settings={productSettings}
+              onChange={handleProductSettingsChange}
+            />
+
+            <div className="space-y-6">
+              <div className="bg-white/5 rounded-xl p-8 backdrop-blur-sm">
+                <ProductMarquee settings={productSettings} />
+              </div>
+              {showProductCode && (
+                <CodePreview
+                  code={`        
 <script>
 
     const images1 = [
@@ -307,41 +323,41 @@ export default function ExamplesPage() {
 
 </script>
 `}
-              />
-            )}
-          </div>
-        </div>
-
-        {/* Photo Gallery */}
-        <div className="mb-20">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-2xl font-bold mb-2">Photo Gallery</h2>
-              <p className="text-gray-600">
-                Support for mixed aspect ratios with smooth transitions.
-              </p>
+                />
+              )}
             </div>
-            <button
-              onClick={() => setShowPhotoCode(!showPhotoCode)}
-              className="text-sm px-4 py-2 rounded-lg border hover:bg-white/5 transition-colors"
-            >
-              {showPhotoCode ? "Hide Code" : "View Code"}
-            </button>
           </div>
 
-          <MarqueeControls
-            settings={photoSettings}
-            onChange={handlePhotoSettingsChange}
-            showSizeMode={true}
-          />
-
-          <div className="space-y-6">
-            <div className="bg-white/5 rounded-xl p-8 backdrop-blur-sm">
-              <PhotoMarquee settings={photoSettings} />
+          {/* Photo Gallery */}
+          <div className="mb-20">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h2 className="text-2xl font-bold mb-2">Photo Gallery</h2>
+                <p className="text-gray-600">
+                  Support for mixed aspect ratios with smooth transitions.
+                </p>
+              </div>
+              <button
+                onClick={() => setShowPhotoCode(!showPhotoCode)}
+                className="text-sm px-4 py-2 rounded-lg border hover:bg-white/5 transition-colors"
+              >
+                {showPhotoCode ? "Hide Code" : "View Code"}
+              </button>
             </div>
-            {showPhotoCode && (
-              <CodePreview
-                code={`<script>
+
+            <MarqueeControls
+              settings={photoSettings}
+              onChange={handlePhotoSettingsChange}
+              showSizeMode={true}
+            />
+
+            <div className="space-y-6">
+              <div className="bg-white/5 rounded-xl p-8 backdrop-blur-sm">
+                <PhotoMarquee settings={photoSettings} />
+              </div>
+              {showPhotoCode && (
+                <CodePreview
+                  code={`<script>
 
     const images1 = [
         "images/image1.webp",
@@ -363,69 +379,70 @@ export default function ExamplesPage() {
     });
 
 </script>`}
-              />
-            )}
+                />
+              )}
+            </div>
           </div>
+
+          {/* Implementation Tips */}
+          <div className="grid md:grid-cols-2 gap-8 mt-20">
+            <div className="rounded-lg p-6 group">
+              <h3 className="font-semibold mb-2">Best Practices</h3>
+              <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">
+                Keep image sizes consistent and optimize them for web. Use responsive sizing for different screen sizes.
+              </p>
+            </div>
+            <div className="rounded-lg p-6 group">
+              <h3 className="font-semibold mb-2">Customization</h3>
+              <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">
+                Adjust speed, direction, and spacing to match your design. Add hover effects for interactivity.
+              </p>
+            </div>
+            <div className="rounded-lg p-6 group">
+              <h3 className="font-semibold mb-2">Performance Optimization</h3>
+              <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">
+                MarqueeKit is optimized for low CPU usage with minimized DOM interactions and hardware acceleration.
+              </p>
+            </div>
+            <div className="rounded-lg p-6 group">
+              <h3 className="font-semibold mb-2">Interactive Experience</h3>
+              <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">
+                Engage users with hover effects, smooth scrolling, and dynamic controls to enhance interactivity.
+              </p>
+            </div>
+          </div>
+
+
+          {/* Call to Action */}
+          <section className="px-4 py-16 text-white relative overflow-hidden">
+            <div className="container mx-auto max-w-5xl text-center relative z-10">
+              <h2 className="text-4xl font-extrabold mb-8 leading-tight">
+                Ready to level up your website? <br />
+                Don&apos;t settle for less.
+              </h2>
+              <p className="text-lg mb-8">
+                Skip the headache and add a high-performing, clean marquee to your site in minutes.
+              </p>
+              <Link
+                href="/pricing"
+                className="inline-block mr-2 rounded-lg px-6 py-3 bg-green-500 text-black hover:bg-green-400 transition-colors"
+              >
+                Yes, I&apos;m in!
+                <ArrowRight className="ml-2 h-4 w-4 inline-block" />
+              </Link>
+              <Link
+                href="https://www.google.com"
+                rel="noopener noreferrer"
+                className="inline-block ml-2 rounded-lg px-6 py-3 bg-red-600 text-black hover:bg-red-500 transition-colors mr-4"
+              >
+                <XCircle className="-ml-2 mr-2 h-4 w-4 inline-block" />
+                No, I&apos;ll pass
+              </Link>
+
+            </div>
+          </section>
         </div>
-
-        {/* Implementation Tips */}
-        <div className="grid md:grid-cols-2 gap-8 mt-20">
-          <div className="rounded-lg p-6 group">
-            <h3 className="font-semibold mb-2">Best Practices</h3>
-            <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">
-              Keep image sizes consistent and optimize them for web. Use responsive sizing for different screen sizes.
-            </p>
-          </div>
-          <div className="rounded-lg p-6 group">
-            <h3 className="font-semibold mb-2">Customization</h3>
-            <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">
-              Adjust speed, direction, and spacing to match your design. Add hover effects for interactivity.
-            </p>
-          </div>
-          <div className="rounded-lg p-6 group">
-            <h3 className="font-semibold mb-2">Performance Optimization</h3>
-            <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">
-              MarqueeKit is optimized for low CPU usage with minimized DOM interactions and hardware acceleration.
-            </p>
-          </div>
-          <div className="rounded-lg p-6 group">
-            <h3 className="font-semibold mb-2">Interactive Experience</h3>
-            <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">
-              Engage users with hover effects, smooth scrolling, and dynamic controls to enhance interactivity.
-            </p>
-          </div>
-        </div>
-
-
-        {/* Call to Action */}
-        <section className="px-4 py-16 text-white relative overflow-hidden">
-          <div className="container mx-auto max-w-5xl text-center relative z-10">
-            <h2 className="text-4xl font-extrabold mb-8 leading-tight">
-              Ready to level up your website? <br />
-              Don&apos;t settle for less.
-            </h2>
-            <p className="text-lg mb-8">
-              Skip the headache and add a high-performing, clean marquee to your site in minutes.
-            </p>
-            <Link
-              href="/pricing"
-              className="inline-block mr-2 rounded-lg px-6 py-3 bg-green-500 text-black hover:bg-green-400 transition-colors"
-            >
-              Yes, I&apos;m in!
-              <ArrowRight className="ml-2 h-4 w-4 inline-block" />
-            </Link>
-            <Link
-              href="https://www.google.com"
-              rel="noopener noreferrer"
-              className="inline-block ml-2 rounded-lg px-6 py-3 bg-red-600 text-black hover:bg-red-500 transition-colors mr-4"
-            >
-              <XCircle className="-ml-2 mr-2 h-4 w-4 inline-block" />
-              No, I&apos;ll pass
-            </Link>
-
-          </div>
-        </section>
       </div>
-    </div>
+    </>
   );
 }

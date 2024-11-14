@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://marqueekit.com
+
+# Sitemaps
+Sitemap: https://marqueekit.com/sitemap.xml
