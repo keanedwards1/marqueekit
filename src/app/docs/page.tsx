@@ -63,8 +63,28 @@ export default function DocsPage() {
           {/* File Structure Setup */}
           <section className="space-y-6">
             <div className="group p-6 rounded-xl border hover:border-gray-300 transition-colors bg-black backdrop-blur-sm">
-              <p className="text-gray-100 mb-4 text-sm">Unleash the power of Marquee with a seamless setup process. Download, deploy, and start achieving your goals in minutes, not hours.</p>                
-              <p className="text-gray-300 mb-4">First, organize your project files as follows: </p>    
+              <p className="text-gray-100 mb-4 text-xl">
+                Getting Started with MarqueeKit:
+              </p>
+              <p className="text-gray-300 mb-4">
+                Follow these steps after downloading MarqueeKit:
+              </p>
+              <ol className="list-decimal ml-6 text-gray-300">
+                <li>Unzip the downloaded file.</li>
+                <li>Open the folder in your preferred code editor.</li>
+                <li>
+                  Open <code>START_HERE.md</code>, and follow it&apos;
+                  Quick Start instructions.
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <section className="space-y-6">
+            <div className="group p-6 rounded-xl border hover:border-gray-300 transition-colors bg-black backdrop-blur-sm">
+              <p className="text-gray-300 mb-4">
+                First, organize your project files as follows:{" "}
+              </p>
               <CopyableCode
                 code={`📂 your-project
  ┣ 📂 css
