@@ -25,7 +25,7 @@ function SuccessContent() {
       try {
         const response = await fetch(`/api/stripe/verify?session_id=${sessionId}`);
         const data = await response.json();
-        
+
         if (data.valid) {
           setPurchaseDetails(data.details);
         } else {
@@ -45,13 +45,13 @@ function SuccessContent() {
 
   const handleDownload = async () => {
     if (!sessionId) return;
-    
+
     setDownloading(true);
     try {
       // Get secure download URL from our API
       const response = await fetch(`/api/download?session_id=${sessionId}`);
       const data = await response.json();
-      
+
       if (!data.downloadUrl) {
         throw new Error('No download URL provided');
       }
@@ -80,7 +80,7 @@ function SuccessContent() {
       <div className="min-h-screen py-20">
         <div className="container mx-auto px-4 max-w-2xl text-center">
           <h1 className="text-4xl font-bold mb-8">No purchase found</h1>
-          <Link 
+          <Link
             href="/pricing"
             className="inline-block px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
           >
@@ -107,12 +107,12 @@ function SuccessContent() {
 
   return (
     <div className="min-h-screen py-20 relative overflow-hidden">
-      <div 
+      <div
         className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:24px_48px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000,transparent)]"
         aria-hidden="true"
       />
-      
-      <div 
+
+      <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-48 bg-blue-500/10 blur-3xl"
         aria-hidden="true"
       />
@@ -157,7 +157,7 @@ function SuccessContent() {
         <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 mb-8 border">
           <h2 className="text-2xl font-bold mb-6">Next Steps</h2>
           <div className="space-y-4">
-            <button 
+            <button
               className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50"
               onClick={handleDownload}
               disabled={downloading}
@@ -165,8 +165,8 @@ function SuccessContent() {
               <Download className="w-5 h-5" />
               {downloading ? 'Downloading...' : 'Download MarqueeKit'}
             </button>
-            
-            <Link 
+
+            <Link
               href="/docs"
               className="w-full flex items-center justify-center gap-2 py-3 px-4 border rounded-lg hover:bg-white/5 transition-colors"
               onClick={handleDocsClick}
@@ -177,7 +177,17 @@ function SuccessContent() {
           </div>
         </div>
 
+
         <div className="space-y-6 text-center">
+          {/* Step-by-step instructions */}
+          <div className="bg-black rounded-lg p-6 mt-6 border border-gray-700 text-gray-300 space-y-3">
+            <p className="text-xl text-gray-100">After Downloading:</p>
+            <ol className="list-decimal ml-6 space-y-1">
+              <li>Unzip the downloaded MarqueeKit file.</li>
+              <li>Open the unzipped folder in your preferred code editor.</li>
+              <li>Open <code className="text-white">START_HERE.md</code> and follow the 5 min guide to install.</li>
+            </ol>
+          </div>
           <p className="text-gray-600">
             We&apos;ve sent a confirmation email to {purchaseDetails?.customerEmail}.
           </p>
