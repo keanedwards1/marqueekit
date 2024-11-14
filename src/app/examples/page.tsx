@@ -108,31 +108,29 @@ const MarqueeControls: React.FC<MarqueeControlsProps> = React.memo(({ settings, 
 
       {/* Size Mode - Only shown for photo marquee */}
       {showSizeMode && (
-      <div className="space-y-2 col-span-2 md:col-span-3 lg:col-span-5">
-        <div className="flex items-center gap-3">
-         <div className="relative cursor-pointer ">
-            <div 
-              className={` w-10 h-5 rounded-full transition-colors duration-200 ease-in-out ${
-                settings.uniformSize ? 'bg-blue-500' : 'bg-white'
-              }`}
-              onClick={() => onChange({ ...settings, uniformSize: !settings.uniformSize })}
-              role="switch"
-              aria-checked={settings.uniformSize}
-              tabIndex={0}
-            >
+        <div className="space-y-2 col-span-2 md:col-span-3 lg:col-span-5">
+          <div className="flex items-center gap-3">
+            <div className="relative cursor-pointer ">
               <div
-                className={`absolute left-0.5 top-0.5 w-4 h-4  rounded-full  shadow transform transition-transform duration-200 ease-in-out ${
-                  settings.uniformSize ? 'translate-x-5 bg-white' : 'translate-x-0 bg-gray-300'
-                }`}
-              />
+                className={` w-10 h-5 rounded-full transition-colors duration-200 ease-in-out ${settings.uniformSize ? 'bg-blue-500' : 'bg-white'
+                  }`}
+                onClick={() => onChange({ ...settings, uniformSize: !settings.uniformSize })}
+                role="switch"
+                aria-checked={settings.uniformSize}
+                tabIndex={0}
+              >
+                <div
+                  className={`absolute left-0.5 top-0.5 w-4 h-4  rounded-full  shadow transform transition-transform duration-200 ease-in-out ${settings.uniformSize ? 'translate-x-5 bg-white' : 'translate-x-0 bg-gray-300'
+                    }`}
+                />
+              </div>
             </div>
+            <span className="text-sm text-gray-600">
+              {settings.uniformSize ? 'Uniform Sizes' : 'Mixed Sizes'}
+            </span>
           </div>
-          <span className="text-sm text-gray-600">
-            {settings.uniformSize ? 'Uniform Sizes' : 'Mixed Sizes'}
-          </span>
         </div>
-      </div>
-    )}
+      )}
     </div>
   </div>
 ));
@@ -219,8 +217,8 @@ export default function ExamplesPage() {
             </button>
           </div>
 
-          <MarqueeControls 
-            settings={logoSettings} 
+          <MarqueeControls
+            settings={logoSettings}
             onChange={handleLogoSettingsChange}
           />
 
@@ -274,8 +272,8 @@ export default function ExamplesPage() {
             </button>
           </div>
 
-          <MarqueeControls 
-            settings={productSettings} 
+          <MarqueeControls
+            settings={productSettings}
             onChange={handleProductSettingsChange}
           />
 
@@ -331,8 +329,8 @@ export default function ExamplesPage() {
             </button>
           </div>
 
-          <MarqueeControls 
-            settings={photoSettings} 
+          <MarqueeControls
+            settings={photoSettings}
             onChange={handlePhotoSettingsChange}
             showSizeMode={true}
           />
@@ -375,55 +373,59 @@ export default function ExamplesPage() {
           <div className="rounded-lg p-6 group">
             <h3 className="font-semibold mb-2">Best Practices</h3>
             <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">
-              Keep image sizes consistent and optimize them for web. Use responsive sizing for
-              different screen sizes.
+              Keep image sizes consistent and optimize them for web. Use responsive sizing for different screen sizes.
             </p>
           </div>
           <div className="rounded-lg p-6 group">
             <h3 className="font-semibold mb-2">Customization</h3>
             <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">
-              Adjust speed, direction, and spacing to match your design. Add hover effects for
-              interactivity.
+              Adjust speed, direction, and spacing to match your design. Add hover effects for interactivity.
             </p>
           </div>
           <div className="rounded-lg p-6 group">
-            <h3 className="font-semibold mb-2">Performance</h3>
+            <h3 className="font-semibold mb-2">Performance Optimization</h3>
             <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">
-              MarqueeKit automatically handles image preloading and uses hardware acceleration for
-              smooth scrolling.
+              MarqueeKit is optimized for low CPU usage with minimized DOM interactions and hardware acceleration.
             </p>
           </div>
           <div className="rounded-lg p-6 group">
-            <h3 className="font-semibold mb-2">Accessibility</h3>
+            <h3 className="font-semibold mb-2">Interactive Experience</h3>
             <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">
-              All examples include proper ARIA labels and can be paused for users who prefer reduced
-              motion.
+              Engage users with hover effects, smooth scrolling, and dynamic controls to enhance interactivity.
             </p>
           </div>
         </div>
 
+
         {/* Call to Action */}
         <section className="px-4 py-16 text-white relative overflow-hidden">
           <div className="container mx-auto max-w-5xl text-center relative z-10">
-            <h2 className="text-3xl font-bold mb-6">Want to add one to your site?</h2>
+            <h2 className="text-4xl font-extrabold mb-8 leading-tight">
+              Ready to level up your website? <br />
+              Don&apos;t settle for less.
+            </h2>
+            <p className="text-lg mb-8">
+              Skip the headache and add a high-performing, clean marquee to your site in minutes.
+            </p>
+            <Link
+              href="/pricing"
+              className="inline-block mr-2 rounded-lg px-6 py-3 bg-green-500 text-black hover:bg-green-400 transition-colors"
+            >
+              Yes, I&apos;m in!
+              <ArrowRight className="ml-2 h-4 w-4 inline-block" />
+            </Link>
             <Link
               href="https://www.google.com"
               rel="noopener noreferrer"
-              className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors mr-4"
-              >
-               <XCircle className="-ml-2 mr-2 h-4 w-4 inline-block" />
-                No
-              </Link>
-              <Link
-                href="/pricing"
-                className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
-              >
-                Yes
-                <ArrowRight className="ml-2 h-4 w-4 inline-block" />
-              </Link>
-            </div>
-          </section>
-        </div>
+              className="inline-block ml-2 rounded-lg px-6 py-3 bg-red-600 text-black hover:bg-red-500 transition-colors mr-4"
+            >
+              <XCircle className="-ml-2 mr-2 h-4 w-4 inline-block" />
+              No, I&apos;ll pass
+            </Link>
+
+          </div>
+        </section>
       </div>
-    );
-  }
+    </div>
+  );
+}
