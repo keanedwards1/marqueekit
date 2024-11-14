@@ -63,8 +63,8 @@ export default function DocsPage() {
           <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm bg-blue-500/10 border border-blue-500/20">
             <Code className="h-4 w-4 text-blue-500" />
             <span className="font-medium">HTML/CSS/JS Only</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-gray-600">React Version Coming Soon</span>
+{/*             <span className="text-gray-600">•</span>
+            <span className="text-gray-600">React Version Coming Soon</span> */}
           </span>
         </div>
 
