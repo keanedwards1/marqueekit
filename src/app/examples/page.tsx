@@ -417,26 +417,24 @@ export default function ExamplesPage() {
           <section className="px-4 py-16 text-white relative overflow-hidden">
             <div className="container mx-auto max-w-5xl text-center relative z-10">
               <h2 className="text-4xl font-extrabold mb-8 leading-tight">
-                Ready to level up your website? <br />
-                Don&apos;t settle for less.
+                Skip the headache and get started with MarqueeKit
               </h2>
               <p className="text-lg mb-8">
-                Skip the headache and add a high-performing, clean marquee to your site in minutes.
               </p>
-              <Link
-                href="/pricing"
-                className="inline-block mr-2 rounded-lg px-6 py-3 bg-green-500 text-black hover:bg-green-400 transition-colors"
-              >
-                Yes, I&apos;m in!
-                <ArrowRight className="ml-2 h-4 w-4 inline-block" />
-              </Link>
               <Link
                 href="https://www.google.com"
                 rel="noopener noreferrer"
-                className="inline-block ml-2 rounded-lg px-6 py-3 bg-red-600 text-black hover:bg-red-500 transition-colors mr-4"
+                className="inline-block ml-2 rounded-lg px-6 py-3 bg-black text-white border border-white hover:bg-gray-100 hover:text-black transition-colors mr-4"
               >
                 <XCircle className="-ml-2 mr-2 h-4 w-4 inline-block" />
-                No, I&apos;ll pass
+                No
+              </Link>
+              <Link
+                href="/pricing"
+                className="inline-block mr-2 rounded-lg px-6 py-3  bg-black text-white border border-white hover:bg-gray-100 hover:text-black transition-colors"
+              >
+                Download Now
+                <ArrowRight className="ml-2 h-4 w-4 inline-block" />
               </Link>
 
             </div>

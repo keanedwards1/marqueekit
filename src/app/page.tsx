@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from '../components/Head';
-import { ArrowRight, Compass, XCircle, Lightbulb, Code } from 'lucide-react'; /*  Zap, Box, Smartphone, Code */
+import { ArrowRight, Compass, XCircle, Lightbulb, Code, Check, Star, ShoppingCart, CreditCard } from 'lucide-react'; /*  Zap, Box, Smartphone, Code */
 
 const images = [
   '/home-marquee/image1.jpg',
@@ -77,7 +77,7 @@ export default function Home() {
 
               <div className="mt-4 flex items-center justify-center gap-4">
                 <Link
-                  href="/examples"
+                  href="/pricing"
                   className="rounded-lg px-6 py-3 border border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors"
                   aria-label="See MarqueeKit in action"
                 >
@@ -85,11 +85,11 @@ export default function Home() {
                   <ArrowRight className="ml-2 h-4 w-4 inline-block" />
                 </Link>
                 <Link
-                  href="/docs"
+                  href="/examples"
                   className="rounded-lg px-6 py-3 bg-black text-white hover:bg-gray-800 transition-colors"
                   aria-label="See MarqueeKit's documentation"
                 >
-                  Documentation
+                  Examples
                 </Link>
               </div>
             </div>
@@ -229,6 +229,14 @@ export default function Home() {
               <h2 className="text-3xl font-bold mb-6">
                 Copy, paste, and you’re all set
               </h2>
+              <Link
+                href="/pricing"
+                className="inline-block mr-4 rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
+                aria-label="Get Started with MarqueeKit"
+              >
+                                <ShoppingCart className="mr-3 -ml-1 h-4 w-4 -mt-1 inline-block" />
+                See Pricing
+              </Link>
               <Link
                 href="/examples"
                 className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
