@@ -127,7 +127,7 @@ function SuccessContent() {
             <div className="flex justify-end gap-4">
               <Link
                 href="/docs"
-                className="px-4 py-2 bg-black border border-gray-500 text-white hover:bg-red-600 transition-all rounded-lg duration-200"
+                className="px-4 py-2 bg-black border border-gray-500 text-white hover:bg-red-600 hover:border-black transition-all rounded-lg duration-200"
                 onClick={() => setShowWarningModal(false)}
               >
                 Continue Anyway

@@ -13,20 +13,16 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
     typescript: true,
 });
 
-const PRICE_IDS = {
+/* const PRICE_IDS = {
   standard: 'price_1QKsGYRwspcYzNPHn09VgmqR', 
   pro: 'price_1QKsJ5RwspcYzNPHmM3I4EzD'     
-} as const;
-
-/* implement this if wanting to switch quickly between prod and dev
+} as const; */
 
 const PRICE_IDS = {
   standard: process.env.NEXT_PUBLIC_STRIPE_STANDARD_PRICE_ID!,
   pro: process.env.NEXT_PUBLIC_STRIPE_PRO_PRICE_ID!
 } as const; 
- 
 
-*/
 
 export async function POST(req: Request) {
   // Add error boundary
