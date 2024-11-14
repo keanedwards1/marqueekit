@@ -110,7 +110,7 @@ export default function PricingPage() {
                 </li>
                 <li className="flex items-start gap-2 transition-transform duration-500 ease-out">
                   <Check className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                  <span>Basic documentation</span>
+                  <span>Full documentation</span>
                 </li>
                 <li className="flex items-start gap-2 transition-transform duration-500 ease-out">
                   <Check className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
@@ -210,8 +210,7 @@ export default function PricingPage() {
                 Can I use it in commercial projects?
               </h3>
               <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-400">
-                The Pro license includes commercial use rights. Standard license
-                is limited to one personal or commercial project.
+                Yes, both licenses include unlimited commercial use. You can use this code in as many projects as you need.
               </p>
             </div>
             <div className="rounded-lg p-6 group">

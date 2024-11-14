@@ -1,3 +1,5 @@
+// src/app/examples/page.tsx
+
 'use client';
 
 import React, { useState, useCallback } from "react";
