@@ -31,9 +31,20 @@ export default function PricingPage() {
         sessionId,
       });
       if (stripeError) throw stripeError;
-    } catch (err) {
-      console.error("Error:", err);
-      alert("Something went wrong. Please try again.");
+    } catch (err: unknown) {
+      // Type guard for Error objects
+      if (err instanceof Error) {
+        console.error('Detailed Stripe Error:', {
+          message: err.message,
+          stack: err.stack,
+          name: err.name
+        });
+        alert(`Error: ${err.message}`);
+      } else {
+        // For other types of errors
+        console.error('Unknown error:', err);
+        alert('An unexpected error occurred. Please try again.');
+      }
     } finally {
       setLoading(null);
     }

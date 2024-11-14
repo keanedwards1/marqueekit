@@ -13,6 +13,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
     typescript: true,
 });
 
+const PRICE_IDS = {
+  standard: 'price_1QKsGYRwspcYzNPHn09VgmqR', 
+  pro: 'price_1QKsJ5RwspcYzNPHmM3I4EzD'     
+} as const;
+
 export async function POST(req: Request) {
   // Add error boundary
   if (!stripe) {
@@ -24,22 +29,21 @@ export async function POST(req: Request) {
 
   try {
     const { priceId } = await req.json();
+    
+    // Validate priceId
+    if (!PRICE_IDS[priceId as keyof typeof PRICE_IDS]) {
+      return NextResponse.json(
+        { error: 'Invalid price ID' },
+        { status: 400 }
+      );
+    }
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       payment_method_types: ['card'],
       line_items: [
         {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: priceId === 'pro' ? 'MarqueeKit Pro' : 'MarqueeKit Standard',
-              description: priceId === 'pro' 
-                ? 'Unlimited projects, source code access, priority support'
-                : 'Single project license, core functionality',
-            },
-            unit_amount: priceId === 'pro' ? 14900 : 4900,
-          },
+          price: PRICE_IDS[priceId as keyof typeof PRICE_IDS],
           quantity: 1,
         },
       ],
