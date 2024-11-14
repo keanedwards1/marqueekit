@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from '../components/Head';
-import { ArrowRight, Compass, XCircle, Lightbulb, Code, Check, Star, ShoppingCart, CreditCard } from 'lucide-react'; /*  Zap, Box, Smartphone, Code */
+import { ArrowRight, Compass, XCircle, Lightbulb, Code, ShoppingCart} from 'lucide-react'; /*  Zap, Box, Smartphone, Code */
 
 const images = [
   '/home-marquee/image1.jpg',
