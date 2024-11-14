@@ -112,7 +112,7 @@ export default function PricingPage() {
                 </li>
                 <li className="flex items-start gap-2 transition-transform duration-500 ease-out">
                   <Check className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                  <span>Full Refund</span>
+                  <span>Full Refund Policy</span>
                 </li>
               </ul>
             </div>
