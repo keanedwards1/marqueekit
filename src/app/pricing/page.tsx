@@ -99,7 +99,7 @@ export default function PricingPage() {
             }`}>
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm bg-blue-500/10 border border-blue-500/20 hover:bg-blue-500/20 hover:border-blue-500/30 transition-colors duration-300">
               <Code className="h-4 w-4 text-blue-500" />
-              <span className="font-medium">HTML/CSS/JS</span>
+              <span className="font-medium mr-2">HTML/CSS/JS</span>
               {/*             <span className="text-gray-600">•</span>
             <span className="text-gray-600">React Version Coming Soon</span> */}
             </span>
@@ -206,13 +206,14 @@ export default function PricingPage() {
             </div>
           </div>
 
-          <div className="text-center mb-8 transition-all mt-20">
-          <Link 
-            href="/examples" 
-            className="rounded-lg px-5 py-3 border text-lg border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors"
-          >
-            Examples
-          </Link>
+          <div className={`text-center mb-8 transition-all duration-1000 mt-20 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}>
+            <Link
+              href="/examples"
+              className="rounded-lg px-5 py-3 border text-lg border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors"
+            >
+              Examples
+            </Link>
           </div>
 
           <DeliverableList />

@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FileText, Download, Mail } from 'lucide-react';
 
 const DeliverablesList = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
-    <div className="max-w-3xl mx-auto my-20 p-8 rounded-lg shadow-lg border border-gray-700">
+    <div className={`max-w-3xl mx-auto my-20 p-8 rounded-lg shadow-lg border border-gray-700 transition-all duration-1000 ${
+      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+    }`}>
       <h2 className="text-2xl font-semibold mb-10 text-white">What You&apos;ll Receive</h2>
       
       <div className="space-y-12">
-        
         {/* Download Link Section */}
-        <div className="flex flex-col items-start space-y-4">
+        <div className={`flex flex-col items-start space-y-4 transition-all duration-1000 delay-100 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}>
           <div className="flex items-center space-x-3">
             <Download className="w-6 h-6 text-teal-400" />
             <h3 className="text-lg font-medium text-white">Download Link</h3>
@@ -26,7 +35,9 @@ const DeliverablesList = () => {
         </div>
 
         {/* Documentation Section */}
-        <div className="flex flex-col items-start space-y-4">
+        <div className={`flex flex-col items-start space-y-4 transition-all duration-1000 delay-200 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}>
           <div className="flex items-center space-x-3">
             <FileText className="w-6 h-6 text-teal-400" />
             <h3 className="text-lg font-medium text-white">Complete Documentation</h3>
@@ -44,7 +55,9 @@ const DeliverablesList = () => {
         </div>
 
         {/* Email and Support Section */}
-        <div className="flex flex-col items-start space-y-4">
+        <div className={`flex flex-col items-start space-y-4 transition-all duration-1000 delay-300 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}>
           <div className="flex items-center space-x-3">
             <Mail className="w-6 h-6 text-teal-400" />
             <h3 className="text-lg font-medium text-white">Lifetime Support</h3>
@@ -61,7 +74,9 @@ const DeliverablesList = () => {
         </div>
         
         {/* Additional Details Section */}
-        <div className="border-t border-gray-700 pt-6">
+        <div className={`border-t border-gray-700 pt-6 transition-all duration-1000 delay-400 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}>
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col space-y-2">
               <h4 className="font-medium text-teal-400 text-sm">Core Features:</h4>
