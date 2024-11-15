@@ -5,7 +5,9 @@
 import { Check, Code } from "lucide-react";
 import { useState, useEffect } from "react";
 import { getStripe } from "@/lib/stripe";
-import Head from '../../components/Head';
+import Head from '@/components/Head';
+import DeliverableList from "@/components/pricing/DeliverableList";
+import Link from "next/link";
 
 export default function PricingPage() {
   const [loading, setLoading] = useState<string | null>(null);
@@ -203,6 +205,17 @@ export default function PricingPage() {
               </div>
             </div>
           </div>
+
+          <div className="text-center mb-8 transition-all mt-20">
+          <Link 
+            href="/examples" 
+            className="rounded-lg px-5 py-3 border text-lg border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors"
+          >
+            Examples
+          </Link>
+          </div>
+
+          <DeliverableList />
 
           {/* FAQ Section */}
           <div className={`mt-20 relative z-10 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"

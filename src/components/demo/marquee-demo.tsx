@@ -1,6 +1,6 @@
 /* /src/components/demo/marquee-demo.tsx */
 
-'use client';
+/* 'use client';
 
 import { useState } from 'react';
 
@@ -20,7 +20,6 @@ export function MarqueeDemo() {
 
   return (
     <div className="w-full space-y-8">
-      {/* Controls */}
       <div className="flex flex-wrap gap-4 justify-center">
         <button
           onClick={() => setPause(!pause)}
@@ -48,7 +47,6 @@ export function MarqueeDemo() {
         </div>
       </div>
 
-      {/* Marquee */}
       <div className="relative overflow-hidden rounded-lg bg-gray-50 border">
         <div 
           className={`flex gap-4 p-4 whitespace-nowrap ${
@@ -75,4 +73,4 @@ export function MarqueeDemo() {
       </div>
     </div>
   );
-}
+} */

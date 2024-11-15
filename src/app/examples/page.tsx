@@ -7,7 +7,7 @@ import { PhotoMarquee } from "@/components/demo/photo-marquee";
 import { CodePreview } from "@/components/ui/code-preview";
 import Link from 'next/link';
 import Head from '../../components/Head';
-import { ArrowRight, Sliders, XCircle } from 'lucide-react';
+import { Sliders, XCircle } from 'lucide-react';
 
 interface MarqueeSettings {
   speed: number;
@@ -210,10 +210,18 @@ export default function ExamplesPage() {
         <div className="container mx-auto px-4 max-w-6xl relative">
           {/* Header */}
           <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold mb-4">Examples</h1>
+            <h1 className="text-4xl font-bold mb-4">Live Examples</h1>
             <p className="text-xl text-gray-600">
               See MarqueeKit in action across different use cases
             </p>
+            {/*             <div className="mt-7 -mb-4">
+              <Link
+                  href="/pricing"
+                  className="w-full sm:w-auto rounded-lg px-4 py-3 bg-transparent border border-white text-white hover:bg-white hover:text-black transition-colors font-medium text-sm"
+                >
+                  Pricing
+                </Link>
+            </div> */}
           </div>
 
           {/* Logo Wall Example */}
@@ -280,12 +288,20 @@ export default function ExamplesPage() {
                   Ideal for featuring products in a dynamic, engaging way.
                 </p>
               </div>
+              {/*  <div className="flex align-right gap-4">
+                <Link
+                  href="/pricing"
+                  className="text-sm px-4 py-2 rounded-lg border hover:bg-white/5 transition-colors"
+                >
+                  Pricing
+                </Link> */}
               <button
                 onClick={() => setShowProductCode(!showProductCode)}
                 className="text-sm px-4 py-2 rounded-lg border hover:bg-white/5 transition-colors"
               >
                 {showProductCode ? "Hide Code" : "View Code"}
               </button>
+              {/*               </div> */}
             </div>
 
             <MarqueeControls
@@ -337,6 +353,7 @@ export default function ExamplesPage() {
                   Support for mixed aspect ratios with smooth transitions.
                 </p>
               </div>
+
               <button
                 onClick={() => setShowPhotoCode(!showPhotoCode)}
                 className="text-sm px-4 py-2 rounded-lg border hover:bg-white/5 transition-colors"
@@ -414,7 +431,7 @@ export default function ExamplesPage() {
 
 
           {/* Call to Action */}
-          <section className="px-4 py-16 text-white relative overflow-hidden">
+          {/* <section className="px-4 py-16 text-white relative overflow-hidden">
             <div className="container mx-auto max-w-5xl text-center relative z-10">
               <h2 className="text-4xl font-extrabold mb-8 leading-tight">
                 Skip the headache and get started with MarqueeKit
@@ -437,6 +454,42 @@ export default function ExamplesPage() {
                 <ArrowRight className="ml-2 h-4 w-4 inline-block" />
               </Link>
 
+            </div>
+          </section> */}
+
+          <section className="px-4 py-16 text-white relative overflow-hidden">
+
+            {/*           <div className="text-center mb-10 -mt-10">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm bg-blue-500/10 border pr-4 border-blue-500/20">
+              <Code className="h-4 w-4 text-blue-500" />
+              <span className="font-medium">HTML/CSS/JS</span>
+                          <span className="text-gray-600">•</span>
+            <span className="text-gray-600">React Version Coming Very Soon</span> 
+            </span>
+          </div> */}
+            <div className="container mx-auto max-w-5xl text-center relative z-10">
+              <h2 className="text-4xl font-bold mb-6">
+                Skip the headache.
+              </h2>
+              {/*             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              And you deserve to not waste your time re-inventing marquees.<br/>
+            </p> */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                <Link
+                  href="https://www.google.com"
+                  rel="noopener noreferrer"
+                  className="inline-block ml-2 rounded-lg px-8 py-4 bg-black text-white border border-white hover:bg-gray-100 hover:text-black transition-colors mr-4"
+                >
+                  <XCircle className="-ml-2 mr-2 h-4 w-4 inline-block" />
+                  I&apos;m good
+                </Link>
+                <Link
+                  href="/pricing"
+                  className="w-full sm:w-auto rounded-lg px-8 py-4 bg-blue-500 text-white hover:bg-blue-600 transition-colors font-medium text-lg"
+                >
+                  Pricing
+                </Link>
+              </div>
             </div>
           </section>
         </div>

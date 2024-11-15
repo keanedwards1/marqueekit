@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from '../components/Head';
-import { ArrowRight, Compass, XCircle, Lightbulb, Code, ShoppingCart} from 'lucide-react'; /*  Zap, Box, Smartphone, Code */
+import { ArrowRight, Compass, Lightbulb, XCircle, Code, Clock, Check, Zap } from 'lucide-react'; /*  Zap, Box, Smartphone, Code */
 
 const images = [
   '/home-marquee/image1.jpg',
@@ -64,36 +64,56 @@ export default function Home() {
         />
 
         <div className="relative">
-          {/* Hero Section */}
+          {/* Hero Section - Now with stronger value proposition */}
           <section className="px-4 pt-20 pb-16">
             <div className="container mx-auto max-w-5xl text-center">
-              <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">
-                Seamless <span className="text-blue-600">Marquees</span>  {/* Beautiful */}
-              </h1>
-              <h2 className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
-                A minimal marquee that maintains pixel-perfect smoothness.
-                No stutters, no jank, just pure flowing motion.
-              </h2>
+              <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-500">
+                <Clock className="h-4 w-4" />
+                <span className="text-sm font-medium">Setup in under 5 minutes</span>
+              </div>
 
-              <div className="mt-4 flex items-center justify-center gap-4">
+              <h1 className="text-5xl font-bold tracking-tight sm:text-7xl mb-6">
+                Seamless <span className="text-blue-600">Marquees</span>
+              </h1>
+
+              <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+                The fastest way to add a stunning image marquee—no clunky CSS or JavaScript. Just plug and play.
+              </p>
+
+
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
                 <Link
                   href="/pricing"
-                  className="rounded-lg px-6 py-3 border border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors"
-                  aria-label="See MarqueeKit in action"
+                  className="w-full sm:w-auto rounded-lg px-8 py-4 bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium text-lg"
                 >
-                  Get Started
-                  <ArrowRight className="ml-2 h-4 w-4 inline-block" />
+                  Start Building Now
+                  <ArrowRight className="ml-2 h-5 w-5 inline-block" />
                 </Link>
+                <span className="text-gray-500">or</span>
                 <Link
                   href="/examples"
-                  className="rounded-lg px-6 py-3 bg-black text-white hover:bg-gray-800 transition-colors"
-                  aria-label="See MarqueeKit's documentation"
+                  className="w-full sm:w-auto rounded-lg px-8 py-4 border border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors font-medium text-lg"
                 >
-                  Examples
+                  See It In Action
                 </Link>
               </div>
-            </div>
 
+              <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+                <div className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-green-500" />
+                  <span>4kb minified</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-green-500" />
+                  <span>Zero dependencies</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-green-500" />
+                  <span>Optimized & Robust</span>
+                </div>
+              </div>
+            </div>
           </section>
 
           {/* Demo Section */}
@@ -132,20 +152,13 @@ export default function Home() {
             </div>
           </section>
 
-          <div className="text-center mb-6 mt-6">
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm bg-blue-500/10 border border-blue-500/20">
-              <Code className="h-4 w-4 text-blue-500" />
-              <span className="font-medium">Supports HTML/CSS/JS</span>
-              {/*             <span className="text-gray-600">•</span>
-            <span className="text-gray-600">React Version Coming Very Soon</span> */}
-            </span>
-          </div>
+
 
           {/* Story Section */}
           <section className="px-4 py-16 text-white">
             <div className="container mx-auto max-w-5xl">
               <h2 className="text-3xl font-bold text-center mb-4">
-                The Story Behind <span className="text-blue-600">MarqueeKit </span> {/* The Journey Behind */}
+                The Story Behind <span className="text-blue-600">MarqueeKit </span>
               </h2>
               <h3 className="text-lg font-normal text-center mb-12">A few years ago, I decided to learn how to make websites.
                 <br /> It was a lot of fun, but one thing, everytime I ran into it, was so frustrating.
@@ -173,6 +186,168 @@ export default function Home() {
                     Determined, I perservered, and built my own. That&apos;s how MarqueeKit came to be— it&apos;s a tool forged of necessity.
                   </p>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="px-4 py-12 relative">
+            <div className="container mx-auto max-w-5xl">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold mb-4">
+                  Simple Pricing for Powerful Results
+                </h2>
+                <p className="text-lg text-gray-600">
+                  One-time payment. No subscriptions. Lifetime updates.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                {/* Standard License */}
+                <div className="relative group">
+                  {/* Hover effect background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl -m-1 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+
+                  <div className="relative bg-white rounded-xl border border-gray-200/60 p-8 backdrop-blur-sm">
+                    <div className="flex items-center justify-between mb-8">
+                      <div>
+                        <h3 className="text-xl text-gray-800 font-semibold">Standard</h3>
+                        <p className="text-sm text-gray-500 mt-1">Perfect for a single site</p>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-3xl text-gray-800 font-bold">$49</div>
+                        <div className="text-sm text-gray-500">one-time</div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-5 mb-8">
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                          <Zap className="w-3.5 h-3.5 text-blue-500" />
+                        </div>
+                        <span className="text-gray-600">Butter-smooth 60fps animations</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                          <Code className="w-3.5 h-3.5 text-blue-500" />
+                        </div>
+                        <span className="text-gray-600">4kb minified, zero dependencies</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3.5 h-3.5 text-blue-500" />
+                        </div>
+                        <span className="text-gray-600">Works in any modern browser</span>
+                      </div>
+                    </div>
+
+                    <Link
+                      href="/pricing"
+                      className="block w-full py-3 px-4 rounded-lg bg-black text-white text-center transition-colors hover:bg-blue-600"
+                    >
+                      Get Started
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Pro License */}
+                <div className="relative group">
+                  {/* Hover effect background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl -m-1 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+
+                  <div className="relative bg-black rounded-xl border border-gray-800 p-8 backdrop-blur-sm text-white">
+                    <div className="flex items-center justify-between mb-8">
+                      <div>
+                        <h3 className="text-xl font-semibold">Pro</h3>
+                        <p className="text-sm text-gray-400 mt-1">For unlimited projects</p>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-3xl font-bold">$149</div>
+                        <div className="text-sm text-gray-400">one-time</div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-5 mb-8">
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                          <Zap className="w-3.5 h-3.5 text-blue-400" />
+                        </div>
+                        <span className="text-gray-300">All Standard features</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                          <Code className="w-3.5 h-3.5 text-blue-400" />
+                        </div>
+                        <span className="text-gray-300">React Support</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3.5 h-3.5 text-blue-400" />
+                        </div>
+                        <span className="text-gray-300">Premium templates</span>
+                      </div>
+                    </div>
+
+                    <button
+                      disabled
+                      className="w-full py-3 px-4 rounded-lg bg-white/10 text-white text-center opacity-75 cursor-not-allowed"
+                    >
+                      Coming Soon
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+{/*               <div className="text-center mt-10">
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700"
+                >
+                  View complete pricing details
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </div> */}
+            </div>
+          </section>
+
+          {/* Solution Section */}
+          <section className="px-4 py-16 pb-40">
+            <div className="container mx-auto max-w-5xl">
+              <h2 className="text-3xl font-bold text-center mb-12">
+                The <span className="text-yellow-300">MarqueeKit</span> Difference
+              </h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                {[
+                  {
+                    icon: Zap,
+                    title: "Lightning-Fast Performance",
+                    description: "Butter-smooth animations that maintain 60fps, even with dozens of high-resolution images."
+                  },
+                  {
+                    icon: Code,
+                    title: "Drop-in Installation",
+                    description: "Copy, paste, and you're done. No configuration needed."
+                  },
+                  {
+                    icon: Compass,
+                    title: "Smart Image Loading",
+                    description: "Intelligent preloading ensures your marquee starts smoothly every time."
+                  },
+                  {
+                    icon: Lightbulb,
+                    title: "Future-Proof",
+                    description: "Built on modern web standards, ready for whatever comes next."
+                  }
+                ].map((feature, i) => (
+                  <div key={i} className="p-6 rounded-lg border border-gray-100 hover:border-blue-100 transition-all duration-300">
+                    <feature.icon className="h-8 w-8 text-yellow-300 mb-4" />
+                    <h3 className="text-xl font-semibold mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600">
+                      {feature.description}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
@@ -220,31 +395,41 @@ export default function Home() {
           </div>
         </section> */}
 
-          {/* CTA Section */}
+
+          {/* CTA Section - Now with urgency and value */}
           <section className="px-4 py-16 bg-black text-white relative overflow-hidden">
             <div
               className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff11_1px,transparent_1px),linear-gradient(to_bottom,#ffffff11_1px,transparent_1px)] bg-[size:14px_24px]"
             />
+            <div className="text-center mb-10 -mt-10">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm bg-blue-500/10 border pr-4 border-blue-500/20">
+                <Code className="h-4 w-4 text-blue-500" />
+                <span className="font-medium">HTML/CSS/JS</span>
+                {/*             <span className="text-gray-600">•</span>
+            <span className="text-gray-600">React Version Coming Very Soon</span> */}
+              </span>
+            </div>
             <div className="container mx-auto max-w-5xl text-center relative z-10">
-              <h2 className="text-3xl font-bold mb-6">
-                Copy, paste, and you’re all set
+              <h2 className="text-4xl font-bold mb-6">
+                Your visitors deserve silky smooth marquees
               </h2>
-              <Link
-                href="/pricing"
-                className="inline-block mr-4 rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
-                aria-label="Get Started with MarqueeKit"
-              >
-                                <ShoppingCart className="mr-3 -ml-1 h-4 w-4 -mt-1 inline-block" />
-                See Pricing
-              </Link>
-              <Link
-                href="/examples"
-                className="inline-block rounded-lg px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors"
-                aria-label="Get Started with MarqueeKit"
-              >
-                See it in action
-                <ArrowRight className="ml-2 h-4 w-4 inline-block" />
-              </Link>
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                And you deserve to not waste your time reinventing the wheel.<br />
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                <Link
+                  href="/examples"
+                  className="w-full sm:w-auto rounded-lg px-6 py-3 border border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors font-medium text-lg"
+                >
+                  Examples
+                </Link>
+                <Link
+                  href="/pricing"
+                  className="w-full sm:w-auto rounded-lg px-6 py-3 bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium text-lg"
+                >
+                  Pricing
+                </Link>
+              </div>
             </div>
           </section>
 

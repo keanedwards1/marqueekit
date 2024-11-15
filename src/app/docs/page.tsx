@@ -78,9 +78,9 @@ export default function DocsPage() {
           </div>
 
           <div className="text-center mb-8">
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm bg-blue-500/10 border border-blue-500/20">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 pr-4 rounded-full text-sm bg-blue-500/10 border border-blue-500/20">
               <Code className="h-4 w-4 text-blue-500" />
-              <span className="font-medium">HTML/CSS/JS Only</span>
+              <span className="font-medium">HTML/CSS/JS</span>
               {/*             <span className="text-gray-600">•</span>
             <span className="text-gray-600">React Version Coming Soon</span> */}
             </span>
@@ -97,10 +97,10 @@ export default function DocsPage() {
                   Follow these steps after downloading MarqueeKit:
                 </p>
                 <ol className="list-decimal ml-6 text-gray-300">
-                  <li>Unzip the downloaded file.</li>
+                  <li>Unzip the marqueeKit.zip</li>
                   <li>Open the folder in your preferred code editor.</li>
                   <li>
-                    Open <code>START_HERE.md</code>, and follow it&apos;
+                    Open <code>START_HERE.md</code>, and follow it&apos;s
                     Quick Start instructions.
                   </li>
                 </ol>
@@ -157,7 +157,9 @@ export default function DocsPage() {
                   Add this script to initialize your marquee:
                 </p>
                 <CopyableCode
-                  code={`<script>
+                  code={`<!-- After other scripts -->
+
+<script>
   new MarqueeKit("#my-marquee", {
     images: [
       "/images/image1.jpg",
@@ -173,7 +175,9 @@ export default function DocsPage() {
     imageScale: 1.05,
     borderRadius: 8
   });
-</script>`}
+</script>
+
+`}
                 />
                 <div className="mt-4 p-4 bg-blue-500/10 border border-blue-200/20 rounded-lg">
                   <h3 className="font-semibold mb-2">💡 Pro Tip</h3>
