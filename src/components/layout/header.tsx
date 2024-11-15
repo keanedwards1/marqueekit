@@ -1,39 +1,98 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
-// import { Github } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className="border-b border-gray-800 bg-black/80 backdrop-blur-md shadow-md">
-      <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        <Link href="/" className="font-bold text-2xl text-white tracking-tight">
-          MarqueeKit
-        </Link>
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo - pushed to the left */}
+          <Link href="/" className="font-bold text-2xl text-white tracking-tight">
+            MarqueeKit
+          </Link>
 
-        <nav className="flex items-center gap-8">
-          <Link href="/docs" className="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
-            Docs
-          </Link>
-          <Link href="/examples" className="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
-            Examples
-          </Link>
-          <Link 
-            href="/pricing" 
-            className="rounded-lg px-5 py-2.5 border text-sm border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors"
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden text-gray-400 hover:text-gray-200 transition-all duration-300"
+            aria-label="Toggle menu"
           >
-            Pricing
-          </Link>
-          {/* Uncomment the following section to re-enable the GitHub link */}
-          {/* <Link
-            href="https://github.com/yourusername/marqueekit"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-gray-200 transition-colors duration-200"
-          >
-            <Github size={20} />
-          </Link> */}
-        </nav>
+            <div className="relative w-6 h-6">
+              <span className={`absolute inset-0 transition-opacity duration-300 ease-in-out ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}>
+                <Menu size={24} />
+              </span>
+              <span className={`absolute inset-0 transition-opacity duration-300 ease-in-out ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`}>
+                <X size={24} />
+              </span>
+            </div>
+          </button>
+
+          {/* Desktop navigation */}
+          <nav className="hidden md:flex items-center">
+            <div className="flex items-center space-x-6 ml-12">
+              <Link 
+                href="/docs" 
+                className="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-300"
+              >
+                Docs
+              </Link>
+              <Link 
+                href="/examples" 
+                className="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-300"
+              >
+                Examples
+              </Link>
+              <Link 
+                href="/pricing" 
+                className="rounded-lg px-5 py-2.5 border text-sm border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-all duration-300"
+              >
+                Pricing
+              </Link>
+            </div>
+          </nav>
+        </div>
+
+        {/* Mobile navigation */}
+        <div 
+          className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+            isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <nav className="py-4 border-t border-gray-800">
+            <div className="flex flex-col space-y-4">
+              <Link 
+                href="/docs" 
+                className="text-sm text-gray-400 hover:text-gray-200 transition-all duration-300 transform hover:translate-x-1"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Docs
+              </Link>
+              <Link 
+                href="/examples" 
+                className="text-sm text-gray-400 hover:text-gray-200 transition-all duration-300 transform hover:translate-x-1"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Examples
+              </Link>
+              <div className="flex">
+                <Link 
+                  href="/pricing" 
+                  className="text-sm text-gray-400 hover:text-gray-200 transition-all duration-300"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <span className="rounded-lg px-5 py-2.5 border border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-all duration-300 inline-block transform hover:translate-x-1">
+                    Pricing
+                  </span>
+                </Link>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
     </header>
   );

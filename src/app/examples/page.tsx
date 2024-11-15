@@ -478,14 +478,14 @@ export default function ExamplesPage() {
                 <Link
                   href="https://www.google.com"
                   rel="noopener noreferrer"
-                  className="inline-block ml-2 rounded-lg px-8 py-4 bg-black text-white border border-white hover:bg-gray-100 hover:text-black transition-colors mr-4"
+                  className="w-full sm:w-auto inline-block rounded-lg px-8 py-4 bg-black text-white border border-white hover:bg-gray-100 hover:text-black transition-colors mb-4 sm:mb-0 sm:mr-4 text-center text-lg"
                 >
                   <XCircle className="-ml-2 mr-2 h-4 w-4 inline-block" />
                   I&apos;m good
                 </Link>
                 <Link
                   href="/pricing"
-                  className="w-full sm:w-auto rounded-lg px-8 py-4 bg-blue-500 text-white hover:bg-blue-600 transition-colors font-medium text-lg"
+                  className="w-full sm:w-auto inline-block rounded-lg px-8 py-4 bg-blue-500 text-white hover:bg-blue-600 transition-colors font-medium text-lg text-center"
                 >
                   Pricing
                 </Link>
