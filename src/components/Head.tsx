@@ -16,7 +16,8 @@ interface SEOHeadProps {
   dateCreated?: string;
   dateModified?: string;
   siteName?: string;
-  gaTrackingId?: string; // New prop for GA tracking ID
+  gaAdsId?: string; // Google Ads tracking ID
+  ga4Id?: string;   // Google Analytics 4 tracking ID
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
@@ -33,7 +34,8 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   dateCreated,
   dateModified,
   siteName = 'MarqueeKit',
-  gaTrackingId = 'AW-16777705244', // Default tracking ID
+  gaAdsId = 'AW-16777705244',
+  ga4Id = 'G-G7E25FG4HP',
 }) => {
   return (
     <>
@@ -108,17 +110,31 @@ const SEOHead: React.FC<SEOHeadProps> = ({
         </script>
       </Head>
 
-      {/* Google Analytics Script - Using next/script for better performance */}
+      {/* Google Analytics 4 Script */}
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}
         strategy="afterInteractive"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-analytics-4" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${gaTrackingId}');
+          gtag('config', '${ga4Id}');
+        `}
+      </Script>
+
+      {/* Google Ads Script */}
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaAdsId}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-ads" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${gaAdsId}');
         `}
       </Script>
     </>
