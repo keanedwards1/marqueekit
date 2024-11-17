@@ -2,6 +2,7 @@
 ├── Icon\015
 ├── README.md
 ├── next-env.d.ts
+├── next-sitemap.config.js
 ├── next.config.ts
 ├── package-lock.json
 ├── package.json
@@ -32,7 +33,9 @@
 │   │   ├── table.jpg
 │   │   ├── vase.jpg
 │   │   └── wall-art.jpg
+│   ├── robots.txt
 │   ├── site.webmanifest
+│   ├── sitemap.xml
 │   ├── vercel.svg
 │   ├── web-app-manifest-192x192.png
 │   ├── web-app-manifest-512x512.png
@@ -93,6 +96,8 @@
 │   │   │   └── product-marquee.tsx
 │   │   ├── layout
 │   │   │   └── header.tsx
+│   │   ├── pricing
+│   │   │   └── DeliverableList.tsx
 │   │   └── ui
 │   │       ├── code-preview.tsx
 │   │       ├── copyable-code.tsx
@@ -103,4 +108,4 @@
 ├── tree.txt
 └── tsconfig.json
 
-32 directories, 72 files
+33 directories, 76 files

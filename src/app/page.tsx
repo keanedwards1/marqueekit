@@ -116,6 +116,28 @@ export default function Home() {
             </div>
           </section>
 
+
+          {/* Product Hunt Badge */}
+          <section className="px-4 py-4 -mt-6">
+            <div className="container mx-auto text-center">
+              <a
+                href="https://www.producthunt.com/posts/marqueekit?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-marqueekit"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block"
+              >
+                <img
+                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=615119&theme=light"
+                  alt="MarqueeKit - Image Marquees With Ease | Product Hunt"
+                  style={{ width: '250px', height: '54px' }}
+                  width="250"
+                  height="54"
+                />
+              </a>
+            </div>
+          </section>
+
+
           {/* Demo Section */}
           <section className="px-4 pb-16 pt-10">
             <div className="container mx-auto max-w-6xl overflow-hidden">

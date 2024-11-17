@@ -41,6 +41,12 @@ export function Header() {
               >
                 Docs
               </Link>
+              <Link
+                href="/blog"
+                className="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-300"
+              >
+                Blogs
+              </Link>
               <Link 
                 href="/examples" 
                 className="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-300"
@@ -71,6 +77,13 @@ export function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Docs
+              </Link>
+              <Link 
+                href="/blog" 
+                className="text-sm text-gray-400 hover:text-gray-200 transition-all duration-300 transform hover:translate-x-1"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Blogs
               </Link>
               <Link 
                 href="/examples" 

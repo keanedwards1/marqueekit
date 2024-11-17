@@ -115,27 +115,15 @@ const SEOHead: React.FC<SEOHeadProps> = ({
         src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}
         strategy="afterInteractive"
       />
-      <Script id="google-analytics-4" strategy="afterInteractive">
+      <Script id="google-analytics" strategy="afterInteractive">
         {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${ga4Id}');
-        `}
-      </Script>
-
-      {/* Google Ads Script */}
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${gaAdsId}`}
-        strategy="afterInteractive"
-      />
-      <Script id="google-ads" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${gaAdsId}');
-        `}
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${ga4Id}');
+    gtag('config', '${gaAdsId}');
+    gtag('config', 'AW-16777705244/JrW5CLz1-uoZEJzuncA-');  // Add conversion label configuration
+  `}
       </Script>
     </>
   );

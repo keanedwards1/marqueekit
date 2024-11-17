@@ -5,6 +5,20 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Check, ArrowRight, Download } from 'lucide-react';
+import SEOHead from '@/components/Head'
+
+declare global {
+  interface Window {
+    gtag: (
+      command: 'event',
+      action: 'conversion',
+      params: {
+        send_to: string;
+        transaction_id?: string;
+      }
+    ) => void;
+  }
+}
 
 interface PurchaseDetails {
   licenseType: 'standard' | 'pro';
@@ -19,6 +33,7 @@ function SuccessContent() {
   const [downloading, setDownloading] = useState(false);
   const [showWarningModal, setShowWarningModal] = useState(false);
   const [hasDownloaded, setHasDownloaded] = useState(false);
+  const [isValidPurchase, setIsValidPurchase] = useState(false);
 
   useEffect(() => {
     const verifyPurchase = async () => {
@@ -28,6 +43,7 @@ function SuccessContent() {
 
         if (data.valid) {
           setPurchaseDetails(data.details);
+          setIsValidPurchase(true);
         } else {
           console.error('Invalid session');
         }
@@ -42,6 +58,25 @@ function SuccessContent() {
       verifyPurchase();
     }
   }, [sessionId]);
+
+  // Conversion tracking effect
+  useEffect(() => {
+    if (isValidPurchase && sessionId) {
+      // Wait a short moment to ensure gtag is definitely loaded
+      setTimeout(() => {
+        if (typeof window.gtag === 'undefined') {
+          console.log('Warning: gtag is not loaded yet');
+          return;
+        }
+        console.log('Attempting to track conversion with session:', sessionId);
+        window.gtag('event', 'conversion', {
+          'send_to': 'AW-16777705244/JrW5CLz1-uoZEJzuncA-',
+          'transaction_id': sessionId
+        });
+        console.log('Conversion tracked');
+      }, 1000); // 1 second delay
+    }
+  }, [isValidPurchase, sessionId]);
 
   const handleDownload = async () => {
     if (!sessionId) return;
@@ -67,7 +102,6 @@ function SuccessContent() {
     }
   };
 
-  // Rest of your component remains the same
   const handleDocsClick = (e: React.MouseEvent) => {
     if (!hasDownloaded) {
       e.preventDefault();
@@ -106,97 +140,101 @@ function SuccessContent() {
   }
 
   return (
-    <div className="min-h-screen py-20 relative overflow-hidden">
-      <div
-        className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:24px_48px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000,transparent)]"
-        aria-hidden="true"
+    <>
+      <SEOHead 
+        title="Thank you for your purchase | MarqueeKit" 
+        description="Your MarqueeKit purchase was successful"
       />
+      <div className="min-h-screen py-20 relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:24px_48px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000,transparent)]"
+          aria-hidden="true"
+        />
 
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-48 bg-blue-500/10 blur-3xl"
-        aria-hidden="true"
-      />
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-48 bg-blue-500/10 blur-3xl"
+          aria-hidden="true"
+        />
 
-      {showWarningModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-black border border-gray-600 rounded-lg p-8 max-w-md mx-4">
-            <h3 className="text-xl font-bold mb-4">Are you sure?</h3>
-            <p className="text-gray-600 mb-6">
-              If you navigate away without downloading, you&apos;ll need to contact support to regain access to your download.
-            </p>
-            <div className="flex justify-end gap-4">
-              <Link
-                href="/docs"
-                className="px-4 py-2 bg-black border border-gray-500 text-white hover:bg-red-600 hover:border-black transition-all rounded-lg duration-200"
-                onClick={() => setShowWarningModal(false)}
-              >
-                Continue Anyway
-              </Link>
-              <button
-                onClick={() => setShowWarningModal(false)}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-gray-100 hover:text-gray-100 rounded-lg transition-all duration-200"
-              >
-                Cancel
-              </button>
+        {showWarningModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-black border border-gray-600 rounded-lg p-8 max-w-md mx-4">
+              <h3 className="text-xl font-bold mb-4">Are you sure?</h3>
+              <p className="text-gray-600 mb-6">
+                If you navigate away without downloading, you&apos;ll need to contact support to regain access to your download.
+              </p>
+              <div className="flex justify-end gap-4">
+                <Link
+                  href="/docs"
+                  className="px-4 py-2 bg-black border border-gray-500 text-white hover:bg-red-600 hover:border-black transition-all rounded-lg duration-200"
+                  onClick={() => setShowWarningModal(false)}
+                >
+                  Continue Anyway
+                </Link>
+                <button
+                  onClick={() => setShowWarningModal(false)}
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-gray-100 hover:text-gray-100 rounded-lg transition-all duration-200"
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
-      <div className="container mx-auto px-4 max-w-2xl relative">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-8">
-            <Check className="w-8 h-8 text-green-600" />
+        <div className="container mx-auto px-4 max-w-2xl relative">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-8">
+              <Check className="w-8 h-8 text-green-600" />
+            </div>
+            <h1 className="text-4xl font-bold mb-4">Thank you for your purchase!</h1>
+            <p className="text-xl text-gray-600">
+              You now have access to MarqueeKit {purchaseDetails?.licenseType === 'pro' ? 'Pro' : 'Standard'}
+            </p>
           </div>
-          <h1 className="text-4xl font-bold mb-4">Thank you for your purchase!</h1>
-          <p className="text-xl text-gray-600">
-            You now have access to MarqueeKit {purchaseDetails?.licenseType === 'pro' ? 'Pro' : 'Standard'}
-          </p>
-        </div>
 
-        <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 mb-8 border">
-          <h2 className="text-2xl font-bold mb-6">Next Steps</h2>
-          <div className="space-y-4">
-            <button
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50"
-              onClick={handleDownload}
-              disabled={downloading}
-            >
-              <Download className="w-5 h-5" />
-              {downloading ? 'Downloading...' : 'Download MarqueeKit'}
-            </button>
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 mb-8 border">
+            <h2 className="text-2xl font-bold mb-6">Next Steps</h2>
+            <div className="space-y-4">
+              <button
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50"
+                onClick={handleDownload}
+                disabled={downloading}
+              >
+                <Download className="w-5 h-5" />
+                {downloading ? 'Downloading...' : 'Download MarqueeKit'}
+              </button>
 
-            <Link
-              href="/docs"
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 border rounded-lg hover:bg-white/5 transition-colors"
-              onClick={handleDocsClick}
-            >
-              View Documentation
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+              <Link
+                href="/docs"
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 border rounded-lg hover:bg-white/5 transition-colors"
+                onClick={handleDocsClick}
+              >
+                View Documentation
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
           </div>
-        </div>
 
-
-        <div className="space-y-6 text-center">
-          {/* Step-by-step instructions */}
-          <div className="bg-black rounded-lg p-6 mt-6 border border-gray-700 text-gray-300 space-y-3">
-            <p className="text-xl text-gray-100">After Downloading:</p>
-            <ol className="list-decimal ml-6 space-y-1">
-              <li>Unzip the downloaded MarqueeKit file.</li>
-              <li>Open the unzipped folder in your preferred code editor.</li>
-              <li>Open <code className="text-white">START_HERE.md</code> and follow the 5 min guide to create your first marqueeKit marquee.</li>
-            </ol>
+          <div className="space-y-6 text-center">
+            <div className="bg-black rounded-lg p-6 mt-6 border border-gray-700 text-gray-300 space-y-3">
+              <p className="text-xl text-gray-100">After Downloading:</p>
+              <ol className="list-decimal ml-6 space-y-1">
+                <li>Unzip the downloaded MarqueeKit file.</li>
+                <li>Open the unzipped folder in your preferred code editor.</li>
+                <li>Open <code className="text-white">START_HERE.md</code> and follow the 5 min guide to create your first marqueeKit marquee.</li>
+              </ol>
+            </div>
+            <p className="text-gray-600">
+              We&apos;ve sent a confirmation email to {purchaseDetails?.customerEmail}.
+            </p>
+            <p className="text-sm text-gray-500">
+              Having issues? Contact support at <a href="mailto:marqueekit1@gmail.com" className="text-blue-600 hover:text-blue-800">marqueekit1@gmail.com</a>
+            </p>
           </div>
-          <p className="text-gray-600">
-            We&apos;ve sent a confirmation email to {purchaseDetails?.customerEmail}.
-          </p>
-          <p className="text-sm text-gray-500">
-            Having issues? Contact support at <a href="mailto:marqueekit1@gmail.com" className="text-blue-600 hover:text-blue-800">marqueekit1@gmail.com</a>
-          </p>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -219,8 +257,3 @@ export default function SuccessPage() {
     </Suspense>
   );
 }
-
-{/*             <Link 
-              href={`/docs/getting-started?session_id=${sessionId}`}
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 border rounded-lg hover:bg-white/5 transition-colors"
-            > */}
