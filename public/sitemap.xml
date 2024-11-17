@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://marqueekit.com/success</loc><lastmod>2024-11-15T05:51:04.338Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://marqueekit.com/examples</loc><lastmod>2024-11-15T05:51:04.339Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://marqueekit.com</loc><lastmod>2024-11-15T05:51:04.339Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://marqueekit.com/docs/configuration</loc><lastmod>2024-11-15T05:51:04.339Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://marqueekit.com/docs/getting-started</loc><lastmod>2024-11-15T05:51:04.339Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://marqueekit.com/docs/methods</loc><lastmod>2024-11-15T05:51:04.339Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://marqueekit.com/docs/archive/api</loc><lastmod>2024-11-15T05:51:04.339Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://marqueekit.com/docs/troubleshooting</loc><lastmod>2024-11-15T05:51:04.339Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://marqueekit.com/docs/examples</loc><lastmod>2024-11-15T05:51:04.339Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://marqueekit.com/pricing</loc><lastmod>2024-11-15T05:51:04.339Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://marqueekit.com/docs</loc><lastmod>2024-11-15T05:51:04.339Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://marqueekit.com/docs/installation</loc><lastmod>2024-11-15T05:51:04.339Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://marqueekit.com</loc><lastmod>2024-11-17T12:07:57.902Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://marqueekit.com/examples</loc><lastmod>2024-11-17T12:07:57.903Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://marqueekit.com/success</loc><lastmod>2024-11-17T12:07:57.903Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://marqueekit.com/docs/configuration</loc><lastmod>2024-11-17T12:07:57.903Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://marqueekit.com/docs/archive/api</loc><lastmod>2024-11-17T12:07:57.903Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://marqueekit.com/pricing</loc><lastmod>2024-11-17T12:07:57.903Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://marqueekit.com/docs/troubleshooting</loc><lastmod>2024-11-17T12:07:57.903Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://marqueekit.com/docs/methods</loc><lastmod>2024-11-17T12:07:57.903Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://marqueekit.com/docs/examples</loc><lastmod>2024-11-17T12:07:57.903Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://marqueekit.com/docs/installation</loc><lastmod>2024-11-17T12:07:57.903Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://marqueekit.com/docs</loc><lastmod>2024-11-17T12:07:57.903Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://marqueekit.com/docs/getting-started</loc><lastmod>2024-11-17T12:07:57.903Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
 </urlset>

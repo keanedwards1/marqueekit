@@ -1,4 +1,4 @@
-// src/data/blog-posts.ts
+/* // src/data/blog-posts.ts
 import { BlogPost } from '@/types/blog';
 
 export const SAMPLE_POSTS: BlogPost[] = [
@@ -122,7 +122,7 @@ added files and folders --&gt;
       <h3>4. Start a Live Server (see instructions above if needed)</h3>
       
       <h3>5. Remove body styling from <code>marquee.css</code> if interfering with your site's existing styles</h3>
-      <pre><code>/* REMOVE FROM HERE */
+      <pre><code>/* REMOVE FROM HERE 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.6;
@@ -136,11 +136,11 @@ body {
 }
 /* TO HERE */
 
-/* Rest of the CSS rules */
+/* Rest of the CSS rules 
 
 @media (prefers-color-scheme: dark) {
 
-/* AND FROM HERE */
+/* AND FROM HERE 
 body {
   background-color: #0a0a0a;
   background-image: 
@@ -149,9 +149,9 @@ body {
   background-size: 40px 40px;
   color: #e1e1e1;
 }
-/* TO HERE */
+/* TO HERE 
 
-/* Rest of the CSS rules */
+/* Rest of the CSS rules 
 
 }
 </code></pre>
@@ -178,9 +178,9 @@ body {
   borderRadius: 10          // Adjusts how rounded the corners of each image are
 });
 
-/* To add an on-load animation, add this to your head */
+/* To add an on-load animation, add this to your head 
 &lt;link rel="stylesheet" href="/css/animate.css"&gt;
-/* Make sure to add it below the marquee.css import */
+/* Make sure to add it below the marquee.css import 
 </code></pre>
       
       <h2>Previewing <code>.md</code> Files</h2>
@@ -270,14 +270,14 @@ body {
 
 .marquee-content {
   display: flex;
-  gap: 20px; /* Space between images */
+  gap: 20px; /* Space between images 
   position: relative;
   white-space: nowrap;
   will-change: transform;
 }
 
 .marquee-content img {
-  height: 200px; /* Adjust as needed */
+  height: 200px; /* Adjust as needed 
   width: auto;
   object-fit: cover;
   flex-shrink: 0;
@@ -454,3 +454,4 @@ marqueeContent.addEventListener('mouseleave', () => {
     image: '/blog/product-hunt.png',
   },
 ];
+ */
