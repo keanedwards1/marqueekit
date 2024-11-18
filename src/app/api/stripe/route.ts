@@ -19,6 +19,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 } as const; */
 
 const PRICE_IDS = {
+  basic: process.env.NEXT_PUBLIC_STRIPE_BASIC_PRICE_ID!,
   standard: process.env.NEXT_PUBLIC_STRIPE_STANDARD_PRICE_ID!,
   pro: process.env.NEXT_PUBLIC_STRIPE_PRO_PRICE_ID!
 } as const; 

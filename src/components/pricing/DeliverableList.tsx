@@ -1,5 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { FileText, Download, Mail } from 'lucide-react';
+import { Check, Minus } from 'lucide-react';
+
+interface BooleanFeature {
+  name: string;
+  basic: boolean;
+  standard: boolean;
+  pro: boolean;
+  tooltip?: string;
+  type: 'boolean';
+}
+
+interface StringFeature {
+  name: string;
+  basic: string;
+  standard: string;
+  pro: string;
+  type: 'string';
+}
+
+type Feature = BooleanFeature | StringFeature;
+
+interface FeatureSection {
+  category: string;
+  items: Feature[];
+}
 
 const DeliverablesList = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -8,100 +32,174 @@ const DeliverablesList = () => {
     setIsVisible(true);
   }, []);
 
+  const features: FeatureSection[] = [
+    {
+      category: "Core Marquee Features",
+      items: [
+        {
+          name: "Basic Configuration (height, width, speed, gap)",
+          basic: true,
+          standard: true,
+          pro: true,
+          tooltip: "Configure basic marquee properties",
+          type: 'boolean'
+        },
+        {
+          name: "Reverse Direction",
+          basic: true,
+          standard: true,
+          pro: true,
+          type: 'boolean'
+        },
+        {
+          name: "Border Radius Control",
+          basic: true,
+          standard: true,
+          pro: true,
+          type: 'boolean'
+        },
+        {
+          name: "Pause on Hover",
+          basic: true,
+          standard: true,
+          pro: true,
+          type: 'boolean'
+        },
+        {
+          name: "Image Scale Control",
+          basic: true,
+          standard: true,
+          pro: true,
+          type: 'boolean'
+        },
+        {
+          name: "Load Animation Effect",
+          basic: false,
+          standard: false,
+          pro: true,
+          tooltip: "Smooth animation when marquee first appears",
+          type: 'boolean'
+        },
+        {
+          name: "Fade Effect",
+          basic: false,
+          standard: false,
+          pro: true,
+          tooltip: "Elegant fade transitions",
+          type: 'boolean'
+        },
+        {
+          name: "Mixed/Uniform Media Toggle",
+          basic: false,
+          standard: false,
+          pro: true,
+          tooltip: "Switch between mixed and uniform media sizes",
+          type: 'boolean'
+        }
+      ]
+    },
+    {
+      category: "Documentation & Examples",
+      items: [
+        {
+          name: "Implementation Examples",
+          basic: "Basic examples",
+          standard: "Comprehensive examples",
+          pro: "Comprehensive examples",
+          type: 'string'
+        },
+        {
+          name: "Documentation",
+          basic: "Basic setup guide",
+          standard: "Detailed documentation",
+          pro: "Detailed documentation",
+          type: 'string'
+        },
+        {
+          name: "Code Snippets",
+          basic: "Essential snippets",
+          standard: "Full snippet library",
+          pro: "Full snippet library",
+          type: 'string'
+        }
+      ]
+    },
+    {
+      category: "Support",
+      items: [
+        {
+          name: "Email Support",
+          basic: "Basic email support",
+          standard: "Priority email support",
+          pro: "Priority email support",
+          type: 'string'
+        },
+        {
+          name: "Response Time",
+          basic: "48 hours",
+          standard: "24 hours",
+          pro: "12 hours",
+          type: 'string'
+        }
+      ]
+    }
+  ];
+
+  const renderFeatureValue = (feature: Feature, tier: 'basic' | 'standard' | 'pro') => {
+    if (feature.type === 'boolean') {
+      return feature[tier] ? (
+        <Check className="h-5 w-5 text-teal-400 flex-shrink-0" />
+      ) : (
+        <Minus className="h-5 w-5 text-gray-500 flex-shrink-0" />
+      );
+    }
+    return <span className="text-teal-400">•</span>;
+  };
+
+  const renderColumn = (tier: 'basic' | 'standard' | 'pro', borderColor: string, bgColor: string) => (
+    <div className={`space-y-6 p-6 rounded-lg border ${borderColor} ${bgColor}`}>
+      <h3 className="text-xl font-medium text-white capitalize">{tier}</h3>
+      <div className="space-y-8">
+        {features.map((section, idx) => (
+          <div key={idx} className="space-y-4">
+            <h4 className="text-sm font-medium text-teal-400">{section.category}</h4>
+            <ul className="space-y-3">
+              {section.items.map((item, itemIdx) => (
+                <li key={itemIdx} className="flex items-start gap-2 group relative">
+                  {renderFeatureValue(item, tier)}
+                  <span className="text-sm text-gray-300">
+                    {item.name}
+                    {item.type === 'string' && `: ${item[tier]}`}
+                  </span>
+                  {item.type === 'boolean' && item.tooltip && (
+                    <div className="absolute left-0 -top-8 hidden group-hover:block bg-gray-800 p-2 rounded text-xs text-gray-300 w-48">
+                      {item.tooltip}
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
-    <div className={`max-w-3xl mx-auto my-20 p-8 rounded-lg shadow-lg border border-gray-700 transition-all duration-1000 ${
+    <div className={`max-w-5xl mx-auto my-20 transition-all duration-1000 ${
       isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
     }`}>
-      <h2 className="text-2xl font-semibold mb-10 text-white">What You&apos;ll Receive</h2>
+      <h2 className="text-2xl font-semibold mb-10 text-white text-center">What You Get</h2>
       
-      <div className="space-y-12">
-        {/* Download Link Section */}
-        <div className={`flex flex-col items-start space-y-4 transition-all duration-1000 delay-100 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}>
-          <div className="flex items-center space-x-3">
-            <Download className="w-6 h-6 text-teal-400" />
-            <h3 className="text-lg font-medium text-white">Download Link</h3>
-          </div>
-          <div className="ml-9 text-gray-300">
-            <p>File: <strong className="text-white">marqueeKit.zip</strong></p>
-            <h4 className="font-medium text-white mt-2">Inside marqueeKit.zip you&apos;ll find:</h4>
-            <ul className="ml-4 list-disc list-inside">
-              <li>marquee.js - A high-performance marquee engine</li>
-              <li>marquee.css - Pre-styled responsive layouts</li>
-              <li>Sample images to get started quickly</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Documentation Section */}
-        <div className={`flex flex-col items-start space-y-4 transition-all duration-1000 delay-200 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}>
-          <div className="flex items-center space-x-3">
-            <FileText className="w-6 h-6 text-teal-400" />
-            <h3 className="text-lg font-medium text-white">Complete Documentation</h3>
-          </div>
-          <div className="ml-9 text-gray-300">
-            <h4 className="font-medium text-white">Documentation includes:</h4>
-            <ul className="ml-4 list-disc list-inside">
-              <li>Detailed documentation with all features explained</li>
-              <li>Step-by-step installation guide</li>
-              <li>Example code snippets for all features</li>
-              <li>Performance optimization tips</li>
-              <li>Troubleshooting guide</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Email and Support Section */}
-        <div className={`flex flex-col items-start space-y-4 transition-all duration-1000 delay-300 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}>
-          <div className="flex items-center space-x-3">
-            <Mail className="w-6 h-6 text-teal-400" />
-            <h3 className="text-lg font-medium text-white">Lifetime Support</h3>
-          </div>
-          <div className="ml-9 text-gray-300">
-            <h4 className="font-medium text-white">You&apos;ll receive:</h4>
-            <ul className="ml-4 list-disc list-inside">
-              <li>Purchase receipt</li>
-              <li>Direct email support at <strong className="text-white">marqueekit1@gmail.com</strong></li>
-              <li>Lifetime access to future updates</li>
-              <li>24-hour response guarantee</li>
-            </ul>
-          </div>
-        </div>
-        
-        {/* Additional Details Section */}
-        <div className={`border-t border-gray-700 pt-6 transition-all duration-1000 delay-400 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="flex flex-col space-y-2">
-              <h4 className="font-medium text-teal-400 text-sm">Core Features:</h4>
-              <ul className="text-sm text-gray-300 space-y-1">
-                <li>✓ Hardware-accelerated animations</li>
-                <li>✓ Pause on hover effects</li>
-                <li>✓ Image scaling animations</li>
-                <li>✓ Customizable speeds</li>
-              </ul>
-            </div>
-            <div className="flex flex-col space-y-2">
-              <h4 className="font-medium text-teal-400 text-sm">Performance:</h4>
-              <ul className="text-sm text-gray-300 space-y-1">
-                <li>✓ Memory optimization</li>
-                <li>✓ Intersection Observer</li>
-                <li>✓ Dynamic image loading</li>
-                <li>✓ Responsive layouts</li>
-              </ul>
-            </div>
-          </div>
-          <p className="text-sm text-gray-400 mt-6">
-            Files are delivered instantly after payment. Contact support if you need to restore access.
-          </p>
-        </div>
+      <div className="grid grid-cols-3 gap-8">
+        {renderColumn('basic', 'border-gray-800', 'bg-gray-900/50')}
+        {renderColumn('standard', 'border-teal-800', 'bg-teal-900/10')}
+        {renderColumn('pro', 'border-blue-800', 'bg-blue-900/10')}
       </div>
+
+      <p className="text-sm text-gray-400 mt-6 text-center">
+        Files are delivered instantly after payment. Contact support if you need to restore access.
+      </p>
     </div>
   );
 };

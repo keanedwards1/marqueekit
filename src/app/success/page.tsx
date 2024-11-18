@@ -92,6 +92,7 @@ function SuccessContent() {
       }
 
       // Trigger the download
+      console.log('Download expires:', data.expiresAt);
       window.location.href = data.downloadUrl;
       setHasDownloaded(true);
     } catch (error) {

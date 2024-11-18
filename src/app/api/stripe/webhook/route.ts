@@ -50,7 +50,7 @@ export async function POST(req: Request) {
         }
         
         // You can determine which product was purchased
-        const isProLicense = session.amount_total === 14900; // $149.00
+        const isProLicense = session.amount_total === 4.93; // $149.00
 
         if (isProLicense) {
             console.log('Pro License purchased');
