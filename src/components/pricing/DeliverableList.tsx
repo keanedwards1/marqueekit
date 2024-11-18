@@ -191,7 +191,7 @@ const DeliverablesList = () => {
     }`}>
       <h2 className="text-2xl font-semibold mb-10 text-white text-center">What You Get</h2>
       
-      <div className="grid grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {renderColumn('basic', 'border-gray-800', 'bg-gray-900/50')}
         {renderColumn('standard', 'border-teal-800', 'bg-teal-900/10')}
         {renderColumn('pro', 'border-blue-800', 'bg-blue-900/10')}
