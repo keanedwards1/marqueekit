@@ -157,7 +157,16 @@ export default function Home() {
           {/* Product Hunt Badge */}
           <section className="px-4 py-4 -mt-6">
             <div className="container mx-auto text-center">
-              <a
+              <a href="https://www.producthunt.com/posts/marqueekit?embed=true&utm_source=badge-top-post-topic-badge&utm_medium=badge&utm_souce=badge-marqueekit" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block">
+                <img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=615119&theme=light&period=weekly&topic_id=93"
+                  alt="MarqueeKit - Easy&#0032;Infinite&#0032;Scrolling&#0032;Marquees | Product Hunt"
+                  style={{ width: '250px', height: '54px' }}
+                  width="250" height="54" />
+              </a>
+              {/*               <a
                 href="https://www.producthunt.com/posts/marqueekit?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-marqueekit"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -170,11 +179,11 @@ export default function Home() {
                   width="250"
                   height="54"
                 />
-              </a>
+              </a> */}
             </div>
           </section>
 
-          
+
 
           {/* Story Section */}
           <section className="px-4 py-16 text-white">
@@ -224,146 +233,146 @@ export default function Home() {
               </div>
 
               <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-{/* Basic License */}
-<div className="relative group">
-  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl -m-1 opacity-0 group-hover:opacity-100 transition-all duration-500" />
-  
-  <div className="relative bg-black rounded-xl border border-gray-800 p-8 backdrop-blur-sm">
-    <div className="flex items-center justify-between mb-8">
-      <div>
-        <h3 className="text-xl text-white font-semibold">Basic</h3>
-        <p className="text-sm text-gray-400 mt-1">Essential features</p>
-      </div>
-      <div className="text-right">
-        <div className="text-3xl text-white font-bold">$1.99</div>
-        <div className="text-sm text-gray-400">one-time</div>
-      </div>
-    </div>
+                {/* Basic License */}
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl -m-1 opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
-    <div className="space-y-5 mb-8">
-      <div className="flex items-center gap-3">
-        <div className="w-6 h-6 rounded-full bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-          <Code className="w-3.5 h-3.5 text-blue-400" />
-        </div>
-        <span className="text-gray-300">Core marquee features</span>
-      </div>
-      <div className="flex items-center gap-3">
-        <div className="w-6 h-6 rounded-full bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-          <Check className="w-3.5 h-3.5 text-blue-400" />
-        </div>
-        <span className="text-gray-300">Basic documentation</span>
-      </div>
-      <div className="flex items-center gap-3">
-        <div className="w-6 h-6 rounded-full bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-          <Zap className="w-3.5 h-3.5 text-blue-400" />
-        </div>
-        <span className="text-gray-300">Basic email support</span>
-      </div>
-    </div>
+                  <div className="relative bg-black rounded-xl border border-gray-800 p-8 backdrop-blur-sm">
+                    <div className="flex items-center justify-between mb-8">
+                      <div>
+                        <h3 className="text-xl text-white font-semibold">Basic</h3>
+                        <p className="text-sm text-gray-400 mt-1">Essential features</p>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-3xl text-white font-bold">$1.99</div>
+                        <div className="text-sm text-gray-400">one-time</div>
+                      </div>
+                    </div>
 
-    <Link
-      href="/pricing"
-      className="block w-full py-3 px-4 rounded-lg bg-white text-black text-center transition-colors hover:bg-blue-500 hover:text-white"
-    >
-      Get Started
-    </Link>
-  </div>
-</div>
+                    <div className="space-y-5 mb-8">
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                          <Code className="w-3.5 h-3.5 text-blue-400" />
+                        </div>
+                        <span className="text-gray-300">Core marquee features</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3.5 h-3.5 text-blue-400" />
+                        </div>
+                        <span className="text-gray-300">Basic documentation</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                          <Zap className="w-3.5 h-3.5 text-blue-400" />
+                        </div>
+                        <span className="text-gray-300">Basic email support</span>
+                      </div>
+                    </div>
 
-    {/* Standard License */}
-    <div className="relative group">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl -m-1 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                    <Link
+                      href="/pricing"
+                      className="block w-full py-3 px-4 rounded-lg bg-white text-black text-center transition-colors hover:bg-blue-500 hover:text-white"
+                    >
+                      Get Started
+                    </Link>
+                  </div>
+                </div>
 
-      <div className="relative bg-white rounded-xl border border-gray-200/60 p-8 backdrop-blur-sm">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h3 className="text-xl text-gray-800 font-semibold">Standard</h3>
-            <p className="text-sm text-gray-500 mt-1">Complete package</p>
-          </div>
-          <div className="text-right">
-            <div className="text-3xl text-gray-800 font-bold">$3.49</div>
-            <div className="text-sm text-gray-500">one-time</div>
-          </div>
-        </div>
+                {/* Standard License */}
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl -m-1 opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
-        <div className="space-y-5 mb-8">
-          <div className="flex items-center gap-3">
-            <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
-              <Code className="w-3.5 h-3.5 text-blue-500" />
-            </div>
-            <span className="text-gray-600">All core features + examples</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
-              <Check className="w-3.5 h-3.5 text-blue-500" />
-            </div>
-            <span className="text-gray-600">Detailed documentation</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
-              <Zap className="w-3.5 h-3.5 text-blue-500" />
-            </div>
-            <span className="text-gray-600">Priority email support</span>
-          </div>
-        </div>
+                  <div className="relative bg-white rounded-xl border border-gray-200/60 p-8 backdrop-blur-sm">
+                    <div className="flex items-center justify-between mb-8">
+                      <div>
+                        <h3 className="text-xl text-gray-800 font-semibold">Standard</h3>
+                        <p className="text-sm text-gray-500 mt-1">Complete package</p>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-3xl text-gray-800 font-bold">$3.49</div>
+                        <div className="text-sm text-gray-500">one-time</div>
+                      </div>
+                    </div>
 
-        <Link
-          href="/pricing"
-          className="block w-full py-3 px-4 rounded-lg bg-black text-white text-center transition-colors hover:bg-blue-600"
-        >
-          Get Started
-        </Link>
-      </div>
-    </div>
+                    <div className="space-y-5 mb-8">
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                          <Code className="w-3.5 h-3.5 text-blue-500" />
+                        </div>
+                        <span className="text-gray-600">All core features + examples</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3.5 h-3.5 text-blue-500" />
+                        </div>
+                        <span className="text-gray-600">Detailed documentation</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                          <Zap className="w-3.5 h-3.5 text-blue-500" />
+                        </div>
+                        <span className="text-gray-600">Priority email support</span>
+                      </div>
+                    </div>
 
-    {/* Pro License */}
-    <div className="relative group">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl -m-1 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                    <Link
+                      href="/pricing"
+                      className="block w-full py-3 px-4 rounded-lg bg-black text-white text-center transition-colors hover:bg-blue-600"
+                    >
+                      Get Started
+                    </Link>
+                  </div>
+                </div>
 
-      <div className="relative bg-black rounded-xl border border-gray-800 p-8 backdrop-blur-sm text-white">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h3 className="text-xl font-semibold">Pro</h3>
-            <p className="text-sm text-gray-400 mt-1">Premium features</p>
-          </div>
-          <div className="text-right">
-            <div className="text-3xl font-bold">$4.95</div>
-            <div className="text-sm text-gray-400">one-time</div>
-          </div>
-        </div>
+                {/* Pro License */}
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl -m-1 opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
-        <div className="space-y-5 mb-8">
-          <div className="flex items-center gap-3">
-            <div className="w-6 h-6 rounded-full bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-              <Code className="w-3.5 h-3.5 text-blue-400" />
-            </div>
-            <span className="text-gray-300">All Standard features</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-6 h-6 rounded-full bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-              <Zap className="w-3.5 h-3.5 text-blue-400" />
-            </div>
-            <span className="text-gray-300">Load & fade animations</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-6 h-6 rounded-full bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-              <Check className="w-3.5 h-3.5 text-blue-400" />
-            </div>
-            <span className="text-gray-300">Premium email support</span>
-          </div>
-        </div>
+                  <div className="relative bg-black rounded-xl border border-gray-800 p-8 backdrop-blur-sm text-white">
+                    <div className="flex items-center justify-between mb-8">
+                      <div>
+                        <h3 className="text-xl font-semibold">Pro</h3>
+                        <p className="text-sm text-gray-400 mt-1">Premium features</p>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-3xl font-bold">$4.95</div>
+                        <div className="text-sm text-gray-400">one-time</div>
+                      </div>
+                    </div>
 
-        <Link
-          href="/pricing"
-          className="block w-full py-3 px-4 rounded-lg bg-white text-black text-center transition-colors hover:bg-blue-500 hover:text-white"
-        >
-          Get Started
-        </Link>
-      </div>
-    </div>
-  </div>
+                    <div className="space-y-5 mb-8">
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                          <Code className="w-3.5 h-3.5 text-blue-400" />
+                        </div>
+                        <span className="text-gray-300">All Standard features</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                          <Zap className="w-3.5 h-3.5 text-blue-400" />
+                        </div>
+                        <span className="text-gray-300">Load & fade animations</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3.5 h-3.5 text-blue-400" />
+                        </div>
+                        <span className="text-gray-300">Premium email support</span>
+                      </div>
+                    </div>
 
-{/*               <div className="text-center mt-10">
+                    <Link
+                      href="/pricing"
+                      className="block w-full py-3 px-4 rounded-lg bg-white text-black text-center transition-colors hover:bg-blue-500 hover:text-white"
+                    >
+                      Get Started
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/*               <div className="text-center mt-10">
                 <Link
                   href="/pricing"
                   className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700"
