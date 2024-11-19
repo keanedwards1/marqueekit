@@ -1,4 +1,4 @@
-/* // src/types/blog.ts
+// src/types/blog.ts
 export interface BlogPost {
   id: string;
   title: string;
@@ -11,4 +11,3 @@ export interface BlogPost {
   tags: string[];
   image?: string;
 }
- */

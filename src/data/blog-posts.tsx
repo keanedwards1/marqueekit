@@ -1,4 +1,4 @@
-/* // src/data/blog-posts.ts
+// src/data/blog-posts.ts
 import { BlogPost } from '@/types/blog';
 
 export const SAMPLE_POSTS: BlogPost[] = [
@@ -454,4 +454,3 @@ marqueeContent.addEventListener('mouseleave', () => {
     image: '/blog/product-hunt.png',
   },
 ];
- */
