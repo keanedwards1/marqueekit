@@ -195,7 +195,7 @@ export default function ExamplesPage() {
         type="website"
         locale="en_US"
         author="Kean"
-        keywords="MarqueeKit examples, image marquee demo, seamless scrolling, web design tools, developer showcase, customizable marquee, website animation"
+        keywords="MarqueeKit, Marquee Kit, marqueekit, marquee kit, how to make a marquee, how to make an infinite image scroller, infinite image, infinite carousel, infinite marquee, image marquee, seamless marquee, website marquee, responsive image scroll, smooth scrolling marquee, JavaScript marquee, CSS marquee, Next.js marquee, HTML marquee, developer tools for web design, front-end animation, minimal design marquee, customizable marquee, marquee component, lightweight marquee, website animation plugin"
         themeColor="#ffffff"
         dateCreated="2024-01-01"
         dateModified="2024-01-15"

@@ -51,7 +51,7 @@ export default function Home() {
         type="website"
         locale="en_US"
         author="Kean"
-        keywords="MarqueeKit, image marquee, seamless marquee, website marquee, responsive image scroll, smooth scrolling marquee, JavaScript marquee, CSS marquee, Next.js marquee, HTML marquee, developer tools for web design, front-end animation, minimal design marquee, customizable marquee, marquee component, lightweight marquee, website animation plugin"
+        keywords="MarqueeKit, Marquee Kit, marqueekit, marquee kit, how to make a marquee, how to make an infinite image scroller, infinite image, infinite carousel, infinite marquee, image marquee, seamless marquee, website marquee, responsive image scroll, smooth scrolling marquee, JavaScript marquee, CSS marquee, Next.js marquee, HTML marquee, developer tools for web design, front-end animation, minimal design marquee, customizable marquee, marquee component, lightweight marquee, website animation plugin"
         themeColor="#ffffff"
         dateCreated="2024-01-01"
         dateModified="2024-01-15"
@@ -90,12 +90,12 @@ export default function Home() {
                   Start Building Now
                   <ArrowRight className="ml-2 h-5 w-5 inline-block" />
                 </Link>
-                <span className="text-gray-500">or</span>
+                <span className="text-gray-500">or </span>
                 <Link
                   href="/examples"
                   className="w-full sm:w-auto rounded-lg px-8 py-4 border border-gray-200 hover:border-gray-300 hover:bg-white hover:text-black transition-colors font-medium text-lg"
                 >
-                  See It In Action
+                See It In Action
                 </Link>
               </div>
 

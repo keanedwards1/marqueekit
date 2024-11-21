@@ -57,7 +57,7 @@ export default function DocsPage() {
         type="website"
         locale="en_US"
         author="Kean"
-        keywords="MarqueeKit documentation, setup guide, image marquee integration, customizable marquee, developer documentation, web design tools, responsive marquee setup"
+        keywords="MarqueeKit, Marquee Kit, marqueekit, marquee kit, how to make a marquee, how to make an infinite image scroller, infinite image, infinite carousel, infinite marquee, image marquee, seamless marquee, website marquee, responsive image scroll, smooth scrolling marquee, JavaScript marquee, CSS marquee, Next.js marquee, HTML marquee, developer tools for web design, front-end animation, minimal design marquee, customizable marquee, marquee component, lightweight marquee, website animation plugin"
         themeColor="#ffffff"
         dateCreated="2024-01-01"
         dateModified="2024-01-15"
