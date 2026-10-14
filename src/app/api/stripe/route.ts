@@ -3,7 +3,7 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-// Add error checking for environment variables
+// Error checking for environment variables
 if (!process.env.STRIPE_SECRET_KEY) {
   throw new Error('STRIPE_SECRET_KEY is not defined');
 }
@@ -13,11 +13,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
     typescript: true,
 });
 
-/* const PRICE_IDS = {
-  standard: 'price_1QKsGYRwspcYzNPHn09VgmqR', 
-  pro: 'price_1QKsJ5RwspcYzNPHmM3I4EzD'     
-} as const; */
-
 const PRICE_IDS = {
   basic: process.env.NEXT_PUBLIC_STRIPE_BASIC_PRICE_ID!,
   standard: process.env.NEXT_PUBLIC_STRIPE_STANDARD_PRICE_ID!,
@@ -26,7 +21,7 @@ const PRICE_IDS = {
 
 
 export async function POST(req: Request) {
-  // Add error boundary
+  // Error boundary
   if (!stripe) {
     return NextResponse.json(
       { error: 'Stripe configuration error' },

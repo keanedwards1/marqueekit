@@ -29,7 +29,7 @@ export async function GET(req: Request) {
       status: session.status
     });
 
-    // More detailed validation logging
+    // Detailed validation logging
     const isValidPaymentStatus = session.payment_status === 'paid';
     const isValidStatus = session.status === 'complete';
     const isDevelopment = process.env.NODE_ENV === 'development';
